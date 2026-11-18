@@ -1,0 +1,218 @@
+{
+  "at": "2026-11-11T10:11:48.820Z",
+  "base": "http://localhost:3300",
+  "viewer": "u25000",
+  "runs": 48,
+  "concurrency": 8,
+  "results": [
+    {
+      "name": "landing /",
+      "path": "/",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 4,
+      "totalP50": 175,
+      "totalP95": 237,
+      "totalMax": 317
+    },
+    {
+      "name": "feed (for you)",
+      "path": "/feed",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 4,
+      "totalP50": 527,
+      "totalP95": 768,
+      "totalMax": 832
+    },
+    {
+      "name": "feed (latest)",
+      "path": "/feed?mode=latest",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 504,
+      "totalP95": 757,
+      "totalMax": 767
+    },
+    {
+      "name": "discover q=react",
+      "path": "/discover?q=react",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 3454,
+      "totalP95": 5327,
+      "totalMax": 6421
+    },
+    {
+      "name": "discover people q=react",
+      "path": "/discover?type=people&q=react",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 1024,
+      "totalP95": 1472,
+      "totalMax": 1557
+    },
+    {
+      "name": "opportunities",
+      "path": "/opportunities",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 377,
+      "totalP95": 509,
+      "totalMax": 572
+    },
+    {
+      "name": "opportunities sort=match",
+      "path": "/opportunities?sort=match",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 4,
+      "totalP50": 607,
+      "totalP95": 763,
+      "totalMax": 992
+    },
+    {
+      "name": "opportunities (signed out)",
+      "path": "/opportunities",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 385,
+      "totalP95": 564,
+      "totalMax": 773
+    },
+    {
+      "name": "profile /u/user1 (heavy)",
+      "path": "/u/user1",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 6,
+      "totalP50": 415,
+      "totalP95": 453,
+      "totalMax": 463
+    },
+    {
+      "name": "profile /u/user25000",
+      "path": "/u/user25000",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 4,
+      "totalP50": 79,
+      "totalP95": 80,
+      "totalMax": 81
+    },
+    {
+      "name": "connections /u/user1/connections",
+      "path": "/u/user1/connections",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 6,
+      "totalP50": 559,
+      "totalP95": 914,
+      "totalMax": 975
+    },
+    {
+      "name": "project /p/project-1",
+      "path": "/p/project-1",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 134,
+      "totalP95": 167,
+      "totalMax": 171
+    },
+    {
+      "name": "org /o/org-1",
+      "path": "/o/org-1",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 323,
+      "totalP95": 464,
+      "totalMax": 522
+    },
+    {
+      "name": "opportunity /opportunities/op1",
+      "path": "/opportunities/op1",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 4,
+      "totalP50": 59,
+      "totalP95": 70,
+      "totalMax": 71
+    },
+    {
+      "name": "tag /tags/react",
+      "path": "/tags/react",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 5,
+      "totalP50": 4266,
+      "totalP95": 6350,
+      "totalMax": 8699
+    },
+    {
+      "name": "notifications",
+      "path": "/notifications",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 50,
+      "totalP95": 65,
+      "totalMax": 67
+    },
+    {
+      "name": "messages list",
+      "path": "/messages",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 3,
+      "totalP50": 35,
+      "totalP95": 45,
+      "totalMax": 56
+    },
+    {
+      "name": "message poll API",
+      "path": "/api/messages/cv50373?after=2026-11-11T10%3A10%3A19.369Z",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 9,
+      "totalP50": 10,
+      "totalP95": 30,
+      "totalMax": 33
+    },
+    {
+      "name": "missing profile /u/nope",
+      "path": "/u/does-not-exist-404",
+      "status": "200",
+      "runs": 48,
+      "concurrency": 8,
+      "ttfbP50": 1,
+      "totalP50": 32,
+      "totalP95": 44,
+      "totalMax": 52
+    }
+  ]
+}

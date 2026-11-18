@@ -1,0 +1,59 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "Collab Hub home":
+    - /url: /feed
+    - text: Collab Hub
+  - search:
+    - text: Search people, projects, organizations and opportunities
+    - searchbox "Search people, projects, organizations and opportunities"
+  - navigation "Main":
+    - link "Home":
+      - /url: /feed
+    - link "Discover":
+      - /url: /discover
+    - link "Opportunities":
+      - /url: /opportunities
+    - link "Network":
+      - /url: /network
+    - link "Messages":
+      - /url: /messages
+    - link "Alerts 16 unread":
+      - /url: /notifications
+      - text: Alerts 16
+  - button "Account menu"
+- main:
+  - list "Conversations":
+    - listitem:
+      - 'link "Bruno Costa 1 minute ago You: [a11y-audit] keyboard message 1794391732716"':
+        - /url: /messages/cmwbxjlpb0050pci3h94c6o7e
+  - region "Conversation with Bruno Costa":
+    - link "Bruno Costa":
+      - /url: /u/bruno
+    - paragraph: Computer Science student · frontend enthusiast
+    - list "Messages with Bruno Costa":
+      - listitem:
+        - text: Hi Bruno! Thanks for applying. Do you have time for a short call on Thursday?
+        - time: 09:41 AM
+      - listitem:
+        - text: Hi Ana! Thursday works great, any time after 5pm.
+        - time: 09:41 AM
+      - listitem:
+        - text: "[a11y-audit] keyboard message 1794391732716"
+        - time: 10:08 AM
+    - text: Message
+    - textbox "Message":
+      - /placeholder: Write a message… (Enter to send, Shift+Enter for a new line)
+    - button "Send" [disabled]
+- contentinfo:
+  - text: Collab Hub
+  - link "Terms":
+    - /url: /terms
+  - link "Privacy":
+    - /url: /privacy
+  - link "Discover":
+    - /url: /discover
+  - link "Opportunities":
+    - /url: /opportunities
+- status
+- alert

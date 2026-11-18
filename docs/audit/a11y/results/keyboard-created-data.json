@@ -1,0 +1,18 @@
+[
+  {
+    "k": "post",
+    "n": 1
+  },
+  {
+    "k": "comment",
+    "n": 1
+  },
+  {
+    "k": "message",
+    "n": 1
+  },
+  {
+    "k": "application",
+    "n": 1
+  }
+]

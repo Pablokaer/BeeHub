@@ -1,0 +1,21 @@
+-- digest-queued-scan
+SELECT id, "userId" FROM "Notification" WHERE "emailStatus" = 'QUEUED' ORDER BY "createdAt" ASC LIMIT 5000
+
+Limit  (cost=55056.96..55056.96 rows=1 width=22) (actual time=782.192..786.866 rows=0 loops=1)
+  Buffers: shared read=43610 dirtied=64
+  ->  Sort  (cost=55056.96..55056.96 rows=1 width=22) (actual time=782.191..786.863 rows=0 loops=1)
+        Sort Key: "createdAt"
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared read=43610 dirtied=64
+        ->  Gather  (cost=1000.00..55056.95 rows=1 width=22) (actual time=782.166..786.836 rows=0 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared read=43610 dirtied=64
+              ->  Parallel Seq Scan on "Notification"  (cost=0.00..54056.85 rows=1 width=22) (actual time=764.447..764.452 rows=0 loops=3)
+                    Filter: ("emailStatus" = 'QUEUED'::"EmailStatus")
+                    Rows Removed by Filter: 668669
+                    Buffers: shared read=43610 dirtied=64
+Planning:
+  Buffers: shared hit=47 read=12
+Planning Time: 1.594 ms
+Execution Time: 787.014 ms

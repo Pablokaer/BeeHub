@@ -1,0 +1,49 @@
+heavy viewer u1: 13189 connections, 24 follows, 8 tags
+p99 viewer u500: 163 connections, 32 follows, 8 tags
+median viewer u25000: 30 connections, 27 follows, 8 tags
+runs per path: 20
+
+feed for-you p1                              heavy    p50       27 ms  p95       41 ms  max     50.3 ms
+feed latest p1                               heavy    p50     46.3 ms  p95     85.7 ms  max    116.5 ms
+feed for-you p1                              p99      p50     11.3 ms  p95     21.7 ms  max     22.5 ms
+feed latest p1                               p99      p50      4.2 ms  p95      5.5 ms  max      5.9 ms
+feed for-you p1                              median   p50       11 ms  p95     22.6 ms  max     27.2 ms
+feed latest p1                               median   p50      4.6 ms  p95      8.7 ms  max        9 ms
+feed latest p20 (offset)                     median   p50     83.1 ms  p95    132.1 ms  max    155.9 ms
+badges: unread notifications + messages      heavy    p50      2.8 ms  p95      3.3 ms  max        8 ms
+badges: unread notifications + messages      p99      p50      0.5 ms  p95      0.6 ms  max      0.7 ms
+badges: unread notifications + messages      median   p50      0.4 ms  p95      0.5 ms  max      0.6 ms
+search people q='react'                      median   p50    231.8 ms  p95    252.2 ms  max    346.2 ms
+search people q='react design lisbon'        median   p50    434.6 ms  p95    461.4 ms  max    560.9 ms
+search people q='zzqx' (no hit)              median   p50    526.7 ms  p95    548.4 ms  max    665.5 ms
+search projects q='climate'                  median   p50    333.5 ms  p95    382.5 ms  max    476.5 ms
+search projects lookingFor=react             median   p50    129.4 ms  p95    173.4 ms  max    184.5 ms
+search opportunities (no filter)             median   p50     82.4 ms  p95    107.8 ms  max    145.4 ms
+search opportunities q='design'              median   p50    167.2 ms  p95    183.3 ms  max    197.2 ms
+search opportunities page 50                 median   p50     94.4 ms  p95    132.9 ms  max    174.7 ms
+search opportunities sort=match              median   p50    104.3 ms  p95      112 ms  max      151 ms
+search posts q='react'                       median   p50   2396.2 ms  p95   2820.9 ms  max   3271.4 ms
+search posts tag=react                       median   p50   1011.4 ms  p95   1636.3 ms  max   2256.7 ms
+quick search q='react'                       median   p50    604.1 ms  p95    831.5 ms  max    868.1 ms
+search people q='react' (signed out)         anon     p50    278.1 ms  p95    334.4 ms  max    415.7 ms
+listConnections p1                           heavy    p50     64.1 ms  p95     78.5 ms  max    109.6 ms
+listConversations                            heavy    p50     14.8 ms  p95     20.6 ms  max     23.8 ms
+listNotifications p1                         heavy    p50      1.4 ms  p95      1.6 ms  max      1.7 ms
+listConnections p1                           p99      p50      2.2 ms  p95      3.7 ms  max      5.2 ms
+listConversations                            p99      p50      1.3 ms  p95      2.1 ms  max      2.8 ms
+listNotifications p1                         p99      p50      1.5 ms  p95      2.7 ms  max      4.3 ms
+listConnections p1                           median   p50      1.3 ms  p95      1.7 ms  max      1.8 ms
+listConversations                            median   p50      1.4 ms  p95      2.5 ms  max      2.7 ms
+listNotifications p1                         median   p50        1 ms  p95      1.2 ms  max      1.5 ms
+message poll (no new messages)               busiest  p50      1.4 ms  p95      4.6 ms  max     11.8 ms  (3060 messages in conversation)
+recommendOpportunities                       heavy    p50      109 ms  p95    150.8 ms  max    152.1 ms
+suggestPeople                                heavy    p50    122.8 ms  p95    182.9 ms  max      208 ms
+recommendOpportunities                       p99      p50      183 ms  p95    295.5 ms  max    321.4 ms
+suggestPeople                                p99      p50     32.8 ms  p95     63.6 ms  max     74.1 ms
+recommendOpportunities                       median   p50    116.8 ms  p95    139.3 ms  max    162.4 ms
+suggestPeople                                median   p50     20.8 ms  p95     24.3 ms  max     29.1 ms
+createPost as org (follower fan-out)         owner    p50    660.6 ms  p95    681.8 ms  max    681.8 ms  (6508 followers, cap 500)
+createPost as self                           owner    p50      2.7 ms  p95      5.5 ms  max      5.5 ms
+createPost as org (follower fan-out)         owner    p50    610.5 ms  p95    621.8 ms  max    621.8 ms  (6508 followers, cap 500)
+createPost as self                           owner    p50      2.9 ms  p95      3.5 ms  max      3.5 ms
+createOpportunity OPEN (matching fan-out)    owner    p50     41.2 ms  p95       46 ms  max       46 ms

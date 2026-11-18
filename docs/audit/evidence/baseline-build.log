@@ -1,0 +1,111 @@
+
+> collab-hub@0.1.0 build
+> next build
+
+▲ Next.js 16.4.6 (Turbopack)
+- Environments: .env
+✓ Running next.config.ts took 141ms
+- Cache Components enabled
+- Partial Prefetching enabled
+- Experiments (use with caution):
+  · instantInsights
+  · serverActions
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 5.9s
+  Running TypeScript ...
+  Finished TypeScript in 5.3s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/59) ...
+  Generating static pages using 5 workers (14/59) 
+  Generating static pages using 5 workers (29/59) 
+  Generating static pages using 5 workers (44/59) 
+✓ Generating static pages using 5 workers (59/59) in 637ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ◐ /
+├ ○ /_not-found
+├ ƒ /api/cron/notification-emails
+├ ƒ /api/health
+├ ƒ /api/me/export
+├ ƒ /api/media/[...key]
+├ ƒ /api/mentions
+├ ƒ /api/messages/[id]
+├ ƒ /api/tags
+├ ƒ /api/uploads
+├ ◐ /applications
+├ ◐ /applications/received
+├ ◐ /dev/mailbox
+├ ◐ /discover
+├ ◐ /feed
+├ ○ /forgot-password
+├ ◐ /login
+├ ◐ /messages
+├   /messages/[id]
+│ └ ◐ /messages/[id]
+├ ◐ /moderation
+├ ◐ /my-projects
+├ ◐ /network
+├ ◐ /network/invitations
+├ ◐ /network/requests
+├ ◐ /notifications
+├   /o/[slug]
+│ └ ◐ /o/[slug]
+├ ◐ /opportunities
+├   /opportunities/[id]
+│ └ ◐ /opportunities/[id]
+├   /opportunities/[id]/edit
+│ └ ◐ /opportunities/[id]/edit
+├ ◐ /opportunities/manage
+├ ◐ /opportunities/new
+├   /orgs/[slug]/manage
+│ └ ◐ /orgs/[slug]/manage
+├   /orgs/[slug]/manage/members
+│ └ ◐ /orgs/[slug]/manage/members
+├   /orgs/[slug]/manage/partners
+│ └ ◐ /orgs/[slug]/manage/partners
+├   /orgs/[slug]/manage/settings
+│ └ ◐ /orgs/[slug]/manage/settings
+├ ◐ /orgs/new
+├   /p/[slug]
+│ └ ◐ /p/[slug]
+├   /posts/[id]
+│ └ ◐ /posts/[id]
+├ ○ /privacy
+├ ◐ /profile/edit
+├   /projects/[slug]/manage
+│ └ ◐ /projects/[slug]/manage
+├   /projects/[slug]/manage/gallery
+│ └ ◐ /projects/[slug]/manage/gallery
+├   /projects/[slug]/manage/partners
+│ └ ◐ /projects/[slug]/manage/partners
+├   /projects/[slug]/manage/settings
+│ └ ◐ /projects/[slug]/manage/settings
+├   /projects/[slug]/manage/team
+│ └ ◐ /projects/[slug]/manage/team
+├ ◐ /projects/new
+├ ◐ /reset-password
+├ ◐ /saved
+├ ◐ /settings
+├ ◐ /settings/blocked
+├ ◐ /settings/data
+├ ◐ /settings/notifications
+├ ◐ /settings/privacy
+├ ◐ /signup
+├   /tags/[slug]
+│ └ ◐ /tags/[slug]
+├ ○ /terms
+├   /u/[username]
+│ └ ◐ /u/[username]
+├   /u/[username]/connections
+│ └ ◐ /u/[username]/connections
+└ ◐ /verify-email
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)             prerendered as static content
+◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
+ƒ  (Dynamic)            server-rendered on demand
+

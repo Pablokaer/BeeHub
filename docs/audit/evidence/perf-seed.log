@@ -1,0 +1,67 @@
+truncate                         rows  0.2s
+tags                        2000 rows  0.0s
+users                      50000 rows  0.9s
+profiles                   50000 rows  9.6s
+user handles               50000 rows  0.9s
+user tags                 394908 rows  6.1s
+organizations               5000 rows  0.9s
+org handles                 5000 rows  0.1s
+org members                24997 rows  0.4s
+org tags                   19740 rows  0.2s
+projects                   20000 rows  5.4s
+project handles            20000 rows  0.5s
+project members            79995 rows  1.3s
+project tags              118926 rows  1.7s
+opportunities              50000 rows  9.2s
+opportunity tags          345878 rows  6.3s
+applications              199962 rows  9.1s
+connections              1294974 rows  35.6s
+follows (people)          991273 rows  26.2s
+follows (projects)        298527 rows  10.0s
+follows (orgs)            119367 rows  3.8s
+blocks                      5000 rows  0.1s
+blocks (cleanup self)          0 rows  0.0s
+posts                    1000000 rows  74.7s
+post tags                 800000 rows  14.0s
+comments                  500000 rows  20.7s
+reactions                1999947 rows  73.0s
+saved posts               199994 rows  8.4s
+conversations              99990 rows  1.2s
+participants              199980 rows  3.9s
+messages                 1000000 rows  28.8s
+notifications            2000000 rows  59.5s
+perf sessions                  3 rows  0.0s
+analyze                          rows  10.8s
+┌─────────┬───────────────────────────┬───────────┐
+│ (index) │ table                     │ rows      │
+├─────────┼───────────────────────────┼───────────┤
+│ 0       │ 'Notification'            │ '2000099' │
+│ 1       │ 'Reaction'                │ '1999947' │
+│ 2       │ 'Follow'                  │ '1409167' │
+│ 3       │ 'Connection'              │ '1294974' │
+│ 4       │ 'Message'                 │ '1000000' │
+│ 5       │ 'Post'                    │ '999988'  │
+│ 6       │ 'PostTag'                 │ '800000'  │
+│ 7       │ 'Comment'                 │ '500000'  │
+│ 8       │ 'UserTag'                 │ '394908'  │
+│ 9       │ 'OpportunityTag'          │ '345878'  │
+│ 10      │ 'SavedPost'               │ '199994'  │
+│ 11      │ 'ConversationParticipant' │ '199980'  │
+│ 12      │ 'Application'             │ '199962'  │
+│ 13      │ 'ProjectTag'              │ '118926'  │
+│ 14      │ 'Conversation'            │ '99990'   │
+│ 15      │ 'ProjectMember'           │ '79995'   │
+│ 16      │ 'Handle'                  │ '75000'   │
+│ 17      │ 'User'                    │ '50000'   │
+│ 18      │ 'Profile'                 │ '50000'   │
+│ 19      │ 'Opportunity'             │ '50000'   │
+│ 20      │ 'OrganizationMember'      │ '24997'   │
+│ 21      │ 'Project'                 │ '20000'   │
+│ 22      │ 'OrganizationTag'         │ '19740'   │
+│ 23      │ 'Block'                   │ '5000'    │
+│ 24      │ 'Organization'            │ '5000'    │
+│ 25      │ 'Tag'                     │ '2000'    │
+│ 26      │ 'Session'                 │ '6'       │
+│ 27      │ '_prisma_migrations'      │ '1'       │
+└─────────┴───────────────────────────┴───────────┘
+done in 424s (scale 1)

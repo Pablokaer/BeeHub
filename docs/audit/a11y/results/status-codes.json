@@ -1,0 +1,98 @@
+[
+  {
+    "path": "/u/does-not-exist",
+    "status": 200,
+    "location": null,
+    "noindex": true,
+    "notFoundText": true,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/p/a11y-audit-private",
+    "status": 200,
+    "location": null,
+    "noindex": true,
+    "notFoundText": true,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/p/does-not-exist",
+    "status": 200,
+    "location": null,
+    "noindex": true,
+    "notFoundText": true,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/o/does-not-exist",
+    "status": 200,
+    "location": null,
+    "noindex": true,
+    "notFoundText": true,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/posts/does-not-exist",
+    "status": 200,
+    "location": null,
+    "noindex": true,
+    "notFoundText": true,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/opportunities/does-not-exist",
+    "status": 200,
+    "location": null,
+    "noindex": true,
+    "notFoundText": true,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/tags/does-not-exist",
+    "status": 200,
+    "location": null,
+    "noindex": true,
+    "notFoundText": true,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/this-route-does-not-exist",
+    "status": 404,
+    "location": null,
+    "noindex": false,
+    "notFoundText": false,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/projects/studypilot/manage",
+    "status": 307,
+    "location": "/login?next=%2Fprojects%2Fstudypilot%2Fmanage",
+    "noindex": false,
+    "notFoundText": false,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/feed",
+    "status": 307,
+    "location": "/login?next=%2Ffeed",
+    "noindex": false,
+    "notFoundText": false,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/moderation",
+    "status": 307,
+    "location": "/login?next=%2Fmoderation",
+    "noindex": false,
+    "notFoundText": false,
+    "leaksPrivate": false
+  },
+  {
+    "path": "/settings",
+    "status": 307,
+    "location": "/login?next=%2Fsettings",
+    "noindex": false,
+    "notFoundText": false,
+    "leaksPrivate": false
+  }
+]

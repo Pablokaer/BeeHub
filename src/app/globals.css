@@ -1,0 +1,228 @@
+@import "tailwindcss";
+@import "../styles/colmeia.css";
+
+/*
+ * Colmeia palette. Day is the default; night applies when the member chooses it (stored in
+ * localStorage and applied before first paint by the script in the root layout).
+ * Semantic tokens below feed every component; --c-gold* is the honey action colour.
+ */
+:root {
+  --c-canvas: #f8dfa0;
+  --c-surface: #fff4d7;
+  --c-sunken: #ffedbd;
+  --c-input: #fff9e9;
+  --c-line: #dfbb78;
+  --c-line-strong: #a46724;
+  --c-bevel: #ffe7aa;
+  --c-ink: #342315;
+  --c-ink-2: #4a321e;
+  --c-muted: #6b4e34;
+  --c-accent: #8a4b0f;
+  --c-accent-hover: #6e3a08;
+  --c-accent-ink: #fff4d7;
+  --c-accent-soft: #ffe3a1;
+  --c-signal: #a8432a;
+  --c-signal-soft: #fde1cf;
+  --c-danger: #b42318;
+  --c-danger-soft: #fde4dc;
+  --c-success: #3b6a2a;
+  --c-success-soft: #e6f0cf;
+  --c-warn: #7a4d00;
+  --c-warn-soft: #ffe7b0;
+  --c-focus: #744505;
+  --c-header: #352217;
+  --c-header-ink: #fff2cf;
+  --c-header-rule: #e7a63a;
+  --c-gold: #ffc44c;
+  --c-gold-hover: #ffda6a;
+  --c-gold-shade: #dc8a24;
+  --c-gold-glint: #ffe890;
+  --c-gold-edge: #97511c;
+  --c-gold-ink: #352115;
+  --c-comb: #b8742a;
+  --c-comb-fill: #ffd877;
+  --c-comb-glint: #ffe7a5;
+  --c-pixel-outline: #5b311b;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --c-canvas: #241911;
+  --c-surface: #362419;
+  --c-sunken: #442c1d;
+  --c-input: #2a1c15;
+  --c-line: #6b4a2d;
+  --c-line-strong: #bd803e;
+  --c-bevel: #58371f;
+  --c-ink: #ffebcb;
+  --c-ink-2: #f6dcb4;
+  --c-muted: #dfc39c;
+  --c-accent: #ffc44c;
+  --c-accent-hover: #ffd877;
+  --c-accent-ink: #352115;
+  --c-accent-soft: #4d331f;
+  --c-signal: #ffa184;
+  --c-signal-soft: #4a2a1e;
+  --c-danger: #ff9a8a;
+  --c-danger-soft: #4a201a;
+  --c-success: #b5dc95;
+  --c-success-soft: #27331c;
+  --c-warn: #ffd27a;
+  --c-warn-soft: #3f2e14;
+  --c-focus: #ffe291;
+  --c-header: #21150f;
+  /* Night: legible amber outline, dark fill, so artwork stays the main colour area. */
+  --c-comb: #c88a37;
+  --c-comb-fill: #4a311f;
+  --c-comb-glint: #6b4a2d;
+  --c-pixel-outline: #e7a63a;
+  color-scheme: dark;
+}
+@theme inline {
+  --color-canvas: var(--c-canvas);
+  --color-surface: var(--c-surface);
+  --color-sunken: var(--c-sunken);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-ink: var(--c-ink);
+  --color-ink-2: var(--c-ink-2);
+  --color-muted: var(--c-muted);
+  --color-accent: var(--c-accent);
+  --color-accent-hover: var(--c-accent-hover);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-signal: var(--c-signal);
+  --color-signal-soft: var(--c-signal-soft);
+  --color-danger: var(--c-danger);
+  --color-danger-soft: var(--c-danger-soft);
+  --color-success: var(--c-success);
+  --color-success-soft: var(--c-success-soft);
+  --color-warn: var(--c-warn);
+  --color-warn-soft: var(--c-warn-soft);
+  --color-focus: var(--c-focus);
+  --color-input: var(--c-input);
+  --color-gold: var(--c-gold);
+  --color-gold-ink: var(--c-gold-ink);
+  --color-header: var(--c-header);
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-pixel: var(--font-pixelify), var(--font-plex-sans), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--c-line-strong) var(--c-canvas);
+  }
+  body {
+    background: var(--c-canvas);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--c-focus);
+    outline-offset: 2px;
+  }
+  input, textarea { caret-color: var(--c-accent); }
+  ::selection {
+    color: var(--c-accent-ink);
+    background: var(--c-accent);
+  }
+  h1, h2, h3 {
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+  }
+  .prose-plain {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  /* Links are underlined, so they never rely on colour alone (WCAG 1.4.1). */
+  .link {
+    color: var(--c-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .link:hover {
+    text-decoration-thickness: 2px;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--c-sunken), var(--c-line), var(--c-sunken));
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton {
+      animation: none;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* The collective notebook: paper, ink, ruled content, one clear action. */
+.site-container { width: min(100% - 48px, 1200px); margin-inline: auto; }
+.landing-hero { background: var(--c-canvas); }
+.landing-composition { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; align-items: start; padding-block: 40px; }
+.landing-title { max-width: 17ch; font-family: var(--font-plex-serif), serif; font-size: clamp(40px, 4.4vw, 60px); font-weight: 400; line-height: 1.06; letter-spacing: -.035em; }
+.landing-title span { display: block; }
+.opportunity-board { border-top: 2px solid var(--c-accent); }
+.board-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--c-line); }
+.board-heading h2 { font-size: 22px; font-family: var(--font-plex-serif), serif; font-weight: 500; }
+.board-bee { width: 44px; height: 32px; object-fit: contain; }
+.opportunity-board ul > li > a { padding: 14px 0; }
+.opportunity-board ul > li > a > span > span:first-child { white-space: normal; overflow: visible; display: block; font-size: 15px; }
+.board-link { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px; color: var(--c-accent); font-size: 14px; border-top: 1px solid var(--c-line); }
+.board-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.collaboration-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 64px; }
+.collaboration-step { display: grid; grid-template-columns: 24px minmax(0, 1fr); column-gap: 16px; align-content: start; border-top: 1px solid var(--c-line); padding-top: 24px; }
+.collaboration-step > div { grid-row: span 2; padding-top: 4px; }
+.collaboration-step h3 { margin-top: 0; }
+.collaboration-step p { max-width: 55ch; margin-top: 8px; }
+.closing-invitation { padding-block: 64px; border-top: 2px solid var(--c-accent); }
+.closing-invitation h2 { max-width: 26ch; font-size: clamp(28px, 3vw, 40px); font-family: var(--font-plex-serif), serif; font-weight: 400; line-height: 1.2; }
+.collab-banner { position: relative; border-block: 1px solid var(--c-line-strong); padding: 24px 0; }
+.collab-banner h1 { font-family: var(--font-plex-serif), serif; font-size: 32px; font-weight: 400; }
+.collab-banner-copy { max-width: calc(100% - 76px); }
+.collab-banner-mascot { position: absolute; width: 64px; right: 8px; top: 24px; }
+.pixel-image { image-rendering: pixelated; }
+.community-paths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--c-line); padding-block: 4px 16px; }
+.community-path { padding: 8px 12px; border-right: 1px solid var(--c-line); font-size: 13px; font-weight: 500; }
+.community-path:first-child { padding-left: 0; }
+.community-path:last-child { border-right: 0; }
+.community-path:hover { color: var(--c-accent); text-decoration: underline; text-underline-offset: 4px; }
+.community-path span { display: block; margin-top: 4px; font-size: 11px; font-weight: 400; color: var(--c-muted); }
+@media (max-width: 767px) {
+  .landing-composition { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 32px; }
+  .landing-title { max-width: 19ch; }
+  .collaboration-steps { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .collab-banner h1 { font-size: 28px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) { .landing-composition { gap: 32px; padding-block: 36px; } }
+@media (max-width: 380px) { .site-container { width: calc(100% - 32px); } .community-path { padding-inline: 8px; } }
+

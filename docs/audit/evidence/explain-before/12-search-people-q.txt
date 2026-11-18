@@ -1,0 +1,134 @@
+-- search-people-q (186.9158750000006 ms in Prisma)
+-- params: ["ACTIVE",true,"react","react","react","react","react","react","design","design","design","design","design","design","lisbon","lisbon","lisbon","lisbon","lisbon","lisbon","20","0"]
+SELECT "public"."User"."id", "public"."User"."username" FROM "public"."User" LEFT JOIN "public"."Profile" AS "orderby_1" ON ("orderby_1"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j0" ON ("j0"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j1" ON ("j1"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j2" ON ("j2"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j3" ON ("j3"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j6" ON ("j6"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j7" ON ("j7"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j8" ON ("j8"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j11" ON ("j11"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j12" ON ("j12"."userId") = ("public"."User"."id") LEFT JOIN "public"."Profile" AS "j13" ON ("j13"."userId") = ("public"."User"."id") WHERE ("public"."User"."status" = CAST($1::text AS "public"."UserStatus") AND ("j0"."searchable" = $2 AND ("j0"."userId" IS NOT NULL)) AND ("public"."User"."username" ILIKE ('%' || $3 || '%') OR ("j1"."displayName" ILIKE ('%' || $4 || '%') AND ("j1"."userId" IS NOT NULL)) OR ("j2"."headline" ILIKE ('%' || $5 || '%') AND ("j2"."userId" IS NOT NULL)) OR ("j3"."bio" ILIKE ('%' || $6 || '%') AND ("j3"."userId" IS NOT NULL)) OR EXISTS(SELECT "t4"."userId" FROM "public"."UserTag" AS "t4" LEFT JOIN "public"."Tag" AS "j5" ON ("j5"."id") = ("t4"."tagId") WHERE (("j5"."name" ILIKE ('%' || $7 || '%') OR "j5"."slug"::text LIKE ($8 || '%')) AND ("j5"."id" IS NOT NULL) AND ("public"."User"."id") = ("t4"."userId") AND "t4"."userId" IS NOT NULL))) AND ("public"."User"."username" ILIKE ('%' || $9 || '%') OR ("j6"."displayName" ILIKE ('%' || $10 || '%') AND ("j6"."userId" IS NOT NULL)) OR ("j7"."headline" ILIKE ('%' || $11 || '%') AND ("j7"."userId" IS NOT NULL)) OR ("j8"."bio" ILIKE ('%' || $12 || '%') AND ("j8"."userId" IS NOT NULL)) OR EXISTS(SELECT "t9"."userId" FROM "public"."UserTag" AS "t9" LEFT JOIN "public"."Tag" AS "j10" ON ("j10"."id") = ("t9"."tagId") WHERE (("j10"."name" ILIKE ('%' || $13 || '%') OR "j10"."slug"::text LIKE ($14 || '%')) AND ("j10"."id" IS NOT NULL) AND ("public"."User"."id") = ("t9"."userId") AND "t9"."userId" IS NOT NULL))) AND ("public"."User"."username" ILIKE ('%' || $15 || '%') OR ("j11"."displayName" ILIKE ('%' || $16 || '%') AND ("j11"."userId" IS NOT NULL)) OR ("j12"."headline" ILIKE ('%' || $17 || '%') AND ("j12"."userId" IS NOT NULL)) OR ("j13"."bio" ILIKE ('%' || $18 || '%') AND ("j13"."userId" IS NOT NULL)) OR EXISTS(SELECT "t14"."userId" FROM "public"."UserTag" AS "t14" LEFT JOIN "public"."Tag" AS "j15" ON ("j15"."id") = ("t14"."tagId") WHERE (("j15"."name" ILIKE ('%' || $19 || '%') OR "j15"."slug"::text LIKE ($20 || '%')) AND ("j15"."id" IS NOT NULL) AND ("public"."User"."id") = ("t14"."userId") AND "t14"."userId" IS NOT NULL)))) ORDER BY "orderby_1"."updatedAt" DESC LIMIT $21 OFFSET $22
+
+Limit  (cost=9322.54..17221.58 rows=20 width=23) (actual time=98.602..108.209 rows=20 loops=1)
+  Buffers: shared hit=10602 read=5985
+  ->  Nested Loop Left Join  (cost=9322.54..5425693.45 rows=13714 width=23) (actual time=98.601..108.205 rows=20 loops=1)
+        Filter: (("User".username ~~* '%design%'::text) OR ((j6."displayName" ~~* '%design%'::text) AND (j6."userId" IS NOT NULL)) OR ((j7.headline ~~* '%design%'::text) AND (j7."userId" IS NOT NULL)) OR ((j8.bio ~~* '%design%'::text) AND (j8."userId" IS NOT NULL)) OR (hashed SubPlan 4))
+        Rows Removed by Filter: 38
+        Buffers: shared hit=10602 read=5985
+        ->  Nested Loop Left Join  (cost=9322.25..4362522.76 rows=19656 width=103) (actual time=68.858..90.016 rows=58 loops=1)
+              Filter: (("User".username ~~* '%lisbon%'::text) OR ((j11."displayName" ~~* '%lisbon%'::text) AND (j11."userId" IS NOT NULL)) OR ((j12.headline ~~* '%lisbon%'::text) AND (j12."userId" IS NOT NULL)) OR ((j13.bio ~~* '%lisbon%'::text) AND (j13."userId" IS NOT NULL)) OR (hashed SubPlan 6))
+              Rows Removed by Filter: 134
+              Buffers: shared hit=10407 read=4047
+              ->  Nested Loop Left Join  (cost=9321.96..2760951.24 rows=29611 width=183) (actual time=68.850..87.505 rows=192 loops=1)
+                    Buffers: shared hit=9187 read=3953
+                    ->  Nested Loop Left Join  (cost=9321.67..2742774.47 rows=29611 width=130) (actual time=68.847..87.255 rows=192 loops=1)
+                          Buffers: shared hit=8611 read=3953
+                          ->  Nested Loop Left Join  (cost=9321.38..2724597.71 rows=29611 width=103) (actual time=68.841..87.000 rows=192 loops=1)
+                                Buffers: shared hit=8035 read=3953
+                                ->  Nested Loop Left Join  (cost=9321.09..2706420.94 rows=29611 width=50) (actual time=68.838..86.752 rows=192 loops=1)
+                                      Buffers: shared hit=7459 read=3953
+                                      ->  Nested Loop Left Join  (cost=9320.80..2688244.17 rows=29611 width=23) (actual time=68.832..86.477 rows=192 loops=1)
+                                            Filter: (("User".username ~~* '%react%'::text) OR ((j1."displayName" ~~* '%react%'::text) AND (j1."userId" IS NOT NULL)) OR ((j2.headline ~~* '%react%'::text) AND (j2."userId" IS NOT NULL)) OR ((j3.bio ~~* '%react%'::text) AND (j3."userId" IS NOT NULL)) OR (hashed SubPlan 2))
+                                            Rows Removed by Filter: 91
+                                            Buffers: shared hit=6883 read=3953
+                                            ->  Nested Loop Left Join  (cost=9320.51..104310.73 rows=47773 width=103) (actual time=68.800..75.453 rows=283 loops=1)
+                                                  Buffers: shared hit=3986 read=3759
+                                                  ->  Nested Loop Left Join  (cost=9320.22..74984.98 rows=47773 width=50) (actual time=68.793..75.051 rows=283 loops=1)
+                                                        Buffers: shared hit=3137 read=3759
+                                                        ->  Nested Loop  (cost=9319.93..45659.24 rows=47773 width=23) (actual time=68.790..74.604 rows=283 loops=1)
+                                                              Buffers: shared hit=2288 read=3759
+                                                              ->  Gather Merge  (cost=9319.64..14990.58 rows=49758 width=23) (actual time=68.762..71.352 rows=291 loops=1)
+                                                                    Workers Planned: 1
+                                                                    Workers Launched: 1
+                                                                    Buffers: shared hit=1573 read=3601
+                                                                    ->  Sort  (cost=8319.63..8392.80 rows=29269 width=23) (actual time=41.296..41.389 rows=692 loops=2)
+                                                                          Sort Key: orderby_1."updatedAt" DESC
+                                                                          Sort Method: quicksort  Memory: 2296kB
+                                                                          Buffers: shared hit=1573 read=3601
+                                                                          Worker 0:  Sort Method: quicksort  Memory: 1884kB
+                                                                          ->  Parallel Hash Left Join  (cost=4041.75..6148.29 rows=29269 width=23) (actual time=27.638..37.085 rows=24875 loops=2)
+                                                                                Hash Cond: ("User".id = orderby_1."userId")
+                                                                                Buffers: shared hit=1569 read=3598
+                                                                                ->  Parallel Seq Scan on "User"  (cost=0.00..2029.71 rows=29269 width=15) (actual time=0.047..4.813 rows=24875 loops=2)
+                                                                                      Filter: (status = ('ACTIVE'::cstring)::"UserStatus")
+                                                                                      Rows Removed by Filter: 125
+                                                                                      Buffers: shared hit=1527 read=16
+                                                                                ->  Parallel Hash  (cost=3781.33..3781.33 rows=20833 width=14) (actual time=27.222..27.223 rows=25000 loops=2)
+                                                                                      Buckets: 65536  Batches: 1  Memory Usage: 2912kB
+                                                                                      Buffers: shared read=3573
+                                                                                      ->  Parallel Seq Scan on "Profile" orderby_1  (cost=0.00..3781.33 rows=20833 width=14) (actual time=0.018..22.127 rows=25000 loops=2)
+                                                                                            Buffers: shared read=3573
+                                                              ->  Index Scan using "Profile_pkey" on "Profile" j0  (cost=0.29..0.62 rows=1 width=6) (actual time=0.011..0.011 rows=1 loops=291)
+                                                                    Index Cond: (("userId" = "User".id) AND ("userId" IS NOT NULL))
+                                                                    Filter: searchable
+                                                                    Rows Removed by Filter: 0
+                                                                    Buffers: shared hit=715 read=158
+                                                        ->  Index Scan using "Profile_pkey" on "Profile" j1  (cost=0.29..0.61 rows=1 width=27) (actual time=0.001..0.001 rows=1 loops=283)
+                                                              Index Cond: ("userId" = "User".id)
+                                                              Buffers: shared hit=849
+                                                  ->  Index Scan using "Profile_pkey" on "Profile" j2  (cost=0.29..0.61 rows=1 width=53) (actual time=0.001..0.001 rows=1 loops=283)
+                                                        Index Cond: ("userId" = "User".id)
+                                                        Buffers: shared hit=849
+                                            ->  Index Scan using "Profile_pkey" on "Profile" j3  (cost=0.29..0.61 rows=1 width=326) (actual time=0.001..0.001 rows=1 loops=283)
+                                                  Index Cond: ("userId" = "User".id)
+                                                  Buffers: shared hit=849
+                                            SubPlan 2
+                                              ->  Nested Loop  (cost=5.96..651.83 rows=197 width=6) (actual time=1.102..6.686 rows=27984 loops=1)
+                                                    Buffers: shared hit=2048 read=194
+                                                    ->  Seq Scan on "Tag" j5  (cost=0.00..49.00 rows=1 width=5) (actual time=0.468..0.471 rows=1 loops=1)
+                                                          Filter: ((id IS NOT NULL) AND ((name ~~* '%react%'::text) OR (slug ~~ 'react%'::text)))
+                                                          Rows Removed by Filter: 2000
+                                                          Buffers: shared hit=19
+                                                    ->  Bitmap Heap Scan on "UserTag" t4  (cost=5.96..600.85 rows=198 width=10) (actual time=0.629..4.889 rows=27984 loops=1)
+                                                          Recheck Cond: ("tagId" = j5.id)
+                                                          Filter: ("userId" IS NOT NULL)
+                                                          Heap Blocks: exact=2198
+                                                          Buffers: shared hit=2029 read=194
+                                                          ->  Bitmap Index Scan on "UserTag_tagId_kind_idx"  (cost=0.00..5.91 rows=198 width=0) (actual time=0.487..0.487 rows=27984 loops=1)
+                                                                Index Cond: ("tagId" = j5.id)
+                                                                Buffers: shared hit=3 read=22
+                                      ->  Index Scan using "Profile_pkey" on "Profile" j6  (cost=0.29..0.61 rows=1 width=27) (actual time=0.001..0.001 rows=1 loops=192)
+                                            Index Cond: ("userId" = "User".id)
+                                            Buffers: shared hit=576
+                                ->  Index Scan using "Profile_pkey" on "Profile" j7  (cost=0.29..0.61 rows=1 width=53) (actual time=0.001..0.001 rows=1 loops=192)
+                                      Index Cond: ("userId" = "User".id)
+                                      Buffers: shared hit=576
+                          ->  Index Scan using "Profile_pkey" on "Profile" j11  (cost=0.29..0.61 rows=1 width=27) (actual time=0.001..0.001 rows=1 loops=192)
+                                Index Cond: ("userId" = "User".id)
+                                Buffers: shared hit=576
+                    ->  Index Scan using "Profile_pkey" on "Profile" j12  (cost=0.29..0.61 rows=1 width=53) (actual time=0.001..0.001 rows=1 loops=192)
+                          Index Cond: ("userId" = "User".id)
+                          Buffers: shared hit=576
+              ->  Index Scan using "Profile_pkey" on "Profile" j13  (cost=0.29..0.61 rows=1 width=326) (actual time=0.001..0.001 rows=1 loops=192)
+                    Index Cond: ("userId" = "User".id)
+                    Buffers: shared hit=576
+              SubPlan 6
+                ->  Nested Loop  (cost=5.96..651.83 rows=197 width=6) (actual time=0.112..1.577 rows=855 loops=1)
+                      Buffers: shared hit=644 read=94
+                      ->  Seq Scan on "Tag" j15  (cost=0.00..49.00 rows=1 width=5) (actual time=0.015..0.454 rows=1 loops=1)
+                            Filter: ((id IS NOT NULL) AND ((name ~~* '%lisbon%'::text) OR (slug ~~ 'lisbon%'::text)))
+                            Rows Removed by Filter: 2000
+                            Buffers: shared hit=19
+                      ->  Bitmap Heap Scan on "UserTag" t14  (cost=5.96..600.85 rows=198 width=10) (actual time=0.091..1.072 rows=855 loops=1)
+                            Recheck Cond: ("tagId" = j15.id)
+                            Filter: ("userId" IS NOT NULL)
+                            Heap Blocks: exact=716
+                            Buffers: shared hit=625 read=94
+                            ->  Bitmap Index Scan on "UserTag_tagId_kind_idx"  (cost=0.00..5.91 rows=198 width=0) (actual time=0.046..0.046 rows=855 loops=1)
+                                  Index Cond: ("tagId" = j15.id)
+                                  Buffers: shared hit=2 read=1
+        ->  Index Scan using "Profile_pkey" on "Profile" j8  (cost=0.29..0.61 rows=1 width=326) (actual time=0.001..0.001 rows=1 loops=58)
+              Index Cond: ("userId" = "User".id)
+              Buffers: shared hit=174
+        SubPlan 4
+          ->  Nested Loop  (cost=5.96..651.83 rows=197 width=6) (actual time=2.352..16.802 rows=4448 loops=1)
+                Buffers: shared hit=21 read=1938
+                ->  Seq Scan on "Tag" j10  (cost=0.00..49.00 rows=1 width=5) (actual time=0.058..0.511 rows=1 loops=1)
+                      Filter: ((id IS NOT NULL) AND ((name ~~* '%design%'::text) OR (slug ~~ 'design%'::text)))
+                      Rows Removed by Filter: 2000
+                      Buffers: shared hit=19
+                ->  Bitmap Heap Scan on "UserTag" t9  (cost=5.96..600.85 rows=198 width=10) (actual time=2.282..15.898 rows=4448 loops=1)
+                      Recheck Cond: ("tagId" = j10.id)
+                      Filter: ("userId" IS NOT NULL)
+                      Heap Blocks: exact=1933
+                      Buffers: shared hit=2 read=1938
+                      ->  Bitmap Index Scan on "UserTag_tagId_kind_idx"  (cost=0.00..5.91 rows=198 width=0) (actual time=2.102..2.102 rows=4448 loops=1)
+                            Index Cond: ("tagId" = j10.id)
+                            Buffers: shared hit=2 read=5
+Planning:
+  Buffers: shared hit=226 read=11
+Planning Time: 10.389 ms
+Execution Time: 108.281 ms

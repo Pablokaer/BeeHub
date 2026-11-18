@@ -1,0 +1,22 @@
+{
+  "no-preference": {
+    "elementsWithTransition": 81,
+    "sampleTransition": [
+      "a: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.15s",
+      "a: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.15s",
+      "a: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.15s"
+    ],
+    "elementsWithAnimation": 0,
+    "scrollBehavior": "auto"
+  },
+  "reduce": {
+    "elementsWithTransition": 81,
+    "sampleTransition": [
+      "a: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.15s",
+      "a: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.15s",
+      "a: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.15s"
+    ],
+    "elementsWithAnimation": 0,
+    "scrollBehavior": "auto"
+  }
+}

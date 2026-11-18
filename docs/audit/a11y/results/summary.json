@@ -1,0 +1,4007 @@
+{
+  "generatedAt": "2026-11-11T10:08:59.721Z",
+  "totals": {
+    "scans": 180,
+    "errored": 0,
+    "redirected": 2,
+    "byImpact": {
+      "critical": 0,
+      "serious": 134,
+      "moderate": 0,
+      "minor": 0
+    },
+    "nodesByImpact": {
+      "critical": 0,
+      "serious": 604,
+      "moderate": 0,
+      "minor": 0
+    }
+  },
+  "rules": [
+    {
+      "id": "target-size",
+      "impact": "serious",
+      "help": "All touch targets must be 24px large, or leave sufficient space",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+      "nodes": 392,
+      "scans": 38,
+      "routes": [
+        "/feed (ana)",
+        "/p/[slug] (ana)",
+        "/posts/[id] (ana)",
+        "/opportunities (ana)",
+        "/o/[slug] (ana)",
+        "/tags/[slug] (ana)",
+        "/u/[username] (own) (ana)",
+        "/ (signed in) (ana)",
+        "/opportunities (signed-out)",
+        "/p/[slug] (signed-out)",
+        "/discover?type=projects (signed-out)",
+        "/o/[slug] (signed-out)",
+        "/posts/[id] (signed-out)",
+        "/tags/[slug] (signed-out)"
+      ],
+      "variants": [
+        "dark-360",
+        "dark-desktop",
+        "light-360",
+        "light-desktop"
+      ],
+      "targets": [
+        "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+        ".block.truncate[href$=\"nova-labs\"]",
+        "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(6) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+        "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(2) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+        "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(3) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+        ".block",
+        "input[value=\"PAID\"]",
+        "input[value=\"FREELANCE\"]"
+      ],
+      "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+      "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+    },
+    {
+      "id": "link-in-text-block",
+      "impact": "serious",
+      "help": "Links must be distinguishable without relying on color",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+      "nodes": 82,
+      "scans": 32,
+      "routes": [
+        "/feed (ana)",
+        "/network (ana)",
+        "/posts/[id] (ana)",
+        "/p/[slug] (ana)",
+        "/tags/[slug] (ana)",
+        "/u/[username] (other) (ana)",
+        "/ (signed in) (ana)",
+        "/verify-email (signed-out)",
+        "/verify-email (bad token) (signed-out)",
+        "/u/[username] (signed-out)",
+        "/p/[slug] (signed-out)",
+        "/posts/[id] (signed-out)",
+        "/tags/[slug] (signed-out)"
+      ],
+      "variants": [
+        "dark-360",
+        "dark-desktop",
+        "light-360",
+        "light-desktop"
+      ],
+      "targets": [
+        ".link[href$=\"artificial-intelligence\"]",
+        "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .prose-plain.text-\\[14\\.5px\\].leading-relaxed > .link[href$=\"education\"]",
+        "a[href$=\"opensource\"]",
+        ".link",
+        "a[href$=\"artificial-intelligence\"]",
+        "a[href$=\"education\"]",
+        ".link[href$=\"design\"]",
+        "a[href$=\"gamedevelopment\"]"
+      ],
+      "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+      "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.07:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #eceae4)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "help": "Elements must have their visible text as part of their accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=playwright",
+      "nodes": 68,
+      "scans": 4,
+      "routes": [
+        "/notifications (ana)"
+      ],
+      "variants": [
+        "dark-360",
+        "dark-desktop",
+        "light-360",
+        "light-desktop"
+      ],
+      "targets": [
+        "button[aria-label=\"Open\"]",
+        ".bg-accent-soft\\/40:nth-child(2) > form[action=\"\"][enctype=\"multipart/form-data\"][method=\"POST\"] > .items-start.py-3[aria-label=\"Open (unread)\"]",
+        ".bg-accent-soft\\/40:nth-child(3) > form[action=\"\"][enctype=\"multipart/form-data\"][method=\"POST\"] > .items-start.py-3[aria-label=\"Open (unread)\"]"
+      ],
+      "sampleHtml": "<button type=\"submit\" class=\"flex w-full items-start gap-3 px-4 py-3 text-left hover:bg-sunken disabled:opacity-70\" aria-label=\"Open\">",
+      "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+      "nodes": 58,
+      "scans": 56,
+      "routes": [
+        "/feed (ana)",
+        "/opportunities/[id] (applicant view) (ana)",
+        "/messages (ana)",
+        "/messages/[id] (ana)",
+        "/network (ana)",
+        "/notifications (ana)",
+        "/p/[slug] (ana)",
+        "/posts/[id] (ana)",
+        "/profile/edit (ana)",
+        "/projects/[slug]/manage (ana)",
+        "/settings (ana)",
+        "/u/[username] (other) (ana)",
+        "/discover (ana)",
+        "/opportunities (ana)",
+        "/opportunities/new (ana)",
+        "/opportunities/manage (ana)",
+        "/opportunities/[id] (owner view) (ana)",
+        "/opportunities/[id]/edit (ana)",
+        "/applications (ana)",
+        "/applications/received (ana)",
+        "/dev/mailbox (ana)",
+        "/my-projects (ana)",
+        "/network/invitations (ana)",
+        "/network/requests (ana)",
+        "/o/[slug] (ana)",
+        "/orgs/new (ana)",
+        "/orgs/[slug]/manage (ana)",
+        "/orgs/[slug]/manage/members (ana)",
+        "/orgs/[slug]/manage/partners (ana)",
+        "/orgs/[slug]/manage/settings (ana)",
+        "/projects/new (ana)",
+        "/projects/[slug]/manage/gallery (ana)",
+        "/projects/[slug]/manage/partners (ana)",
+        "/projects/[slug]/manage/settings (ana)",
+        "/projects/[slug]/manage/team (ana)",
+        "/saved (ana)",
+        "/settings/blocked (ana)",
+        "/settings/data (ana)",
+        "/settings/notifications (ana)",
+        "/settings/privacy (ana)",
+        "/tags/[slug] (ana)",
+        "/u/[username] (own) (ana)",
+        "/u/[username]/connections (ana)",
+        "/ (signed in) (ana)"
+      ],
+      "variants": [
+        "dark-360",
+        "dark-desktop"
+      ],
+      "targets": [
+        ".right-\\[calc\\(50\\%-18px\\)\\]",
+        ".text-accent-ink\\/70",
+        ".text-\\[13\\.5px\\].border-transparent[href$=\"notifications\"] > .min-w-4.bg-signal.text-\\[10px\\]",
+        ".text-\\[13\\.5px\\].border-transparent[href$=\"notifications\"] > .min-w-4.bg-signal.font-mono",
+        ".border-transparent.border-b-2[href$=\"notifications\"] > .min-w-4.bg-signal.px-1",
+        ".border-transparent.border-b-2[href$=\"notifications\"] > .min-w-4.bg-signal.font-mono",
+        ".gap-1\\.5.border-b-2[href$=\"notifications\"] > .min-w-4.bg-signal.px-1",
+        ".border-transparent.gap-1\\.5[href$=\"notifications\"] > .min-w-4.bg-signal.px-1"
+      ],
+      "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+      "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+    },
+    {
+      "id": "list",
+      "impact": "serious",
+      "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/list?application=playwright",
+      "nodes": 4,
+      "scans": 4,
+      "routes": [
+        "/messages/[id] (ana)"
+      ],
+      "variants": [
+        "dark-360",
+        "dark-desktop",
+        "light-360",
+        "light-desktop"
+      ],
+      "targets": [
+        "ol"
+      ],
+      "sampleHtml": "<ol class=\"flex flex-1 flex-col gap-2 overflow-y-auto p-4\" aria-live=\"polite\" aria-label=\"Messages with Bruno Costa\">",
+      "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: div"
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "link-in-text-block",
+      "impact": "serious",
+      "help": "Links must be distinguishable without relying on color",
+      "scans": 22,
+      "nodes": 70,
+      "routes": [
+        "/feed",
+        "/p/[slug]",
+        "/u/[username] (other)",
+        "/tags/[slug]",
+        "/ (signed in)",
+        "/u/[username]"
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "scans": 18,
+      "nodes": 22,
+      "routes": [
+        "/feed",
+        "/network",
+        "/p/[slug]",
+        "/settings",
+        "/applications/received",
+        "/discover"
+      ]
+    }
+  ],
+  "bestPractice": [
+    {
+      "id": "landmark-unique",
+      "impact": "moderate",
+      "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+      "nodes": 10,
+      "scans": 10,
+      "routes": [
+        "/feed (ana)",
+        "/discover (ana)",
+        "/opportunities (ana)",
+        "/dev/mailbox (ana)",
+        "/ (signed in) (ana)",
+        "/discover (signed-out)",
+        "/discover?type=projects (signed-out)",
+        "/opportunities (signed-out)",
+        "404: /u/does-not-exist (signed-out)",
+        "404: /p/[private] (signed-out)"
+      ],
+      "targets": [
+        ".lg\\:block",
+        ".max-w-xs",
+        ".py-5"
+      ]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "help": "All page content should be contained by landmarks",
+      "nodes": 9,
+      "scans": 9,
+      "routes": [
+        "/login (signed-out)",
+        "/signup (signed-out)",
+        "/forgot-password (signed-out)",
+        "/reset-password (signed-out)",
+        "/reset-password (bad token) (signed-out)",
+        "/verify-email (signed-out)",
+        "/verify-email (bad token) (signed-out)"
+      ],
+      "targets": [
+        "a[aria-label=\"Collab Hub home\"]",
+        ".text-ink"
+      ]
+    },
+    {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "help": "Page should contain a level-one heading",
+      "nodes": 5,
+      "scans": 5,
+      "routes": [
+        "/messages/[id] (ana)",
+        "/posts/[id] (ana)",
+        "/posts/[id] (signed-out)"
+      ],
+      "targets": [
+        "html"
+      ]
+    },
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "help": "Heading levels should only increase by one",
+      "nodes": 4,
+      "scans": 4,
+      "routes": [
+        "/opportunities (ana)",
+        "/opportunities (signed-out)",
+        "/discover?type=projects (signed-out)"
+      ],
+      "targets": [
+        "article:nth-child(1) > .min-w-0.flex-1 > .items-start.gap-x-3.gap-y-1 > .min-w-0 > h3",
+        "article:nth-child(1) > .flex-1.min-w-0 > .items-start.gap-x-3.gap-y-1 > .min-w-0 > h3",
+        "article:nth-child(1) > .gap-3 > .min-w-0.flex-1 > h3"
+      ]
+    },
+    {
+      "id": "landmark-main-is-top-level",
+      "impact": "moderate",
+      "help": "Main landmark should not be contained in another landmark",
+      "nodes": 3,
+      "scans": 3,
+      "routes": [
+        "/dev/mailbox (ana)",
+        "404: /u/does-not-exist (signed-out)",
+        "404: /p/[private] (signed-out)"
+      ],
+      "targets": [
+        ".max-w-md"
+      ]
+    },
+    {
+      "id": "landmark-no-duplicate-main",
+      "impact": "moderate",
+      "help": "Document should not have more than one main landmark",
+      "nodes": 3,
+      "scans": 3,
+      "routes": [
+        "/dev/mailbox (ana)",
+        "404: /u/does-not-exist (signed-out)",
+        "404: /p/[private] (signed-out)"
+      ],
+      "targets": [
+        ".py-5"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "route": "/feed",
+      "path": "/feed",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/feed",
+      "redirected": false,
+      "title": "Home · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Home feed"
+      ],
+      "seriousCritical": 3,
+      "seriousCriticalNodes": 16,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:6) target-size(s:9)"
+    },
+    {
+      "route": "/opportunities/[id] (applicant view)",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/messages",
+      "path": "/messages",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/messages",
+      "redirected": false,
+      "title": "Messages · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Messages"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/messages/[id]",
+      "path": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "redirected": false,
+      "title": "Conversation · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:2) list(s:1)"
+    },
+    {
+      "route": "/network",
+      "path": "/network",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/network",
+      "redirected": false,
+      "title": "My network · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 2,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:1)"
+    },
+    {
+      "route": "/notifications",
+      "path": "/notifications",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/notifications",
+      "redirected": false,
+      "title": "Notifications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Notifications"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 18,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) label-content-name-mismatch(s:17)"
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 4,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) target-size(s:3)"
+    },
+    {
+      "route": "/posts/[id]",
+      "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "redirected": false,
+      "title": "Post · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 3,
+      "seriousCriticalNodes": 4,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:2) target-size(s:1)"
+    },
+    {
+      "route": "/profile/edit",
+      "path": "/profile/edit",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/profile/edit",
+      "redirected": false,
+      "title": "Edit profile · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Edit profile"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/projects/[slug]/manage",
+      "path": "/projects/studypilot/manage",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage",
+      "redirected": false,
+      "title": "Manage project · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/settings",
+      "path": "/settings",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/settings",
+      "redirected": false,
+      "title": "Account settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/u/[username] (other)",
+      "path": "/u/diogo",
+      "auth": "ana",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/feed",
+      "path": "/feed",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/feed",
+      "redirected": false,
+      "title": "Home · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Home feed"
+      ],
+      "seriousCritical": 3,
+      "seriousCriticalNodes": 14,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:4) target-size(s:9)"
+    },
+    {
+      "route": "/discover",
+      "path": "/discover",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/discover",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/opportunities",
+      "path": "/opportunities",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities",
+      "redirected": false,
+      "title": "Opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Opportunities"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 38,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) target-size(s:37)"
+    },
+    {
+      "route": "/opportunities/new",
+      "path": "/opportunities/new",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/new",
+      "redirected": false,
+      "title": "Publish an opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Publish an opportunity"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/opportunities/manage",
+      "path": "/opportunities/manage",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/manage",
+      "redirected": false,
+      "title": "My opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My opportunities"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/opportunities/[id] (applicant view)",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/opportunities/[id] (owner view)",
+      "path": "/opportunities/cmwbxjlhq002hpci3lcwwysdn",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjlhq002hpci3lcwwysdn",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Frontend developer for our study assistant"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/opportunities/[id]/edit",
+      "path": "/opportunities/cmwbxjlhq002hpci3lcwwysdn/edit",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjlhq002hpci3lcwwysdn/edit",
+      "redirected": false,
+      "title": "Edit opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Edit opportunity"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/applications",
+      "path": "/applications",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/applications",
+      "redirected": false,
+      "title": "My applications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Applications"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/applications/received",
+      "path": "/applications/received",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/applications/received",
+      "redirected": false,
+      "title": "Received applications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Applications"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/dev/mailbox",
+      "path": "/dev/mailbox",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/dev/mailbox",
+      "redirected": false,
+      "title": "Dev mailbox · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "This page isn't available"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/messages",
+      "path": "/messages",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/messages",
+      "redirected": false,
+      "title": "Messages · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Messages"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/messages/[id]",
+      "path": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "redirected": false,
+      "title": "Conversation · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:2) list(s:1)"
+    },
+    {
+      "route": "/my-projects",
+      "path": "/my-projects",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/my-projects",
+      "redirected": false,
+      "title": "My projects · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My projects & organizations"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/network",
+      "path": "/network",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/network",
+      "redirected": false,
+      "title": "My network · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 2,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:1)"
+    },
+    {
+      "route": "/network/invitations",
+      "path": "/network/invitations",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/network/invitations",
+      "redirected": false,
+      "title": "Team invitations · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/network/requests",
+      "path": "/network/requests",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/network/requests",
+      "redirected": false,
+      "title": "Requests · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/notifications",
+      "path": "/notifications",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/notifications",
+      "redirected": false,
+      "title": "Notifications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Notifications"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 18,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) label-content-name-mismatch(s:17)"
+    },
+    {
+      "route": "/o/[slug]",
+      "path": "/o/nova-labs",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/o/nova-labs",
+      "redirected": false,
+      "title": "nova-labs · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Nova Labs"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 2,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) target-size(s:1)"
+    },
+    {
+      "route": "/orgs/new",
+      "path": "/orgs/new",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/new",
+      "redirected": false,
+      "title": "New organization · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Create an organization"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/orgs/[slug]/manage",
+      "path": "/orgs/nova-labs/manage",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage",
+      "redirected": false,
+      "title": "Manage organization · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/orgs/[slug]/manage/members",
+      "path": "/orgs/nova-labs/manage/members",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage/members",
+      "redirected": false,
+      "title": "Members · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/orgs/[slug]/manage/partners",
+      "path": "/orgs/nova-labs/manage/partners",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage/partners",
+      "redirected": false,
+      "title": "Partners · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/orgs/[slug]/manage/settings",
+      "path": "/orgs/nova-labs/manage/settings",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage/settings",
+      "redirected": false,
+      "title": "Organization settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 3,
+      "seriousCriticalNodes": 6,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:2) target-size(s:3)"
+    },
+    {
+      "route": "/posts/[id]",
+      "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "redirected": false,
+      "title": "Post · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 3,
+      "seriousCriticalNodes": 4,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:2) target-size(s:1)"
+    },
+    {
+      "route": "/profile/edit",
+      "path": "/profile/edit",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/profile/edit",
+      "redirected": false,
+      "title": "Edit profile · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Edit profile"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/projects/new",
+      "path": "/projects/new",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/projects/new",
+      "redirected": false,
+      "title": "New project · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Create a project"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/projects/[slug]/manage",
+      "path": "/projects/studypilot/manage",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage",
+      "redirected": false,
+      "title": "Manage project · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/projects/[slug]/manage/gallery",
+      "path": "/projects/studypilot/manage/gallery",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/gallery",
+      "redirected": false,
+      "title": "Gallery · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/projects/[slug]/manage/partners",
+      "path": "/projects/studypilot/manage/partners",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/partners",
+      "redirected": false,
+      "title": "Partners · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/projects/[slug]/manage/settings",
+      "path": "/projects/studypilot/manage/settings",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/settings",
+      "redirected": false,
+      "title": "Project settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/projects/[slug]/manage/team",
+      "path": "/projects/studypilot/manage/team",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/team",
+      "redirected": false,
+      "title": "Team · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/saved",
+      "path": "/saved",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/saved",
+      "redirected": false,
+      "title": "Saved posts · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Saved posts"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/settings",
+      "path": "/settings",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/settings",
+      "redirected": false,
+      "title": "Account settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/settings/blocked",
+      "path": "/settings/blocked",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/settings/blocked",
+      "redirected": false,
+      "title": "Blocked members · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/settings/data",
+      "path": "/settings/data",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/settings/data",
+      "redirected": false,
+      "title": "Your data · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/settings/notifications",
+      "path": "/settings/notifications",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/settings/notifications",
+      "redirected": false,
+      "title": "Notification settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/settings/privacy",
+      "path": "/settings/privacy",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/settings/privacy",
+      "redirected": false,
+      "title": "Privacy · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/tags/[slug]",
+      "path": "/tags/education",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/tags/education",
+      "redirected": false,
+      "title": "#education · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Education"
+      ],
+      "seriousCritical": 3,
+      "seriousCriticalNodes": 6,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:4) target-size(s:1)"
+    },
+    {
+      "route": "/u/[username] (own)",
+      "path": "/u/ana",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/u/ana",
+      "redirected": false,
+      "title": "@ana · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Ana Ribeiro"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 2,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) target-size(s:1)"
+    },
+    {
+      "route": "/u/[username] (other)",
+      "path": "/u/diogo",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:2)"
+    },
+    {
+      "route": "/u/[username]/connections",
+      "path": "/u/ana/connections",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/u/ana/connections",
+      "redirected": false,
+      "title": "Connections · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Network"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1)"
+    },
+    {
+      "route": "/ (signed in)",
+      "path": "/",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/feed",
+      "redirected": true,
+      "title": "Home · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Home feed"
+      ],
+      "seriousCritical": 3,
+      "seriousCriticalNodes": 14,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "color-contrast(s:1) link-in-text-block(s:4) target-size(s:9)"
+    },
+    {
+      "route": "/privacy",
+      "path": "/privacy",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/privacy",
+      "redirected": false,
+      "title": "Privacy Policy · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/terms",
+      "path": "/terms",
+      "auth": "ana",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/terms",
+      "redirected": false,
+      "title": "Terms of Service · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Terms of Service"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/feed",
+      "path": "/feed",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/feed",
+      "redirected": false,
+      "title": "Home · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Home feed"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 15,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:6) target-size(s:9)"
+    },
+    {
+      "route": "/opportunities/[id] (applicant view)",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/messages",
+      "path": "/messages",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/messages",
+      "redirected": false,
+      "title": "Messages · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Messages"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/messages/[id]",
+      "path": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "redirected": false,
+      "title": "Conversation · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "list(s:1)"
+    },
+    {
+      "route": "/network",
+      "path": "/network",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/network",
+      "redirected": false,
+      "title": "My network · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:1)"
+    },
+    {
+      "route": "/notifications",
+      "path": "/notifications",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/notifications",
+      "redirected": false,
+      "title": "Notifications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Notifications"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 17,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "label-content-name-mismatch(s:17)"
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:3)"
+    },
+    {
+      "route": "/posts/[id]",
+      "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "redirected": false,
+      "title": "Post · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2) target-size(s:1)"
+    },
+    {
+      "route": "/profile/edit",
+      "path": "/profile/edit",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/profile/edit",
+      "redirected": false,
+      "title": "Edit profile · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Edit profile"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/projects/[slug]/manage",
+      "path": "/projects/studypilot/manage",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage",
+      "redirected": false,
+      "title": "Manage project · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/settings",
+      "path": "/settings",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/settings",
+      "redirected": false,
+      "title": "Account settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/u/[username] (other)",
+      "path": "/u/diogo",
+      "auth": "ana",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/feed",
+      "path": "/feed",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/feed",
+      "redirected": false,
+      "title": "Home · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Home feed"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 13,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:4) target-size(s:9)"
+    },
+    {
+      "route": "/discover",
+      "path": "/discover",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/discover",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/opportunities",
+      "path": "/opportunities",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities",
+      "redirected": false,
+      "title": "Opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Opportunities"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 37,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:37)"
+    },
+    {
+      "route": "/opportunities/new",
+      "path": "/opportunities/new",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/new",
+      "redirected": false,
+      "title": "Publish an opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Publish an opportunity"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/opportunities/manage",
+      "path": "/opportunities/manage",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/manage",
+      "redirected": false,
+      "title": "My opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My opportunities"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/opportunities/[id] (applicant view)",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/opportunities/[id] (owner view)",
+      "path": "/opportunities/cmwbxjlhq002hpci3lcwwysdn",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjlhq002hpci3lcwwysdn",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Frontend developer for our study assistant"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/opportunities/[id]/edit",
+      "path": "/opportunities/cmwbxjlhq002hpci3lcwwysdn/edit",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjlhq002hpci3lcwwysdn/edit",
+      "redirected": false,
+      "title": "Edit opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Edit opportunity"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/applications",
+      "path": "/applications",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/applications",
+      "redirected": false,
+      "title": "My applications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Applications"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/applications/received",
+      "path": "/applications/received",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/applications/received",
+      "redirected": false,
+      "title": "Received applications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Applications"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/dev/mailbox",
+      "path": "/dev/mailbox",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/dev/mailbox",
+      "redirected": false,
+      "title": "Dev mailbox · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "This page isn't available"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/messages",
+      "path": "/messages",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/messages",
+      "redirected": false,
+      "title": "Messages · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Messages"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/messages/[id]",
+      "path": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+      "redirected": false,
+      "title": "Conversation · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "list(s:1)"
+    },
+    {
+      "route": "/my-projects",
+      "path": "/my-projects",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/my-projects",
+      "redirected": false,
+      "title": "My projects · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My projects & organizations"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/network",
+      "path": "/network",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/network",
+      "redirected": false,
+      "title": "My network · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:1)"
+    },
+    {
+      "route": "/network/invitations",
+      "path": "/network/invitations",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/network/invitations",
+      "redirected": false,
+      "title": "Team invitations · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/network/requests",
+      "path": "/network/requests",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/network/requests",
+      "redirected": false,
+      "title": "Requests · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "My network"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/notifications",
+      "path": "/notifications",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/notifications",
+      "redirected": false,
+      "title": "Notifications · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Notifications"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 17,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "label-content-name-mismatch(s:17)"
+    },
+    {
+      "route": "/o/[slug]",
+      "path": "/o/nova-labs",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/o/nova-labs",
+      "redirected": false,
+      "title": "nova-labs · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Nova Labs"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:1)"
+    },
+    {
+      "route": "/orgs/new",
+      "path": "/orgs/new",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/new",
+      "redirected": false,
+      "title": "New organization · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Create an organization"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/orgs/[slug]/manage",
+      "path": "/orgs/nova-labs/manage",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage",
+      "redirected": false,
+      "title": "Manage organization · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/orgs/[slug]/manage/members",
+      "path": "/orgs/nova-labs/manage/members",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage/members",
+      "redirected": false,
+      "title": "Members · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/orgs/[slug]/manage/partners",
+      "path": "/orgs/nova-labs/manage/partners",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage/partners",
+      "redirected": false,
+      "title": "Partners · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/orgs/[slug]/manage/settings",
+      "path": "/orgs/nova-labs/manage/settings",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/orgs/nova-labs/manage/settings",
+      "redirected": false,
+      "title": "Organization settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage organization"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 5,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2) target-size(s:3)"
+    },
+    {
+      "route": "/posts/[id]",
+      "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "redirected": false,
+      "title": "Post · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2) target-size(s:1)"
+    },
+    {
+      "route": "/profile/edit",
+      "path": "/profile/edit",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/profile/edit",
+      "redirected": false,
+      "title": "Edit profile · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Edit profile"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/projects/new",
+      "path": "/projects/new",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/projects/new",
+      "redirected": false,
+      "title": "New project · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Create a project"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/projects/[slug]/manage",
+      "path": "/projects/studypilot/manage",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage",
+      "redirected": false,
+      "title": "Manage project · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/projects/[slug]/manage/gallery",
+      "path": "/projects/studypilot/manage/gallery",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/gallery",
+      "redirected": false,
+      "title": "Gallery · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/projects/[slug]/manage/partners",
+      "path": "/projects/studypilot/manage/partners",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/partners",
+      "redirected": false,
+      "title": "Partners · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/projects/[slug]/manage/settings",
+      "path": "/projects/studypilot/manage/settings",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/settings",
+      "redirected": false,
+      "title": "Project settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/projects/[slug]/manage/team",
+      "path": "/projects/studypilot/manage/team",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/projects/studypilot/manage/team",
+      "redirected": false,
+      "title": "Team · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Manage project"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/saved",
+      "path": "/saved",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/saved",
+      "redirected": false,
+      "title": "Saved posts · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Saved posts"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/settings",
+      "path": "/settings",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/settings",
+      "redirected": false,
+      "title": "Account settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/settings/blocked",
+      "path": "/settings/blocked",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/settings/blocked",
+      "redirected": false,
+      "title": "Blocked members · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/settings/data",
+      "path": "/settings/data",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/settings/data",
+      "redirected": false,
+      "title": "Your data · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/settings/notifications",
+      "path": "/settings/notifications",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/settings/notifications",
+      "redirected": false,
+      "title": "Notification settings · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/settings/privacy",
+      "path": "/settings/privacy",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/settings/privacy",
+      "redirected": false,
+      "title": "Privacy · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Settings"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/tags/[slug]",
+      "path": "/tags/education",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/tags/education",
+      "redirected": false,
+      "title": "#education · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Education"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 5,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:4) target-size(s:1)"
+    },
+    {
+      "route": "/u/[username] (own)",
+      "path": "/u/ana",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/u/ana",
+      "redirected": false,
+      "title": "@ana · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Ana Ribeiro"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:1)"
+    },
+    {
+      "route": "/u/[username] (other)",
+      "path": "/u/diogo",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 2,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2)"
+    },
+    {
+      "route": "/u/[username]/connections",
+      "path": "/u/ana/connections",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/u/ana/connections",
+      "redirected": false,
+      "title": "Connections · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Network"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/ (signed in)",
+      "path": "/",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/feed",
+      "redirected": true,
+      "title": "Home · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Home feed"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 13,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:4) target-size(s:9)"
+    },
+    {
+      "route": "/privacy",
+      "path": "/privacy",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/privacy",
+      "redirected": false,
+      "title": "Privacy Policy · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/terms",
+      "path": "/terms",
+      "auth": "ana",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/terms",
+      "redirected": false,
+      "title": "Terms of Service · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Terms of Service"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/moderation",
+      "path": "/moderation",
+      "auth": "morgan",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/moderation",
+      "redirected": false,
+      "title": "Moderation · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Moderation"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/moderation",
+      "path": "/moderation",
+      "auth": "morgan",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/moderation",
+      "redirected": false,
+      "title": "Moderation · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Moderation"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/moderation",
+      "path": "/moderation",
+      "auth": "morgan",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/moderation",
+      "redirected": false,
+      "title": "Moderation · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Moderation"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/moderation",
+      "path": "/moderation",
+      "auth": "morgan",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/moderation",
+      "redirected": false,
+      "title": "Moderation · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Moderation"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/",
+      "path": "/",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/",
+      "redirected": false,
+      "title": "Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Find the people your project is missing."
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/login",
+      "path": "/login",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/login",
+      "redirected": false,
+      "title": "Sign in · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/signup",
+      "path": "/signup",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/signup",
+      "redirected": false,
+      "title": "Create your account · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Join Collab Hub"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/discover",
+      "path": "/discover",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/discover",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/opportunities",
+      "path": "/opportunities",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/opportunities",
+      "redirected": false,
+      "title": "Opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Opportunities"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 37,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:37)"
+    },
+    {
+      "route": "/opportunities/[id]",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/u/[username]",
+      "path": "/u/diogo",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "signed-out",
+      "variant": "dark-360",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:3)"
+    },
+    {
+      "route": "/",
+      "path": "/",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/",
+      "redirected": false,
+      "title": "Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Find the people your project is missing."
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/privacy",
+      "path": "/privacy",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/privacy",
+      "redirected": false,
+      "title": "Privacy Policy · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/terms",
+      "path": "/terms",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/terms",
+      "redirected": false,
+      "title": "Terms of Service · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Terms of Service"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/login",
+      "path": "/login",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/login",
+      "redirected": false,
+      "title": "Sign in · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/signup",
+      "path": "/signup",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/signup",
+      "redirected": false,
+      "title": "Create your account · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Join Collab Hub"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/forgot-password",
+      "path": "/forgot-password",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/forgot-password",
+      "redirected": false,
+      "title": "Reset your password · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Reset your password"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/reset-password",
+      "path": "/reset-password",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/reset-password",
+      "redirected": false,
+      "title": "Choose a new password · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Link not valid"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/reset-password (bad token)",
+      "path": "/reset-password?token=invalid-token",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/reset-password?token=invalid-token",
+      "redirected": false,
+      "title": "Choose a new password · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Link not valid"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/verify-email",
+      "path": "/verify-email",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/verify-email",
+      "redirected": false,
+      "title": "Confirm your email · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Confirm your email"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:1)"
+    },
+    {
+      "route": "/verify-email (bad token)",
+      "path": "/verify-email?token=invalid-token",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/verify-email?token=invalid-token",
+      "redirected": false,
+      "title": "Confirm your email · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Confirm your email"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:1)"
+    },
+    {
+      "route": "/discover",
+      "path": "/discover",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/discover",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/discover?type=projects",
+      "path": "/discover?type=projects",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/discover?type=projects",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 38,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:38)"
+    },
+    {
+      "route": "/opportunities",
+      "path": "/opportunities",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities",
+      "redirected": false,
+      "title": "Opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Opportunities"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 37,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:37)"
+    },
+    {
+      "route": "/opportunities/[id]",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/u/[username]",
+      "path": "/u/diogo",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 2,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2)"
+    },
+    {
+      "route": "/u/[username]/connections",
+      "path": "/u/diogo/connections",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/u/diogo/connections",
+      "redirected": false,
+      "title": "Connections · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Network"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 5,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2) target-size(s:3)"
+    },
+    {
+      "route": "/o/[slug]",
+      "path": "/o/nova-labs",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/o/nova-labs",
+      "redirected": false,
+      "title": "nova-labs · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Nova Labs"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:1)"
+    },
+    {
+      "route": "/posts/[id]",
+      "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "redirected": false,
+      "title": "Post · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 4,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:3) target-size(s:1)"
+    },
+    {
+      "route": "/tags/[slug]",
+      "path": "/tags/education",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/tags/education",
+      "redirected": false,
+      "title": "#education · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Education"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 5,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:4) target-size(s:1)"
+    },
+    {
+      "route": "404: /u/does-not-exist",
+      "path": "/u/does-not-exist",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/u/does-not-exist",
+      "redirected": false,
+      "title": "@does-not-exist · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "This page isn't available"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "404: /p/[private]",
+      "path": "/p/a11y-audit-private",
+      "auth": "signed-out",
+      "variant": "dark-desktop",
+      "status": 200,
+      "finalUrl": "/p/a11y-audit-private",
+      "redirected": false,
+      "title": "a11y-audit-private · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "This page isn't available"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/",
+      "path": "/",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/",
+      "redirected": false,
+      "title": "Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Find the people your project is missing."
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/login",
+      "path": "/login",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/login",
+      "redirected": false,
+      "title": "Sign in · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/signup",
+      "path": "/signup",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/signup",
+      "redirected": false,
+      "title": "Create your account · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Join Collab Hub"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/discover",
+      "path": "/discover",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/discover",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/opportunities",
+      "path": "/opportunities",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/opportunities",
+      "redirected": false,
+      "title": "Opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Opportunities"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 37,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:37)"
+    },
+    {
+      "route": "/opportunities/[id]",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/u/[username]",
+      "path": "/u/diogo",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "signed-out",
+      "variant": "light-360",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 3,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:3)"
+    },
+    {
+      "route": "/",
+      "path": "/",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/",
+      "redirected": false,
+      "title": "Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Find the people your project is missing."
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/privacy",
+      "path": "/privacy",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/privacy",
+      "redirected": false,
+      "title": "Privacy Policy · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/terms",
+      "path": "/terms",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/terms",
+      "redirected": false,
+      "title": "Terms of Service · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Terms of Service"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/login",
+      "path": "/login",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/login",
+      "redirected": false,
+      "title": "Sign in · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Welcome back"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/signup",
+      "path": "/signup",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/signup",
+      "redirected": false,
+      "title": "Create your account · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Join Collab Hub"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/forgot-password",
+      "path": "/forgot-password",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/forgot-password",
+      "redirected": false,
+      "title": "Reset your password · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Reset your password"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/reset-password",
+      "path": "/reset-password",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/reset-password",
+      "redirected": false,
+      "title": "Choose a new password · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Link not valid"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/reset-password (bad token)",
+      "path": "/reset-password?token=invalid-token",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/reset-password?token=invalid-token",
+      "redirected": false,
+      "title": "Choose a new password · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Link not valid"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/verify-email",
+      "path": "/verify-email",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/verify-email",
+      "redirected": false,
+      "title": "Confirm your email · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Confirm your email"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:1)"
+    },
+    {
+      "route": "/verify-email (bad token)",
+      "path": "/verify-email?token=invalid-token",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/verify-email?token=invalid-token",
+      "redirected": false,
+      "title": "Confirm your email · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Confirm your email"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:1)"
+    },
+    {
+      "route": "/discover",
+      "path": "/discover",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/discover",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/discover?type=projects",
+      "path": "/discover?type=projects",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/discover?type=projects",
+      "redirected": false,
+      "title": "Discover · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Discover"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 38,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:38)"
+    },
+    {
+      "route": "/opportunities",
+      "path": "/opportunities",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities",
+      "redirected": false,
+      "title": "Opportunities · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Opportunities"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 37,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:37)"
+    },
+    {
+      "route": "/opportunities/[id]",
+      "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+      "redirected": false,
+      "title": "Opportunity · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Pixel artist for character sprites"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/u/[username]",
+      "path": "/u/diogo",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/u/diogo",
+      "redirected": false,
+      "title": "@diogo · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Diogo Alves"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 2,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2)"
+    },
+    {
+      "route": "/u/[username]/connections",
+      "path": "/u/diogo/connections",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/u/diogo/connections",
+      "redirected": false,
+      "title": "Connections · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Network"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "/p/[slug]",
+      "path": "/p/studypilot",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/p/studypilot",
+      "redirected": false,
+      "title": "studypilot · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "StudyPilot"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 5,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:2) target-size(s:3)"
+    },
+    {
+      "route": "/o/[slug]",
+      "path": "/o/nova-labs",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/o/nova-labs",
+      "redirected": false,
+      "title": "nova-labs · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Nova Labs"
+      ],
+      "seriousCritical": 1,
+      "seriousCriticalNodes": 1,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "target-size(s:1)"
+    },
+    {
+      "route": "/posts/[id]",
+      "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+      "redirected": false,
+      "title": "Post · Collab Hub",
+      "lang": "en",
+      "h1": [],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 4,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:3) target-size(s:1)"
+    },
+    {
+      "route": "/tags/[slug]",
+      "path": "/tags/education",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/tags/education",
+      "redirected": false,
+      "title": "#education · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "Education"
+      ],
+      "seriousCritical": 2,
+      "seriousCriticalNodes": 5,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": "link-in-text-block(s:4) target-size(s:1)"
+    },
+    {
+      "route": "404: /u/does-not-exist",
+      "path": "/u/does-not-exist",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/u/does-not-exist",
+      "redirected": false,
+      "title": "@does-not-exist · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "This page isn't available"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    },
+    {
+      "route": "404: /p/[private]",
+      "path": "/p/a11y-audit-private",
+      "auth": "signed-out",
+      "variant": "light-desktop",
+      "status": 200,
+      "finalUrl": "/p/a11y-audit-private",
+      "redirected": false,
+      "title": "a11y-audit-private · Collab Hub",
+      "lang": "en",
+      "h1": [
+        "This page isn't available"
+      ],
+      "seriousCritical": 0,
+      "seriousCriticalNodes": 0,
+      "moderateMinor": 0,
+      "moderateMinorNodes": 0,
+      "rules": ""
+    }
+  ],
+  "duplicateTitles": [
+    [
+      "Discover · Collab Hub",
+      [
+        "/discover [ana]",
+        "/discover [signed-out]",
+        "/discover?type=projects [signed-out]"
+      ]
+    ],
+    [
+      "Opportunities · Collab Hub",
+      [
+        "/opportunities [ana]",
+        "/opportunities [signed-out]"
+      ]
+    ],
+    [
+      "Opportunity · Collab Hub",
+      [
+        "/opportunities/[id] (applicant view) [ana]",
+        "/opportunities/[id] (owner view) [ana]",
+        "/opportunities/[id] [signed-out]"
+      ]
+    ],
+    [
+      "nova-labs · Collab Hub",
+      [
+        "/o/[slug] [ana]",
+        "/o/[slug] [signed-out]"
+      ]
+    ],
+    [
+      "Partners · Collab Hub",
+      [
+        "/orgs/[slug]/manage/partners [ana]",
+        "/projects/[slug]/manage/partners [ana]"
+      ]
+    ],
+    [
+      "studypilot · Collab Hub",
+      [
+        "/p/[slug] [ana]",
+        "/p/[slug] [signed-out]"
+      ]
+    ],
+    [
+      "Post · Collab Hub",
+      [
+        "/posts/[id] [ana]",
+        "/posts/[id] [signed-out]"
+      ]
+    ],
+    [
+      "#education · Collab Hub",
+      [
+        "/tags/[slug] [ana]",
+        "/tags/[slug] [signed-out]"
+      ]
+    ],
+    [
+      "@diogo · Collab Hub",
+      [
+        "/u/[username] (other) [ana]",
+        "/u/[username] [signed-out]"
+      ]
+    ],
+    [
+      "Connections · Collab Hub",
+      [
+        "/u/[username]/connections [ana]",
+        "/u/[username]/connections [signed-out]"
+      ]
+    ],
+    [
+      "Privacy Policy · Collab Hub",
+      [
+        "/privacy [ana]",
+        "/privacy [signed-out]"
+      ]
+    ],
+    [
+      "Terms of Service · Collab Hub",
+      [
+        "/terms [ana]",
+        "/terms [signed-out]"
+      ]
+    ],
+    [
+      "Choose a new password · Collab Hub",
+      [
+        "/reset-password [signed-out]",
+        "/reset-password (bad token) [signed-out]"
+      ]
+    ],
+    [
+      "Confirm your email · Collab Hub",
+      [
+        "/verify-email [signed-out]",
+        "/verify-email (bad token) [signed-out]"
+      ]
+    ]
+  ],
+  "langs": [
+    "en"
+  ],
+  "smallTargetsFailing": [
+    {
+      "selector": "div > a.block.truncate.text-sm",
+      "text": "StudyPilot",
+      "w": 170.5,
+      "h": 20,
+      "conflicts": [
+        "p > a.hover\\:text-ink.hover\\:underline \"18 minutes ago\"",
+        "p > a.hover\\:text-ink.hover\\:underline \"15 minutes ago\"",
+        "p > a.hover\\:text-ink.hover\\:underline \"14 minutes ago\""
+      ],
+      "routes": [
+        "/feed [ana light-360]",
+        "/p/[slug] [ana light-360]",
+        "/posts/[id] [ana light-360]",
+        "/feed [ana light-desktop]",
+        "/p/[slug] [ana light-desktop]",
+        "/posts/[id] [ana light-desktop]",
+        "/p/[slug] [signed-out light-360]",
+        "/p/[slug] [signed-out light-desktop]"
+      ]
+    },
+    {
+      "selector": "div > a.block.truncate.text-sm",
+      "text": "Nova Labs",
+      "w": 170.5,
+      "h": 20,
+      "conflicts": [
+        "p > a.hover\\:text-ink.hover\\:underline \"18 minutes ago\"",
+        "p > a.hover\\:text-ink.hover\\:underline \"15 minutes ago\""
+      ],
+      "routes": [
+        "/feed [ana light-360]",
+        "/feed [ana light-desktop]"
+      ]
+    },
+    {
+      "selector": "div > a.block.truncate.text-sm",
+      "text": "OpenHarbor",
+      "w": 180.5,
+      "h": 20,
+      "conflicts": [
+        "p > a.hover\\:text-ink.hover\\:underline \"Farid Haddad\""
+      ],
+      "routes": [
+        "/feed [ana light-360]",
+        "/feed [ana light-desktop]"
+      ]
+    },
+    {
+      "selector": "div > a.block.truncate.text-sm",
+      "text": "Pixel Garden",
+      "w": 171.2,
+      "h": 20,
+      "conflicts": [
+        "p > a.hover\\:text-ink.hover\\:underline \"18 minutes ago\"",
+        "p > a.hover\\:text-ink.hover\\:underline \"15 minutes ago\""
+      ],
+      "routes": [
+        "/feed [ana light-360]",
+        "/feed [ana light-desktop]"
+      ]
+    },
+    {
+      "selector": "div > a.block.truncate.text-sm",
+      "text": "Greenleaf Retail",
+      "w": 170.2,
+      "h": 20,
+      "conflicts": [
+        "p > a.hover\\:text-ink.hover\\:underline \"18 minutes ago\"",
+        "p > a.hover\\:text-ink.hover\\:underline \"15 minutes ago\""
+      ],
+      "routes": [
+        "/feed [ana light-360]",
+        "/feed [ana light-desktop]"
+      ]
+    },
+    {
+      "selector": "div > a.hover\\:text-ink",
+      "text": "Terms",
+      "w": 33.4,
+      "h": 16,
+      "conflicts": [
+        "nav > a.relative.inline-flex.items-center \"Opportunities\""
+      ],
+      "routes": [
+        "/messages [ana light-360]"
+      ]
+    },
+    {
+      "selector": "div > a.hover\\:text-ink",
+      "text": "Privacy",
+      "w": 38.8,
+      "h": 16,
+      "conflicts": [
+        "nav > a.relative.inline-flex.items-center \"Network\""
+      ],
+      "routes": [
+        "/messages [ana light-360]"
+      ]
+    },
+    {
+      "selector": "div > a.hover\\:text-ink",
+      "text": "Discover",
+      "w": 46.3,
+      "h": 16,
+      "conflicts": [
+        "nav > a.relative.inline-flex.items-center \"Network\""
+      ],
+      "routes": [
+        "/messages [ana light-360]"
+      ]
+    },
+    {
+      "selector": "div > a.hover\\:text-ink",
+      "text": "Opportunities",
+      "w": 74.1,
+      "h": 16,
+      "conflicts": [
+        "nav > a.relative.inline-flex.items-center \"Alerts16\""
+      ],
+      "routes": [
+        "/messages [ana light-360]"
+      ]
+    },
+    {
+      "selector": "div > a.block.truncate.text-sm",
+      "text": "Grace Okafor",
+      "w": 178.4,
+      "h": 20,
+      "conflicts": [
+        "nav > a.relative.inline-flex.items-center \"Network\""
+      ],
+      "routes": [
+        "/network [ana light-360]"
+      ]
+    }
+  ],
+  "smallTargetsExemptCount": 576
+}

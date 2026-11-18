@@ -1,0 +1,82 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "Collab Hub home":
+    - /url: /feed
+    - text: Collab Hub
+  - search:
+    - text: Search people, projects, organizations and opportunities
+    - searchbox "Search people, projects, organizations and opportunities"
+  - navigation "Main":
+    - link "Home":
+      - /url: /feed
+    - link "Discover":
+      - /url: /discover
+    - link "Opportunities":
+      - /url: /opportunities
+    - link "Network":
+      - /url: /network
+    - link "Messages":
+      - /url: /messages
+    - link "Alerts 16 unread":
+      - /url: /notifications
+      - text: Alerts 16
+  - button "Account menu"
+- main:
+  - article:
+    - link "Pixel Garden":
+      - /url: /p/pixel-garden
+    - paragraph: Looking for
+    - heading "Pixel artist for character sprites" [level=1]
+    - text: Freelance Design Remote Paid
+    - paragraph: Published 28 minutes ago
+    - heading "Description" [level=2]
+    - text: Freelance pixel artist for ~40 character sprites with idle and walk animations.
+    - heading "Details" [level=2]
+    - term: Collaboration
+    - definition: Freelance
+    - term: Work mode
+    - definition: Remote
+    - term: Experience
+    - definition: Any level
+    - term: Compensation
+    - definition: Fixed price · €1,200
+    - heading "Skills wanted" [level=3]
+    - link "Pixel Art":
+      - /url: /tags/pixel-art
+    - link "Design":
+      - /url: /tags/design
+    - heading "Topics" [level=3]
+    - link "Game Development":
+      - /url: /tags/game-development
+    - heading "About Pixel Garden" [level=2]
+    - paragraph: A cozy pixel-art game about growing a community garden.
+    - link "View project":
+      - /url: /p/pixel-garden
+    - button "Report this opportunity"
+  - complementary:
+    - heading "Your application" [level=2]
+    - paragraph: "Status: Received"
+    - paragraph: Sent 1 minute ago
+    - link "Track applications":
+      - /url: /applications
+    - button "Withdraw"
+    - button "Message Diogo Alves"
+    - region "Why this matches you":
+      - heading "Why this matches you" [level=2]
+      - text: 15 Low match
+      - list:
+        - listitem: Prefers remote work
+        - listitem: None of the requested skills (Pixel Art, Design) listed yet
+- contentinfo:
+  - text: Collab Hub
+  - link "Terms":
+    - /url: /terms
+  - link "Privacy":
+    - /url: /privacy
+  - link "Discover":
+    - /url: /discover
+  - link "Opportunities":
+    - /url: /opportunities
+- status
+- alert

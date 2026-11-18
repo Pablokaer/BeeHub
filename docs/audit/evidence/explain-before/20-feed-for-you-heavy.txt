@@ -1,0 +1,20 @@
+-- feed-for-you-heavy (62.1662080000001 ms in Prisma)
+-- params: ["ACCEPTED","u1","u1","0"]
+SELECT "public"."Connection"."userAId", "public"."Connection"."userBId" FROM "public"."Connection" WHERE ("public"."Connection"."status" = CAST($1::text AS "public"."ConnectionStatus") AND ("public"."Connection"."userAId" = $2 OR "public"."Connection"."userBId" = $3)) OFFSET $4
+
+Bitmap Heap Scan on "Connection"  (cost=430.66..12677.42 rows=13750 width=12) (actual time=3.070..39.138 rows=13189 loops=1)
+  Recheck Cond: (("userAId" = 'u1'::text) OR (("userBId" = 'u1'::text) AND (status = ('ACCEPTED'::cstring)::"ConnectionStatus")))
+  Filter: (status = ('ACCEPTED'::cstring)::"ConnectionStatus")
+  Rows Removed by Filter: 1484
+  Heap Blocks: exact=8197
+  Buffers: shared hit=2014 read=6252
+  ->  BitmapOr  (cost=430.66..430.66 rows=15313 width=0) (actual time=2.369..2.370 rows=0 loops=1)
+        Buffers: shared hit=12 read=57
+        ->  Bitmap Index Scan on "Connection_pkey"  (cost=0.00..419.04 rows=15281 width=0) (actual time=2.332..2.332 rows=14673 loops=1)
+              Index Cond: ("userAId" = 'u1'::text)
+              Buffers: shared hit=12 read=54
+        ->  Bitmap Index Scan on "Connection_userBId_status_idx"  (cost=0.00..4.75 rows=32 width=0) (actual time=0.036..0.036 rows=0 loops=1)
+              Index Cond: (("userBId" = 'u1'::text) AND (status = ('ACCEPTED'::cstring)::"ConnectionStatus"))
+              Buffers: shared read=3
+Planning Time: 0.170 ms
+Execution Time: 39.701 ms

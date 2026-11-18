@@ -1,0 +1,336 @@
+{
+  "at": "2026-11-11T10:05:37.864Z",
+  "runs": 20,
+  "results": [
+    {
+      "path": "feed for-you p1",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 27,
+      "p95": 41,
+      "max": 50.3
+    },
+    {
+      "path": "feed latest p1",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 46.3,
+      "p95": 85.7,
+      "max": 116.5
+    },
+    {
+      "path": "feed for-you p1",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 11.3,
+      "p95": 21.7,
+      "max": 22.5
+    },
+    {
+      "path": "feed latest p1",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 4.2,
+      "p95": 5.5,
+      "max": 5.9
+    },
+    {
+      "path": "feed for-you p1",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 11,
+      "p95": 22.6,
+      "max": 27.2
+    },
+    {
+      "path": "feed latest p1",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 4.6,
+      "p95": 8.7,
+      "max": 9
+    },
+    {
+      "path": "feed latest p20 (offset)",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 83.1,
+      "p95": 132.1,
+      "max": 155.9
+    },
+    {
+      "path": "badges: unread notifications + messages",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 2.8,
+      "p95": 3.3,
+      "max": 8
+    },
+    {
+      "path": "badges: unread notifications + messages",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 0.5,
+      "p95": 0.6,
+      "max": 0.7
+    },
+    {
+      "path": "badges: unread notifications + messages",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 0.4,
+      "p95": 0.5,
+      "max": 0.6
+    },
+    {
+      "path": "search people q='react'",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 231.8,
+      "p95": 252.2,
+      "max": 346.2
+    },
+    {
+      "path": "search people q='react design lisbon'",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 434.6,
+      "p95": 461.4,
+      "max": 560.9
+    },
+    {
+      "path": "search people q='zzqx' (no hit)",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 526.7,
+      "p95": 548.4,
+      "max": 665.5
+    },
+    {
+      "path": "search projects q='climate'",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 333.5,
+      "p95": 382.5,
+      "max": 476.5
+    },
+    {
+      "path": "search projects lookingFor=react",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 129.4,
+      "p95": 173.4,
+      "max": 184.5
+    },
+    {
+      "path": "search opportunities (no filter)",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 82.4,
+      "p95": 107.8,
+      "max": 145.4
+    },
+    {
+      "path": "search opportunities q='design'",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 167.2,
+      "p95": 183.3,
+      "max": 197.2
+    },
+    {
+      "path": "search opportunities page 50",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 94.4,
+      "p95": 132.9,
+      "max": 174.7
+    },
+    {
+      "path": "search opportunities sort=match",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 104.3,
+      "p95": 112,
+      "max": 151
+    },
+    {
+      "path": "search posts q='react'",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 2396.2,
+      "p95": 2820.9,
+      "max": 3271.4
+    },
+    {
+      "path": "search posts tag=react",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 1011.4,
+      "p95": 1636.3,
+      "max": 2256.7
+    },
+    {
+      "path": "quick search q='react'",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 604.1,
+      "p95": 831.5,
+      "max": 868.1
+    },
+    {
+      "path": "search people q='react' (signed out)",
+      "viewer": "anon",
+      "runs": 20,
+      "p50": 278.1,
+      "p95": 334.4,
+      "max": 415.7
+    },
+    {
+      "path": "listConnections p1",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 64.1,
+      "p95": 78.5,
+      "max": 109.6
+    },
+    {
+      "path": "listConversations",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 14.8,
+      "p95": 20.6,
+      "max": 23.8
+    },
+    {
+      "path": "listNotifications p1",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 1.4,
+      "p95": 1.6,
+      "max": 1.7
+    },
+    {
+      "path": "listConnections p1",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 2.2,
+      "p95": 3.7,
+      "max": 5.2
+    },
+    {
+      "path": "listConversations",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 1.3,
+      "p95": 2.1,
+      "max": 2.8
+    },
+    {
+      "path": "listNotifications p1",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 1.5,
+      "p95": 2.7,
+      "max": 4.3
+    },
+    {
+      "path": "listConnections p1",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 1.3,
+      "p95": 1.7,
+      "max": 1.8
+    },
+    {
+      "path": "listConversations",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 1.4,
+      "p95": 2.5,
+      "max": 2.7
+    },
+    {
+      "path": "listNotifications p1",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 1,
+      "p95": 1.2,
+      "max": 1.5
+    },
+    {
+      "path": "message poll (no new messages)",
+      "viewer": "busiest",
+      "runs": 20,
+      "p50": 1.4,
+      "p95": 4.6,
+      "max": 11.8,
+      "note": "3060 messages in conversation"
+    },
+    {
+      "path": "recommendOpportunities",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 109,
+      "p95": 150.8,
+      "max": 152.1
+    },
+    {
+      "path": "suggestPeople",
+      "viewer": "heavy",
+      "runs": 20,
+      "p50": 122.8,
+      "p95": 182.9,
+      "max": 208
+    },
+    {
+      "path": "recommendOpportunities",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 183,
+      "p95": 295.5,
+      "max": 321.4
+    },
+    {
+      "path": "suggestPeople",
+      "viewer": "p99",
+      "runs": 20,
+      "p50": 32.8,
+      "p95": 63.6,
+      "max": 74.1
+    },
+    {
+      "path": "recommendOpportunities",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 116.8,
+      "p95": 139.3,
+      "max": 162.4
+    },
+    {
+      "path": "suggestPeople",
+      "viewer": "median",
+      "runs": 20,
+      "p50": 20.8,
+      "p95": 24.3,
+      "max": 29.1
+    },
+    {
+      "path": "createPost as org (follower fan-out)",
+      "viewer": "owner",
+      "runs": 5,
+      "p50": 660.6,
+      "p95": 681.8,
+      "max": 681.8,
+      "note": "6508 followers, cap 500"
+    },
+    {
+      "path": "createPost as self",
+      "viewer": "owner",
+      "runs": 5,
+      "p50": 2.7,
+      "p95": 5.5,
+      "max": 5.5
+    }
+  ]
+}

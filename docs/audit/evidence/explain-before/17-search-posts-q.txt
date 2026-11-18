@@ -1,0 +1,48 @@
+-- search-posts-q (81.92395800000008 ms in Prisma)
+-- params: ["PUBLISHED","ACTIVE","ACTIVE","PUBLIC","ACTIVE","react","react","react","20","0"]
+SELECT "public"."Post"."id", "public"."Post"."type"::text, "public"."Post"."body", "public"."Post"."linkUrl", "public"."Post"."status"::text, "public"."Post"."likeCount", "public"."Post"."commentCount", "public"."Post"."shareCount", "public"."Post"."createdAt", "public"."Post"."authorId", "public"."Post"."organizationId", "public"."Post"."projectId", "public"."Post"."opportunityId", "public"."Post"."repostOfId" FROM "public"."Post" LEFT JOIN "public"."User" AS "j0" ON ("j0"."id") = ("public"."Post"."authorId") LEFT JOIN "public"."Project" AS "j1" ON ("j1"."id") = ("public"."Post"."projectId") LEFT JOIN "public"."Organization" AS "j2" ON ("j2"."id") = ("public"."Post"."organizationId") WHERE ("public"."Post"."status" = CAST($1::text AS "public"."ContentStatus") AND ("j0"."status" = CAST($2::text AS "public"."UserStatus") AND ("j0"."id" IS NOT NULL)) AND ("public"."Post"."projectId" IS NULL OR ("j1"."status" = CAST($3::text AS "public"."EntityStatus") AND "j1"."visibility" = CAST($4::text AS "public"."ProjectVisibility") AND ("j1"."id" IS NOT NULL))) AND ("public"."Post"."organizationId" IS NULL OR ("j2"."status" = CAST($5::text AS "public"."EntityStatus") AND ("j2"."id" IS NOT NULL))) AND "public"."Post"."repostOfId" IS NULL AND ("public"."Post"."body" ILIKE ('%' || $6 || '%') OR EXISTS(SELECT "t3"."postId" FROM "public"."PostTag" AS "t3" LEFT JOIN "public"."Tag" AS "j4" ON ("j4"."id") = ("t3"."tagId") WHERE (("j4"."name" ILIKE ('%' || $7 || '%') OR "j4"."slug"::text LIKE ($8 || '%')) AND ("j4"."id" IS NOT NULL) AND ("public"."Post"."id") = ("t3"."postId") AND "t3"."postId" IS NOT NULL)))) ORDER BY "public"."Post"."createdAt" DESC LIMIT $9 OFFSET $10
+
+Limit  (cost=1.29..875.06 rows=20 width=375) (actual time=0.036..47.989 rows=20 loops=1)
+  Buffers: shared hit=249 read=4304
+  ->  Nested Loop Left Join  (cost=1.29..25237703.92 rows=577677 width=375) (actual time=0.035..47.986 rows=20 loops=1)
+        Filter: (("Post"."organizationId" IS NULL) OR ((j2.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j2.id IS NOT NULL)))
+        Buffers: shared hit=249 read=4304
+        ->  Nested Loop  (cost=1.01..25046633.46 rows=578114 width=319) (actual time=0.032..47.955 rows=20 loops=1)
+              Buffers: shared hit=214 read=4303
+              ->  Nested Loop Left Join  (cost=0.72..24855229.59 rows=580925 width=319) (actual time=0.023..47.900 rows=20 loops=1)
+                    Filter: (("Post"."projectId" IS NULL) OR ((j1.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j1.visibility = ('PUBLIC'::cstring)::"ProjectVisibility") AND (j1.id IS NOT NULL)))
+                    Buffers: shared hit=154 read=4303
+                    ->  Index Scan Backward using "Post_status_createdAt_idx" on "Post"  (cost=0.43..24650294.35 rows=585210 width=319) (actual time=0.016..47.879 rows=20 loops=1)
+                          Index Cond: (status = ('PUBLISHED'::cstring)::"ContentStatus")
+                          Filter: (("repostOfId" IS NULL) AND ((body ~~* '%react%'::text) OR (hashed SubPlan 2)))
+                          Rows Removed by Filter: 14
+                          Buffers: shared hit=136 read=4303
+                          SubPlan 2
+                            ->  Nested Loop  (cost=72.49..4806.31 rows=400 width=8) (actual time=2.248..37.473 rows=70618 loops=1)
+                                  Buffers: shared hit=99 read=4303
+                                  ->  Seq Scan on "Tag" j4  (cost=0.00..49.00 rows=1 width=5) (actual time=0.524..0.531 rows=1 loops=1)
+                                        Filter: ((id IS NOT NULL) AND ((name ~~* '%react%'::text) OR (slug ~~ 'react%'::text)))
+                                        Rows Removed by Filter: 2000
+                                        Buffers: shared hit=19
+                                  ->  Bitmap Heap Scan on "PostTag" t3  (cost=72.49..4695.29 rows=6202 width=11) (actual time=1.723..33.111 rows=70618 loops=1)
+                                        Recheck Cond: ("tagId" = j4.id)
+                                        Filter: ("postId" IS NOT NULL)
+                                        Heap Blocks: exact=4325
+                                        Buffers: shared hit=80 read=4303
+                                        ->  Bitmap Index Scan on "PostTag_tagId_idx"  (cost=0.00..70.94 rows=6202 width=0) (actual time=1.380..1.380 rows=70618 loops=1)
+                                              Index Cond: ("tagId" = j4.id)
+                                              Buffers: shared hit=3 read=55
+                    ->  Index Scan using "Project_pkey" on "Project" j1  (cost=0.29..0.33 rows=1 width=14) (actual time=0.001..0.001 rows=0 loops=20)
+                          Index Cond: (id = "Post"."projectId")
+                          Buffers: shared hit=18
+              ->  Index Scan using "User_pkey" on "User" j0  (cost=0.29..0.33 rows=1 width=6) (actual time=0.002..0.002 rows=1 loops=20)
+                    Index Cond: ((id = "Post"."authorId") AND (id IS NOT NULL))
+                    Filter: (status = ('ACTIVE'::cstring)::"UserStatus")
+                    Buffers: shared hit=60
+        ->  Index Scan using "Organization_pkey" on "Organization" j2  (cost=0.28..0.30 rows=1 width=9) (actual time=0.001..0.001 rows=1 loops=20)
+              Index Cond: (id = "Post"."organizationId")
+              Buffers: shared hit=35 read=1
+Planning:
+  Buffers: shared hit=75 read=7
+Planning Time: 0.845 ms
+Execution Time: 48.035 ms

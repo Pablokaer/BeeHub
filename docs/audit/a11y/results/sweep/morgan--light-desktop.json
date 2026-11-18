@@ -1,0 +1,56 @@
+[
+  {
+    "route": "/moderation",
+    "path": "/moderation",
+    "auth": "morgan",
+    "variant": "light-desktop",
+    "status": 200,
+    "finalUrl": "/moderation",
+    "redirected": false,
+    "title": "Moderation · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Moderation"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 24,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Terms",
+        "w": 33.4,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Privacy",
+        "w": 38.8,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Discover",
+        "w": 46.3,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Opportunities",
+        "w": 74.1,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": []
+  }
+]

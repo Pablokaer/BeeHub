@@ -1,0 +1,49 @@
+# Local production-like stack: Postgres + one-off migration job + the app.
+#   docker compose up --build
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: hub
+      POSTGRES_PASSWORD: hub
+      POSTGRES_DB: collab_hub
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hub -d collab_hub"]
+      interval: 5s
+      retries: 10
+
+  migrate:
+    build:
+      context: .
+      target: build
+    command: npx prisma migrate deploy
+    environment:
+      DATABASE_URL: postgresql://hub:hub@db:5432/collab_hub
+    depends_on:
+      db:
+        condition: service_healthy
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://hub:hub@db:5432/collab_hub
+      APP_URL: http://localhost:3000
+      REQUIRE_EMAIL_VERIFICATION: "true"
+      # Set a real SMTP server to deliver emails; otherwise they stay in the EmailOutbox table.
+      SMTP_URL: ""
+      MAIL_FROM: "Collab Hub <no-reply@example.com>"
+      CRON_SECRET: change-me
+      NEXT_SERVER_ACTIONS_ENCRYPTION_KEY: change-me-to-a-32-byte-base64-key
+    volumes:
+      - uploads:/app/storage
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  pgdata:
+  uploads:

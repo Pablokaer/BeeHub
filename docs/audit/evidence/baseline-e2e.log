@@ -1,0 +1,19 @@
+[WebServer] ⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
+
+Running 13 tests using 1 worker
+
+  ✓   1 [desktop] › tests/e2e/scenario-ab-e.spec.ts:4:5 › Scenarios A, B & E: publish a project and opportunity, discover it, apply and get accepted (9.7s)
+  ✓   2 [desktop] › tests/e2e/scenario-cg.spec.ts:4:5 › Scenario C: an organization finds a partnership opportunity, applies and starts a conversation (10.8s)
+  ✓   3 [desktop] › tests/e2e/scenario-cg.spec.ts:60:5 › Scenario G: two projects form a partnership visible on both pages (6.0s)
+  ✓   4 [desktop] › tests/e2e/scenario-df.spec.ts:4:5 › Scenarios D & F: connect, then post, mention, like, comment and share (8.8s)
+  ✓   5 [desktop] › tests/e2e/security.spec.ts:5:5 › signed-out visitors are sent to sign in for member pages (247ms)
+  ✓   6 [desktop] › tests/e2e/security.spec.ts:12:5 › public pages work signed out and private projects stay private (4.5s)
+  ✓   7 [desktop] › tests/e2e/security.spec.ts:41:5 › cross-site uploads are rejected (22ms)
+  ✓   8 [desktop] › tests/e2e/security.spec.ts:47:7 › no serious accessibility violations on / (573ms)
+  ✓   9 [desktop] › tests/e2e/security.spec.ts:47:7 › no serious accessibility violations on /login (528ms)
+  ✓  10 [desktop] › tests/e2e/security.spec.ts:47:7 › no serious accessibility violations on /signup (553ms)
+  ✓  11 [desktop] › tests/e2e/security.spec.ts:47:7 › no serious accessibility violations on /opportunities (562ms)
+  ✓  12 [desktop] › tests/e2e/security.spec.ts:47:7 › no serious accessibility violations on /discover (595ms)
+  ✓  13 [mobile] › tests/e2e/mobile.spec.ts:9:5 › layouts fit a phone screen and use the bottom navigation (3.3s)
+
+  13 passed (50.4s)

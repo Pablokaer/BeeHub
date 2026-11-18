@@ -1,0 +1,59 @@
+-- search-opportunities-match (130.17454200000066 ms in Prisma)
+-- params: ["OPEN","2026-11-11T00:00:00.000Z","ACTIVE","PUBLIC","ACTIVE","ACTIVE","300","0"]
+SELECT "public"."Opportunity"."id", "public"."Opportunity"."title", "public"."Opportunity"."category"::text, "public"."Opportunity"."collaborationType"::text, "public"."Opportunity"."workMode"::text, "public"."Opportunity"."location", "public"."Opportunity"."experienceLevel"::text, "public"."Opportunity"."isPaid", "public"."Opportunity"."compensationType"::text, "public"."Opportunity"."compensation", "public"."Opportunity"."status"::text, "public"."Opportunity"."publishedAt", "public"."Opportunity"."deadline", "public"."Opportunity"."createdAt", "public"."Opportunity"."projectId", "public"."Opportunity"."organizationId", "public"."Opportunity"."createdById", "public"."Opportunity"."description", "public"."Opportunity"."duration"::text, "public"."Opportunity"."commitment"::text, COALESCE("aggr_selection_0_Application"."_aggr_count_applications", 0) AS "_aggr_count_applications" FROM "public"."Opportunity" LEFT JOIN (SELECT "public"."Application"."opportunityId", COUNT(*) AS "_aggr_count_applications" FROM "public"."Application" WHERE 1=1 GROUP BY "public"."Application"."opportunityId") AS "aggr_selection_0_Application" ON ("public"."Opportunity"."id" = "aggr_selection_0_Application"."opportunityId") LEFT JOIN "public"."Project" AS "j0" ON ("j0"."id") = ("public"."Opportunity"."projectId") LEFT JOIN "public"."Organization" AS "j1" ON ("j1"."id") = ("public"."Opportunity"."organizationId") LEFT JOIN "public"."User" AS "j2" ON ("j2"."id") = ("public"."Opportunity"."createdById") WHERE ("public"."Opportunity"."status" = CAST($1::text AS "public"."OpportunityStatus") AND ("public"."Opportunity"."deadline" IS NULL OR "public"."Opportunity"."deadline" >= $2) AND ("public"."Opportunity"."projectId" IS NULL OR ("j0"."status" = CAST($3::text AS "public"."EntityStatus") AND "j0"."visibility" = CAST($4::text AS "public"."ProjectVisibility") AND ("j0"."id" IS NOT NULL))) AND ("public"."Opportunity"."organizationId" IS NULL OR ("j1"."status" = CAST($5::text AS "public"."EntityStatus") AND ("j1"."id" IS NOT NULL))) AND ("public"."Opportunity"."createdById" IS NULL OR ("j2"."status" = CAST($6::text AS "public"."UserStatus") AND ("j2"."id" IS NOT NULL)))) ORDER BY "public"."Opportunity"."publishedAt" DESC LIMIT $7 OFFSET $8
+
+Limit  (cost=17948.28..18587.48 rows=300 width=942) (actual time=93.620..99.864 rows=300 loops=1)
+  Buffers: shared hit=4121 read=4673, temp read=991 written=2311
+  ->  Nested Loop Left Join  (cost=17948.28..62361.82 rows=20845 width=942) (actual time=93.619..99.842 rows=300 loops=1)
+        Filter: (("Opportunity"."createdById" IS NULL) OR ((j2.status = ('ACTIVE'::cstring)::"UserStatus") AND (j2.id IS NOT NULL)))
+        Rows Removed by Filter: 4
+        Buffers: shared hit=4121 read=4673, temp read=991 written=2311
+        ->  Nested Loop Left Join  (cost=17947.99..48348.90 rows=20946 width=718) (actual time=93.593..98.339 rows=304 loops=1)
+              Filter: (("Opportunity"."organizationId" IS NULL) OR ((j1.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j1.id IS NOT NULL)))
+              Rows Removed by Filter: 1
+              Buffers: shared hit=3209 read=4673, temp read=991 written=2311
+              ->  Nested Loop Left Join  (cost=17947.71..40054.37 rows=21051 width=718) (actual time=93.584..97.785 rows=305 loops=1)
+                    Filter: (("Opportunity"."projectId" IS NULL) OR ((j0.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j0.visibility = ('PUBLIC'::cstring)::"ProjectVisibility") AND (j0.id IS NOT NULL)))
+                    Rows Removed by Filter: 13
+                    Buffers: shared hit=3101 read=4604, temp read=991 written=2311
+                    ->  Gather Merge  (cost=17947.42..20632.09 rows=23051 width=718) (actual time=93.553..96.614 rows=318 loops=1)
+                          Workers Planned: 2
+                          Workers Launched: 2
+                          Buffers: shared hit=2500 read=4575, temp read=991 written=2311
+                          ->  Sort  (cost=16947.40..16971.41 rows=9605 width=718) (actual time=79.509..79.541 rows=166 loops=3)
+                                Sort Key: "Opportunity"."publishedAt" DESC
+                                Sort Method: external merge  Disk: 10664kB
+                                Buffers: shared hit=2500 read=4575, temp read=991 written=2311
+                                Worker 0:  Sort Method: external merge  Disk: 3904kB
+                                Worker 1:  Sort Method: external merge  Disk: 3904kB
+                                ->  Hash Left Join  (cost=8268.67..13256.55 rows=9605 width=718) (actual time=44.730..58.215 rows=8989 loops=3)
+                                      Hash Cond: ("Opportunity".id = "aggr_selection_0_Application"."opportunityId")
+                                      Buffers: shared hit=2428 read=4575
+                                      ->  Parallel Seq Scan on "Opportunity"  (cost=0.00..4962.67 rows=9605 width=710) (actual time=0.044..9.941 rows=8989 loops=3)
+                                            Filter: (((deadline IS NULL) OR (deadline >= '2026-11-11 00:00:00'::timestamp without time zone)) AND (status = ('OPEN'::cstring)::"OpportunityStatus"))
+                                            Rows Removed by Filter: 7680
+                                            Buffers: shared hit=48 read=4544
+                                      ->  Hash  (cost=7849.82..7849.82 rows=33508 width=15) (actual time=44.522..44.523 rows=47010 loops=3)
+                                            Buckets: 65536  Batches: 1  Memory Usage: 2705kB
+                                            Buffers: shared hit=2351 read=30
+                                            ->  Subquery Scan on "aggr_selection_0_Application"  (cost=0.42..7849.82 rows=33508 width=15) (actual time=0.170..37.575 rows=47010 loops=3)
+                                                  Buffers: shared hit=2351 read=30
+                                                  ->  GroupAggregate  (cost=0.42..7514.74 rows=33508 width=15) (actual time=0.169..34.139 rows=47010 loops=3)
+                                                        Group Key: "Application"."opportunityId"
+                                                        Buffers: shared hit=2351 read=30
+                                                        ->  Index Only Scan using "Application_opportunityId_status_idx" on "Application"  (cost=0.42..6179.85 rows=199962 width=7) (actual time=0.056..14.947 rows=199962 loops=3)
+                                                              Heap Fetches: 0
+                                                              Buffers: shared hit=2351 read=30
+                    ->  Index Scan using "Project_pkey" on "Project" j0  (cost=0.29..0.82 rows=1 width=14) (actual time=0.003..0.003 rows=1 loops=318)
+                          Index Cond: (id = "Opportunity"."projectId")
+                          Buffers: shared hit=601 read=29
+              ->  Index Scan using "Organization_pkey" on "Organization" j1  (cost=0.28..0.38 rows=1 width=9) (actual time=0.001..0.001 rows=0 loops=305)
+                    Index Cond: (id = "Opportunity"."organizationId")
+                    Buffers: shared hit=108 read=69
+        ->  Index Scan using "User_pkey" on "User" j2  (cost=0.29..0.61 rows=1 width=10) (actual time=0.004..0.004 rows=1 loops=304)
+              Index Cond: (id = "Opportunity"."createdById")
+              Buffers: shared hit=912
+Planning:
+  Buffers: shared hit=37 read=2
+Planning Time: 0.754 ms
+Execution Time: 100.521 ms

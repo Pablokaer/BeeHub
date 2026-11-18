@@ -1,0 +1,21 @@
+[
+  {
+    "route": "/moderation",
+    "path": "/moderation",
+    "auth": "morgan",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/moderation",
+    "redirected": false,
+    "title": "Moderation · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Moderation"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "axeVersion": "4.14.0"
+  }
+]

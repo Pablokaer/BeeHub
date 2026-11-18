@@ -1,0 +1,888 @@
+[
+  {
+    "route": "/feed",
+    "path": "/feed",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/feed",
+    "redirected": false,
+    "title": "Home · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Home feed"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 6,
+        "targets": [
+          ".link[href$=\"artificial-intelligence\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .prose-plain.text-\\[14\\.5px\\].leading-relaxed > .link[href$=\"education\"]",
+          "a[href$=\"opensource\"]",
+          ".link[href$=\"kubernetes\"]",
+          "article[aria-label=\"Post by Carla Mendes\"] > .prose-plain.text-\\[14\\.5px\\].leading-relaxed > .link[href$=\"education\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.07:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #eceae4)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 9,
+        "targets": [
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          ".block.truncate[href$=\"nova-labs\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(6) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(7) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Farid Haddad\"]:nth-child(8) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"openharbor\"]"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(7) > .prose-plain.text-\\[14\\.5px\\].leading-relaxed > span"
+        ],
+        "sampleHtml": "<span>Looking for: Frontend developer for our study assistant · Volunteer</span>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 5,
+        "targets": [
+          "article[aria-label=\"Post by Diogo Alves\"]:nth-child(2) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .truncate.text-xs > .hover\\:underline.hover\\:text-ink",
+          ".link[href$=\"design\"]",
+          "a[href$=\"gamedevelopment\"]",
+          "article[aria-label=\"Post by Grace Okafor\"] > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .truncate.text-xs > .hover\\:underline.hover\\:text-ink",
+          "article[aria-label=\"Post by Carla Mendes\"] > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .truncate.text-xs > .hover\\:underline.hover\\:text-ink"
+        ],
+        "sampleHtml": "<a class=\"hover:text-ink hover:underline\" href=\"/posts/cmwbxjlod004rpci306n1iz99\"><time datetime=\"2026-11-11T09:41:54.685Z\">18 minutes ago</time></a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 27,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/opportunities/[id] (applicant view)",
+    "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "redirected": false,
+    "title": "Opportunity · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Pixel artist for character sprites"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+    ],
+    "incomplete": [],
+    "passes": 28,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/messages",
+    "path": "/messages",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/messages",
+    "redirected": false,
+    "title": "Messages · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Messages"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+    ],
+    "incomplete": [],
+    "passes": 23,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/messages/[id]",
+    "path": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/messages/cmwbxjlpb0050pci3h94c6o7e",
+    "redirected": false,
+    "title": "Conversation · Collab Hub",
+    "lang": "en",
+    "h1": [],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]",
+          ".text-accent-ink\\/70"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "id": "list",
+        "impact": "serious",
+        "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/list?application=playwright",
+        "tags": [
+          "cat.structure",
+          "wcag2a",
+          "wcag131",
+          "EN-301-549",
+          "EN-9.1.3.1",
+          "RGAAv4",
+          "RGAA-9.3.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "ol"
+        ],
+        "sampleHtml": "<ol class=\"flex flex-1 flex-col gap-2 overflow-y-auto p-4\" aria-live=\"polite\" aria-label=\"Messages with Bruno Costa\">",
+        "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: div"
+      }
+    ],
+    "incomplete": [],
+    "passes": 24,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/network",
+    "path": "/network",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/network",
+    "redirected": false,
+    "title": "My network · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "My network"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".link"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/u/ana/connections?tab=following\">your profile network</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.16:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #9b978d)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "a[href$=\"invitations\"]"
+        ],
+        "sampleHtml": "<a class=\"-mb-px inline-flex h-9 items-center gap-1.5 whitespace-nowrap border-b-2 px-2.5 text-sm transition-colors border-transparent text-muted hover:text-ink\" href=\"/network/invitations\">Team invitations</a>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+      }
+    ],
+    "passes": 22,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/notifications",
+    "path": "/notifications",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/notifications",
+    "redirected": false,
+    "title": "Notifications · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Notifications"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "impact": "serious",
+        "help": "Elements must have their visible text as part of their accessible name",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=playwright",
+        "tags": [
+          "cat.semantics",
+          "wcag21a",
+          "wcag253",
+          "EN-301-549",
+          "EN-9.2.5.3",
+          "RGAAv4",
+          "RGAA-6.1.5"
+        ],
+        "nodes": 17,
+        "targets": [
+          "button[aria-label=\"Open\"]",
+          ".bg-accent-soft\\/40:nth-child(2) > form[action=\"\"][enctype=\"multipart/form-data\"][method=\"POST\"] > .items-start.py-3[aria-label=\"Open (unread)\"]",
+          ".bg-accent-soft\\/40:nth-child(3) > form[action=\"\"][enctype=\"multipart/form-data\"][method=\"POST\"] > .items-start.py-3[aria-label=\"Open (unread)\"]",
+          ".bg-accent-soft\\/40:nth-child(4) > form[action=\"\"][enctype=\"multipart/form-data\"][method=\"POST\"] > .items-start.py-3[aria-label=\"Open (unread)\"]",
+          ".bg-accent-soft\\/40:nth-child(5) > form[action=\"\"][enctype=\"multipart/form-data\"][method=\"POST\"] > .items-start.py-3[aria-label=\"Open (unread)\"]"
+        ],
+        "sampleHtml": "<button type=\"submit\" class=\"flex w-full items-start gap-3 px-4 py-3 text-left hover:bg-sunken disabled:opacity-70\" aria-label=\"Open\">",
+        "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+      }
+    ],
+    "incomplete": [],
+    "passes": 23,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/p/[slug]",
+    "path": "/p/studypilot",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/p/studypilot",
+    "redirected": false,
+    "title": "studypilot · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "StudyPilot"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 3,
+        "targets": [
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(2) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(3) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".prose-plain.leading-relaxed.text-sm:nth-child(2) > span",
+          ".text-\\[14\\.5px\\].prose-plain.mt-2 > span:nth-child(3)"
+        ],
+        "sampleHtml": "<span>StudyPilot reads your notes and generates spaced-repetition quizzes. The model works; now we need a great web experience and a launch plan.</span>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".link[href$=\"artificial-intelligence\"]",
+          ".link[href$=\"education\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 28,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/posts/[id]",
+    "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+    "redirected": false,
+    "title": "Post · Collab Hub",
+    "lang": "en",
+    "h1": [],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          "a[href$=\"artificial-intelligence\"]",
+          "a[href$=\"education\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.07:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #eceae4)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".block"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [],
+    "passes": 26,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/profile/edit",
+    "path": "/profile/edit",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/profile/edit",
+    "redirected": false,
+    "title": "Edit profile · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Edit profile"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+    ],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/projects/[slug]/manage",
+    "path": "/projects/studypilot/manage",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/projects/studypilot/manage",
+    "redirected": false,
+    "title": "Manage project · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Manage project"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+    ],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/settings",
+    "path": "/settings",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/settings",
+    "redirected": false,
+    "title": "Account settings · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Settings"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "a[href$=\"data\"]"
+        ],
+        "sampleHtml": "<a class=\"-mb-px inline-flex h-9 items-center whitespace-nowrap border-b-2 px-2.5 text-sm border-transparent text-muted hover:text-ink\" href=\"/settings/data\">Your data</a>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+      }
+    ],
+    "passes": 27,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/u/[username] (other)",
+    "path": "/u/diogo",
+    "auth": "ana",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/u/diogo",
+    "redirected": false,
+    "title": "@diogo · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Diogo Alves"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".right-\\[calc\\(50\\%-18px\\)\\]"
+        ],
+        "sampleHtml": "<span class=\"inline-flex min-w-4 items-center justify-center rounded-full bg-signal px-1 font-mono text-[10px] font-medium leading-4 text-white absolute right-[calc(50%-18px)] top-2\" aria-label=\"16 unread\">16</span>",
+        "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.47 (foreground color: #ffffff, background color: #f08a5d, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 3,
+        "targets": [
+          ".hover\\:underline.hover\\:text-ink",
+          ".link[href$=\"design\"]",
+          "a[href$=\"gamedevelopment\"]"
+        ],
+        "sampleHtml": "<a class=\"hover:text-ink hover:underline\" href=\"/posts/cmwbxjlod004rpci306n1iz99\"><time datetime=\"2026-11-11T09:41:54.685Z\">19 minutes ago</time></a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  }
+]

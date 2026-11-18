@@ -1,0 +1,409 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "Collab Hub home":
+    - /url: /feed
+  - link "Search":
+    - /url: /discover
+  - button "Account menu"
+- navigation "Main":
+  - link "Home":
+    - /url: /feed
+  - link "Opportunities":
+    - /url: /opportunities
+  - link "Network":
+    - /url: /network
+  - link "Messages":
+    - /url: /messages
+  - link "Alerts 16 unread":
+    - /url: /notifications
+    - text: Alerts 16
+- main:
+  - heading "Home feed" [level=1]
+  - region "Create a post":
+    - text: Post text
+    - textbox "Post text":
+      - /placeholder: Share an update, ask for help or start a discussion…
+  - navigation "Feed mode":
+    - link "For you":
+      - /url: /feed
+    - link "Latest from your network":
+      - /url: /feed?mode=latest
+  - article "Post by Ana Ribeiro":
+    - paragraph: From your project
+    - link "StudyPilot":
+      - /url: /p/studypilot
+    - paragraph:
+      - text: by
+      - link "Ana Ribeiro":
+        - /url: /u/ana
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjln1004cpci3nxp2hl6x
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: Project update Our quiz generator now handles handwritten notes! Huge thanks to
+    - link "@grace":
+      - /url: /u/grace
+    - text: "for the model review. Next: a web app that students actually enjoy."
+    - link "#AI":
+      - /url: /tags/artificial-intelligence
+    - link "#Education":
+      - /url: /tags/education
+    - button "3 Like"
+    - link "3 comments":
+      - /url: /posts/cmwbxjln1004cpci3nxp2hl6x#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Diogo Alves":
+    - paragraph: From your network
+    - link "Diogo Alves":
+      - /url: /u/diogo
+    - paragraph:
+      - text: Product & game designer ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlod004rpci306n1iz99
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Asking for help Designers: how do you run usability tests for games with kids? Looking for advice and templates."
+    - link "#Design":
+      - /url: /tags/design
+    - link "#GameDevelopment":
+      - /url: /tags/gamedevelopment
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlod004rpci306n1iz99#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Farid Haddad":
+    - paragraph: From your network
+    - link "Farid Haddad":
+      - /url: /u/farid
+    - paragraph:
+      - text: Backend & DevOps engineer · open source maintainer ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlo6004ppci3a2roqa2h
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Launch OpenHarbor 0.9 is out: one-click rollbacks and a much faster dashboard. Looking for testers before 1.0 — see the opportunity on the project page."
+    - link "#OpenSource":
+      - /url: /tags/opensource
+    - link "#Kubernetes":
+      - /url: /tags/kubernetes
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlo6004ppci3a2roqa2h#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Grace Okafor":
+    - paragraph: From your network
+    - link "Grace Okafor":
+      - /url: /u/grace
+    - paragraph:
+      - text: Data scientist · mentor ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlk80036pci3qvvdv3lx
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Looking for: Mentoring students who want to get into ML · Mentorship"
+    - link "Looking for Mentoring students who want to get into ML Mentorship · Remote Machine Learning Python":
+      - /url: /opportunities/cmwbxjlk20034pci3hmygfl5y
+      - paragraph: Looking for
+      - paragraph: Mentoring students who want to get into ML
+      - paragraph: Mentorship · Remote
+      - text: Machine Learning Python
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlk80036pci3qvvdv3lx#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Ana Ribeiro":
+    - paragraph: From your organization
+    - link "Nova Labs":
+      - /url: /o/nova-labs
+    - paragraph:
+      - text: by
+      - link "Ana Ribeiro":
+        - /url: /u/ana
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlj1002rpci3fc16s04u
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Looking for: Technical co-founder (backend & infrastructure) · Co-founder"
+    - link "Looking for Technical co-founder (backend & infrastructure) Co-founder · Hybrid Backend PostgreSQL DevOps":
+      - /url: /opportunities/cmwbxjliv002ppci39ccpn17f
+      - paragraph: Looking for
+      - paragraph: Technical co-founder (backend & infrastructure)
+      - paragraph: Co-founder · Hybrid
+      - text: Backend PostgreSQL DevOps
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlj1002rpci3fc16s04u#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Ana Ribeiro":
+    - paragraph: From your project
+    - link "StudyPilot":
+      - /url: /p/studypilot
+    - paragraph:
+      - text: by
+      - link "Ana Ribeiro":
+        - /url: /u/ana
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlim002npci30lup6zsb
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Looking for: Marketing specialist for school pilot launch · Freelance"
+    - link "Looking for Marketing specialist for school pilot launch Freelance · Hybrid · Paid Marketing Growth Marketing Copywriting":
+      - /url: /opportunities/cmwbxjlif002lpci33br12q72
+      - paragraph: Looking for
+      - paragraph: Marketing specialist for school pilot launch
+      - paragraph: Freelance · Hybrid · Paid
+      - text: Marketing Growth Marketing Copywriting
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlim002npci30lup6zsb#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Ana Ribeiro":
+    - paragraph: From your project
+    - link "StudyPilot":
+      - /url: /p/studypilot
+    - paragraph:
+      - text: by
+      - link "Ana Ribeiro":
+        - /url: /u/ana
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjli2002jpci33pdarp9w
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Looking for: Frontend developer for our study assistant · Volunteer"
+    - link "Looking for Frontend developer for our study assistant Volunteer · Remote React TypeScript Frontend":
+      - /url: /opportunities/cmwbxjlhq002hpci3lcwwysdn
+      - paragraph: Looking for
+      - paragraph: Frontend developer for our study assistant
+      - paragraph: Volunteer · Remote
+      - text: React TypeScript Frontend
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjli2002jpci33pdarp9w#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Farid Haddad":
+    - paragraph: Matches your skills
+    - link "OpenHarbor":
+      - /url: /p/openharbor
+    - paragraph:
+      - text: by
+      - link "Farid Haddad":
+        - /url: /u/farid
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjljo002zpci3prqm2i5p
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Looking for: Testing assistance for our 1.0 release · Volunteer"
+    - link "Looking for Testing assistance for our 1.0 release Volunteer · Remote QA & Testing Kubernetes":
+      - /url: /opportunities/cmwbxjljj002wpci3vis84wwj
+      - paragraph: Looking for
+      - paragraph: Testing assistance for our 1.0 release
+      - paragraph: Volunteer · Remote
+      - text: QA & Testing Kubernetes
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjljo002zpci3prqm2i5p#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Ana Ribeiro":
+    - link "Ana Ribeiro":
+      - /url: /u/ana
+    - paragraph:
+      - text: Full-stack developer · building AI tools for students ·
+      - link "3 minutes ago":
+        - /url: /posts/cmwbyg6h20010tbi3v256gx53
+        - time: 3 minutes ago
+    - button "Post options"
+    - text: "[a11y-audit] keyboard composer post 1794391628143"
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbyg6h20010tbi3v256gx53#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Farid Haddad":
+    - paragraph:
+      - link "Ana Ribeiro":
+        - /url: /u/ana
+      - text: shared this
+    - link "OpenHarbor":
+      - /url: /p/openharbor
+    - paragraph:
+      - text: by
+      - link "Farid Haddad":
+        - /url: /u/farid
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlok004tpci3wc2cjqvw
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: Partnership We're now partners with
+    - link "@studypilot":
+      - /url: /p/studypilot
+    - text: "! OpenHarbor will power their school pilot deployments."
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlok004tpci3wc2cjqvw#comments
+    - button "1 Share options"
+    - button "Save"
+  - article "Post by Carla Mendes":
+    - paragraph: Related to your interests
+    - link "Carla Mendes":
+      - /url: /u/carla
+    - paragraph:
+      - text: Growth marketer · freelance ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlp6004zpci3vrhi9e7x
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: Discussion What's the most effective channel you've seen for reaching teachers? Newsletters, conferences, or Facebook groups?
+    - link "#Education":
+      - /url: /tags/education
+    - link "#Marketing":
+      - /url: /tags/marketing
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlp6004zpci3vrhi9e7x#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Farid Haddad":
+    - link "OpenHarbor":
+      - /url: /p/openharbor
+    - paragraph:
+      - text: by
+      - link "Farid Haddad":
+        - /url: /u/farid
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlok004tpci3wc2cjqvw
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: Partnership We're now partners with
+    - link "@studypilot":
+      - /url: /p/studypilot
+    - text: "! OpenHarbor will power their school pilot deployments."
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlok004tpci3wc2cjqvw#comments
+    - button "1 Share options"
+    - button "Save"
+  - article "Post by Diogo Alves":
+    - link "Pixel Garden":
+      - /url: /p/pixel-garden
+    - paragraph:
+      - text: by
+      - link "Diogo Alves":
+        - /url: /u/diogo
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjljy0033pci3eracf7z0
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Looking for: Pixel artist for character sprites · Freelance"
+    - link "Looking for Pixel artist for character sprites Freelance · Remote · Paid Pixel Art Design":
+      - /url: /opportunities/cmwbxjljt0030pci3ldy7uv23
+      - paragraph: Looking for
+      - paragraph: Pixel artist for character sprites
+      - paragraph: Freelance · Remote · Paid
+      - text: Pixel Art Design
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjljy0033pci3eracf7z0#comments
+    - button "0 Share options"
+    - button "Save"
+  - article "Post by Elena Rossi":
+    - link "Greenleaf Retail":
+      - /url: /o/greenleaf-retail
+    - paragraph:
+      - text: by
+      - link "Elena Rossi":
+        - /url: /u/elena
+      - text: ·
+      - link "28 minutes ago":
+        - /url: /posts/cmwbxjlje002vpci3ke3w1lc4
+        - time: 28 minutes ago
+    - button "Post options"
+    - text: "Looking for: Commercial partner for a sustainable payments pilot · Business partnership"
+    - link "Looking for Commercial partner for a sustainable payments pilot Business partnership · Remote Business Development Fintech":
+      - /url: /opportunities/cmwbxjlj8002tpci3ku85wytr
+      - paragraph: Looking for
+      - paragraph: Commercial partner for a sustainable payments pilot
+      - paragraph: Business partnership · Remote
+      - text: Business Development Fintech
+    - button "0 Like"
+    - link "0 comments":
+      - /url: /posts/cmwbxjlje002vpci3ke3w1lc4#comments
+    - button "0 Share options"
+    - button "Save"
+  - complementary:
+    - heading "Opportunities for you" [level=2]
+    - link "More":
+      - /url: /opportunities?sort=match
+    - list:
+      - listitem:
+        - link "Mentoring students who want to get into ML":
+          - /url: /opportunities/cmwbxjlk20034pci3hmygfl5y
+        - text: 85 Strong match
+        - paragraph: Grace Okafor
+        - paragraph: "Has 2 of 2 requested skills: Machine Learning, Python"
+    - heading "People you may know" [level=2]
+    - link "More":
+      - /url: /network
+    - list:
+      - listitem:
+        - link "Bruno Costa":
+          - /url: /u/bruno
+        - paragraph: 1 mutual connection
+        - button "Connect with Bruno Costa": Connect
+    - heading "Popular tags" [level=2]
+    - link "Education":
+      - /url: /tags/education
+    - link "Artificial Intelligence":
+      - /url: /tags/artificial-intelligence
+    - link "Game Development":
+      - /url: /tags/game-development
+    - link "Open Source":
+      - /url: /tags/open-source
+    - link "React":
+      - /url: /tags/react
+    - link "Fintech":
+      - /url: /tags/fintech
+    - link "Kubernetes":
+      - /url: /tags/kubernetes
+    - link "Python":
+      - /url: /tags/python
+    - link "Sustainability":
+      - /url: /tags/sustainability
+    - link "TypeScript":
+      - /url: /tags/typescript
+    - link "Design":
+      - /url: /tags/design
+    - link "Developer Tools":
+      - /url: /tags/developer-tools
+    - link "Machine Learning":
+      - /url: /tags/machine-learning
+    - link "Marketing":
+      - /url: /tags/marketing
+- contentinfo:
+  - text: Collab Hub
+  - link "Terms":
+    - /url: /terms
+  - link "Privacy":
+    - /url: /privacy
+  - link "Discover":
+    - /url: /discover
+  - link "Opportunities":
+    - /url: /opportunities
+- status
+- alert

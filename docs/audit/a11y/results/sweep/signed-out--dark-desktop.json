@@ -1,0 +1,775 @@
+[
+  {
+    "route": "/",
+    "path": "/",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Find the people your project is missing."
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/privacy",
+    "path": "/privacy",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/privacy",
+    "redirected": false,
+    "title": "Privacy Policy · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Privacy Policy"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/terms",
+    "path": "/terms",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/terms",
+    "redirected": false,
+    "title": "Terms of Service · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Terms of Service"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 19,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/login",
+    "path": "/login",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Sign in · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Welcome back"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/signup",
+    "path": "/signup",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/signup",
+    "redirected": false,
+    "title": "Create your account · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Join Collab Hub"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 26,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/forgot-password",
+    "path": "/forgot-password",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/forgot-password",
+    "redirected": false,
+    "title": "Reset your password · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Reset your password"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/reset-password",
+    "path": "/reset-password",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/reset-password",
+    "redirected": false,
+    "title": "Choose a new password · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Link not valid"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 19,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/reset-password (bad token)",
+    "path": "/reset-password?token=invalid-token",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/reset-password?token=invalid-token",
+    "redirected": false,
+    "title": "Choose a new password · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Link not valid"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 19,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/verify-email",
+    "path": "/verify-email",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/verify-email",
+    "redirected": false,
+    "title": "Confirm your email · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Confirm your email"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".link"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/login\">Sign in</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.16:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #9b978d)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      }
+    ],
+    "incomplete": [],
+    "passes": 19,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/verify-email (bad token)",
+    "path": "/verify-email?token=invalid-token",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/verify-email?token=invalid-token",
+    "redirected": false,
+    "title": "Confirm your email · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Confirm your email"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".link"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/login\">Sign in</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 1.16:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #9b978d)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      }
+    ],
+    "incomplete": [],
+    "passes": 19,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/discover",
+    "path": "/discover",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/discover",
+    "redirected": false,
+    "title": "Discover · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Discover"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 27,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/discover?type=projects",
+    "path": "/discover?type=projects",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/discover?type=projects",
+    "redirected": false,
+    "title": "Discover · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Discover"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 38,
+        "targets": [
+          "input[name=\"open\"]",
+          "input[name=\"beginners\"]",
+          "input[name=\"oss\"]",
+          "input[value=\"IDEA\"]",
+          "input[value=\"PLANNING\"]"
+        ],
+        "sampleHtml": "<input type=\"checkbox\" class=\"size-3.5 accent-[var(--c-accent)]\" name=\"open\" value=\"1\">",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (14px by 14px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 23px instead of at least 24px."
+      }
+    ],
+    "incomplete": [],
+    "passes": 28,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/opportunities",
+    "path": "/opportunities",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/opportunities",
+    "redirected": false,
+    "title": "Opportunities · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Opportunities"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 37,
+        "targets": [
+          "input[value=\"PAID\"]",
+          "input[value=\"FREELANCE\"]",
+          "input[value=\"VOLUNTEER\"]",
+          "input[value=\"PROJECT_PARTNERSHIP\"]",
+          "input[value=\"BUSINESS_PARTNERSHIP\"]"
+        ],
+        "sampleHtml": "<input type=\"checkbox\" class=\"size-3.5 accent-[var(--c-accent)]\" name=\"type\" value=\"PAID\">",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (14px by 14px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 23px instead of at least 24px."
+      }
+    ],
+    "incomplete": [],
+    "passes": 27,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/opportunities/[id]",
+    "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "redirected": false,
+    "title": "Opportunity · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Pixel artist for character sprites"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 24,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/u/[username]",
+    "path": "/u/diogo",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/u/diogo",
+    "redirected": false,
+    "title": "@diogo · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Diogo Alves"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".link[href$=\"design\"]",
+          "a[href$=\"gamedevelopment\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/design\">#Design</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.07:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #eceae4)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".hover\\:underline.hover\\:text-ink"
+        ],
+        "sampleHtml": "<a class=\"hover:text-ink hover:underline\" href=\"/posts/cmwbxjlod004rpci306n1iz99\"><time datetime=\"2026-11-11T09:41:54.685Z\">16 minutes ago</time></a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 26,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/u/[username]/connections",
+    "path": "/u/diogo/connections",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/u/diogo/connections",
+    "redirected": false,
+    "title": "Connections · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Network"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 22,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/p/[slug]",
+    "path": "/p/studypilot",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/p/studypilot",
+    "redirected": false,
+    "title": "studypilot · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "StudyPilot"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".link[href$=\"artificial-intelligence\"]",
+          ".link[href$=\"education\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.07:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #eceae4)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 3,
+        "targets": [
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(2) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(3) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".text-\\[14\\.5px\\].prose-plain.leading-relaxed > span:nth-child(3)"
+        ],
+        "sampleHtml": "<span> for the model review. Next: a web app that students actually enjoy. </span>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+      }
+    ],
+    "passes": 27,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/o/[slug]",
+    "path": "/o/nova-labs",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/o/nova-labs",
+    "redirected": false,
+    "title": "nova-labs · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Nova Labs"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".truncate.block[href$=\"nova-labs\"]"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/o/nova-labs\">Nova Labs</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/posts/[id]",
+    "path": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/posts/cmwbxjln1004cpci3nxp2hl6x",
+    "redirected": false,
+    "title": "Post · Collab Hub",
+    "lang": "en",
+    "h1": [],
+    "robots": [],
+    "violations": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 3,
+        "targets": [
+          "a[href$=\"artificial-intelligence\"]",
+          "a[href$=\"education\"]",
+          "p > .link"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.07:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #eceae4)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".block"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/tags/[slug]",
+    "path": "/tags/education",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/tags/education",
+    "redirected": false,
+    "title": "#education · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Education"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 4,
+        "targets": [
+          "article[aria-label=\"Post by Carla Mendes\"] > .prose-plain.text-\\[14\\.5px\\].leading-relaxed > .link[href$=\"education\"]",
+          "a[href$=\"marketing\"]",
+          ".link[href$=\"artificial-intelligence\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"] > .prose-plain.text-\\[14\\.5px\\].leading-relaxed > .link[href$=\"education\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/education\">#Education</a>",
+        "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.07:1 with the surrounding text. (Minimum contrast is 3:1, link text: #5fb39a, surrounding text: #eceae4)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+      },
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 1,
+        "targets": [
+          ".block.hover\\:underline[href$=\"studypilot\"]"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "article[aria-label=\"Post by Carla Mendes\"] > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > p > .hover\\:underline.hover\\:text-ink"
+        ],
+        "sampleHtml": "<a class=\"hover:text-ink hover:underline\" href=\"/posts/cmwbxjlp6004zpci3vrhi9e7x\"><time datetime=\"2026-11-11T09:41:54.714Z\">16 minutes ago</time></a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "404: /u/does-not-exist",
+    "path": "/u/does-not-exist",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/u/does-not-exist",
+    "redirected": false,
+    "title": "@does-not-exist · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "This page isn't available"
+    ],
+    "robots": [
+      "noindex",
+      "noindex"
+    ],
+    "violations": [],
+    "incomplete": [],
+    "passes": 22,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "404: /p/[private]",
+    "path": "/p/a11y-audit-private",
+    "auth": "signed-out",
+    "variant": "dark-desktop",
+    "status": 200,
+    "finalUrl": "/p/a11y-audit-private",
+    "redirected": false,
+    "title": "a11y-audit-private · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "This page isn't available"
+    ],
+    "robots": [
+      "noindex",
+      "noindex"
+    ],
+    "violations": [],
+    "incomplete": [],
+    "passes": 22,
+    "axeVersion": "4.14.0"
+  }
+]

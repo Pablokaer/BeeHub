@@ -1,0 +1,107 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "Collab Hub home":
+    - /url: /feed
+    - text: Collab Hub
+  - search:
+    - text: Search people, projects, organizations and opportunities
+    - searchbox "Search people, projects, organizations and opportunities"
+  - navigation "Main":
+    - link "Home":
+      - /url: /feed
+    - link "Discover":
+      - /url: /discover
+    - link "Opportunities":
+      - /url: /opportunities
+    - link "Network":
+      - /url: /network
+    - link "Messages":
+      - /url: /messages
+    - link "Alerts 16 unread":
+      - /url: /notifications
+      - text: Alerts 16
+  - button "Account menu"
+- main:
+  - region "Diogo Alves":
+    - heading "Diogo Alves" [level=1]
+    - paragraph: "@diogo"
+    - paragraph: Product & game designer
+    - text: Braga, Portugal
+    - link "2 connections":
+      - /url: /u/diogo/connections
+    - link "0 followers":
+      - /url: /u/diogo/connections?tab=followers
+    - link "0 following":
+      - /url: /u/diogo/connections?tab=following
+    - button "Connected"
+    - button "Follow"
+    - button "Message"
+    - button "Block"
+    - button "Report"
+    - text: Looking for freelancers Open to collaborate
+  - region "About":
+    - heading "About" [level=2]
+    - text: Designing playful interfaces. Currently making Pixel Garden.
+  - heading "Skills & interests" [level=2]
+  - link "UI/UX":
+    - /url: /tags/ui-ux
+  - link "Figma":
+    - /url: /tags/figma
+  - link "Game Development":
+    - /url: /tags/game-development
+  - link "Design":
+    - /url: /tags/design
+  - paragraph: Interested in
+  - link "Game Development":
+    - /url: /tags/game-development
+  - link "Education":
+    - /url: /tags/education
+  - heading "Projects" [level=2]
+  - list:
+    - listitem:
+      - link "Pixel Garden":
+        - /url: /p/pixel-garden
+      - paragraph: Founder · In development
+      - paragraph: A cozy pixel-art game about growing a community garden.
+  - region "Activity":
+    - heading "Activity" [level=2]
+    - article "Post by Diogo Alves":
+      - link "Diogo Alves":
+        - /url: /u/diogo
+      - paragraph:
+        - text: Product & game designer ·
+        - link "28 minutes ago":
+          - /url: /posts/cmwbxjlod004rpci306n1iz99
+          - time: 28 minutes ago
+      - button "Post options"
+      - text: "Asking for help Designers: how do you run usability tests for games with kids? Looking for advice and templates."
+      - link "#Design":
+        - /url: /tags/design
+      - link "#GameDevelopment":
+        - /url: /tags/gamedevelopment
+      - button "0 Like"
+      - link "0 comments":
+        - /url: /posts/cmwbxjlod004rpci306n1iz99#comments
+      - button "0 Share options"
+      - button "Save"
+  - complementary:
+    - heading "Details" [level=2]
+    - term: Experience
+    - definition: Mid-level
+    - term: Languages
+    - definition: English
+    - term: Member since
+    - definition: Nov 11, 2026
+- contentinfo:
+  - text: Collab Hub
+  - link "Terms":
+    - /url: /terms
+  - link "Privacy":
+    - /url: /privacy
+  - link "Discover":
+    - /url: /discover
+  - link "Opportunities":
+    - /url: /opportunities
+- status
+- alert

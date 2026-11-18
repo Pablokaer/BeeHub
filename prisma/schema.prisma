@@ -1,0 +1,1165 @@
+// BeeHub data model.
+// Conventions:
+// - cuid string ids, createdAt/updatedAt on mutable entities.
+// - Polymorphic relations use explicit nullable foreign keys plus a CHECK constraint
+//   (added in SQL migrations) instead of untyped "targetId" columns, so referential
+//   integrity and cascades stay enforced by Postgres.
+// - Soft states (status enums) are used where history must be kept (opportunities,
+//   applications, moderated content); hard deletes cascade elsewhere.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ───────────────────────────── Enums ─────────────────────────────
+
+enum UserStatus {
+  ACTIVE
+  DEACTIVATED
+  SUSPENDED
+  DELETED
+}
+
+enum SiteRole {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+enum AuthTokenType {
+  EMAIL_VERIFY
+  PASSWORD_RESET
+}
+
+enum ProfileVisibility {
+  PUBLIC // anyone, including signed-out visitors and search engines
+  MEMBERS // signed-in members only
+}
+
+enum AudienceSetting {
+  EVERYONE
+  CONNECTIONS
+  ONLY_ME
+}
+
+enum MessagePermission {
+  EVERYONE
+  CONNECTIONS
+}
+
+enum Availability {
+  OPEN_TO_COLLABORATE
+  LOOKING_FOR_PROJECTS
+  HIRING_FREELANCERS
+  OPEN_TO_PAID_WORK
+  OPEN_TO_VOLUNTEER
+  LOOKING_FOR_COFOUNDERS
+  OPEN_TO_NETWORKING
+  UNAVAILABLE
+}
+
+enum ExperienceLevel {
+  BEGINNER
+  JUNIOR
+  MID
+  SENIOR
+  EXPERT
+}
+
+enum WorkMode {
+  REMOTE
+  HYBRID
+  ONSITE
+}
+
+enum CollaborationType {
+  PAID
+  FREELANCE
+  VOLUNTEER
+  PROJECT_PARTNERSHIP
+  BUSINESS_PARTNERSHIP
+  COFOUNDER
+  INTERNSHIP
+  ACADEMIC
+  MENTORSHIP
+  SERVICE_EXCHANGE
+}
+
+enum TagCategory {
+  TECHNOLOGY
+  SKILL
+  DOMAIN
+  ROLE
+  OTHER
+}
+
+enum UserTagKind {
+  SKILL
+  INTEREST
+}
+
+enum ProjectTagKind {
+  TECH
+  TOPIC
+}
+
+enum OpportunityTagKind {
+  SKILL
+  TOPIC
+}
+
+enum OrgType {
+  COMPANY
+  STARTUP
+  NONPROFIT
+  ASSOCIATION
+  COMMUNITY
+  ACADEMIC
+  OTHER
+}
+
+enum OrgSize {
+  SOLO
+  S2_10
+  S11_50
+  S51_200
+  S201_1000
+  S1000_PLUS
+}
+
+enum MemberRole {
+  OWNER
+  ADMIN
+  EDITOR
+  MEMBER
+}
+
+enum EntityStatus {
+  ACTIVE
+  ARCHIVED
+  REMOVED // removed by moderation
+}
+
+enum ProjectStage {
+  IDEA
+  PLANNING
+  PROTOTYPE
+  IN_DEVELOPMENT
+  MVP
+  LAUNCHED
+  SCALING
+  COMPLETED
+  PAUSED
+}
+
+enum ProjectCategory {
+  AI_ML
+  WEB
+  MOBILE
+  GAMES
+  DEVTOOLS
+  OPEN_SOURCE
+  FINTECH
+  HEALTH
+  EDUCATION
+  SOCIAL_IMPACT
+  ECOMMERCE
+  MEDIA
+  HARDWARE
+  BLOCKCHAIN
+  RESEARCH
+  OTHER
+}
+
+enum ProjectVisibility {
+  PUBLIC
+  PRIVATE
+}
+
+enum PartnershipStatus {
+  PENDING
+  ACTIVE
+  DECLINED
+  CANCELED
+  ENDED
+}
+
+enum OpportunityStatus {
+  DRAFT
+  OPEN
+  CLOSED
+  FILLED
+  ARCHIVED
+  REMOVED
+}
+
+enum OpportunityCategory {
+  ENGINEERING
+  DESIGN
+  PRODUCT
+  MARKETING
+  SALES_BUSINESS
+  OPERATIONS
+  RESEARCH
+  CONTENT
+  INVESTMENT
+  TESTING_QA
+  PARTNERSHIP
+  OTHER
+}
+
+enum DurationEstimate {
+  ONE_OFF
+  SHORT_TERM
+  MEDIUM_TERM
+  LONG_TERM
+  ONGOING
+}
+
+enum Commitment {
+  FEW_HOURS
+  PART_TIME
+  FULL_TIME
+  FLEXIBLE
+}
+
+enum CompensationType {
+  NONE
+  HOURLY
+  FIXED
+  SALARY
+  EQUITY
+  STIPEND
+  NEGOTIABLE
+}
+
+enum ApplicationStatus {
+  RECEIVED
+  IN_REVIEW
+  CONTACTED
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+enum PostType {
+  TEXT
+  PROJECT_UPDATE
+  OPPORTUNITY
+  PARTNERSHIP
+  ACHIEVEMENT
+  HELP_REQUEST
+  DISCUSSION
+  LAUNCH
+}
+
+enum ContentStatus {
+  PUBLISHED
+  REMOVED // moderated
+  DELETED // deleted by author
+}
+
+enum ReactionType {
+  LIKE
+}
+
+enum FollowStatus {
+  ACTIVE
+  PENDING
+}
+
+enum ConnectionStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}
+
+enum InvitationType {
+  PROJECT_MEMBER
+  ORG_MEMBER
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  CANCELED
+}
+
+enum NotificationType {
+  CONNECTION_REQUEST
+  CONNECTION_ACCEPTED
+  FOLLOW_REQUEST
+  NEW_FOLLOWER
+  POST_COMMENT
+  COMMENT_REPLY
+  POST_LIKE
+  POST_SHARE
+  MENTION
+  NEW_MESSAGE
+  APPLICATION_RECEIVED
+  APPLICATION_STATUS
+  OPPORTUNITY_MATCH
+  INVITATION
+  INVITATION_ACCEPTED
+  PARTNERSHIP_REQUEST
+  PARTNERSHIP_ACCEPTED
+  ENTITY_UPDATE
+}
+
+enum ReportTarget {
+  USER
+  POST
+  COMMENT
+  PROJECT
+  ORGANIZATION
+  OPPORTUNITY
+  MESSAGE
+}
+
+enum ReportReason {
+  SPAM
+  HARASSMENT
+  HATE
+  MISINFORMATION
+  INAPPROPRIATE
+  IMPERSONATION
+  SCAM
+  OTHER
+}
+
+enum ReportStatus {
+  OPEN
+  ACTIONED
+  DISMISSED
+}
+
+enum EmailStatus {
+  QUEUED
+  SENT
+  FAILED
+  LOGGED // no transport configured (development)
+}
+
+// ───────────────────────────── Identity & auth ─────────────────────────────
+
+model User {
+  id              String     @id @default(cuid())
+  email           String     @unique @db.Citext
+  username        String     @unique @db.Citext
+  passwordHash    String?
+  emailVerifiedAt DateTime?
+  status          UserStatus @default(ACTIVE)
+  role            SiteRole   @default(USER)
+  lastLoginAt     DateTime?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  profile               Profile?
+  sessions              Session[]
+  authTokens            AuthToken[]
+  externalAccounts      ExternalAccount[]
+  notificationPrefs     NotificationPreference[]
+  skills                UserTag[]
+  experiences           Experience[]
+  educations            Education[]
+  orgMemberships        OrganizationMember[]
+  projectMemberships    ProjectMember[]
+  createdOrganizations  Organization[]           @relation("OrgCreator")
+  createdProjects       Project[]                @relation("ProjectCreator")
+  createdOpportunities  Opportunity[]            @relation("OpportunityCreator")
+  applications          Application[]            @relation("Applicant")
+  applicationEvents     ApplicationEvent[]
+  posts                 Post[]                   @relation("PostAuthor")
+  comments              Comment[]
+  reactions             Reaction[]
+  savedPosts            SavedPost[]
+  following             Follow[]                 @relation("Follower")
+  followers             Follow[]                 @relation("FollowedUser")
+  connectionsA          Connection[]             @relation("ConnectionA")
+  connectionsB          Connection[]             @relation("ConnectionB")
+  connectionRequests    Connection[]             @relation("ConnectionRequester")
+  blocksMade            Block[]                  @relation("Blocker")
+  blocksReceived        Block[]                  @relation("Blocked")
+  conversations         ConversationParticipant[]
+  messages              Message[]
+  notifications         Notification[]           @relation("NotificationRecipient")
+  notificationsCaused   Notification[]           @relation("NotificationActor")
+  invitationsReceived   Invitation[]             @relation("Invitee")
+  invitationsSent       Invitation[]             @relation("Inviter")
+  partnershipsRequested Partnership[]            @relation("PartnershipRequester")
+  partnershipsResponded Partnership[]            @relation("PartnershipResponder")
+  reportsFiled          Report[]                 @relation("Reporter")
+  reportsResolved       Report[]                 @relation("Resolver")
+  auditLogs             AuditLog[]
+  mediaAssets           MediaAsset[]
+  mentions              Mention[]
+  filledOpportunities   Opportunity[]            @relation("OpportunityFilledBy")
+  handle                Handle?
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Session {
+  id         String   @id @default(cuid())
+  userId     String
+  tokenHash  String   @unique
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime
+  lastSeenAt DateTime @default(now())
+  ip         String?
+  userAgent  String?
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model AuthToken {
+  id        String        @id @default(cuid())
+  userId    String
+  type      AuthTokenType
+  tokenHash String        @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime      @default(now())
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+}
+
+/// Prepared for future OAuth providers (GitHub, Google, ...). Not used by the UI yet.
+model ExternalAccount {
+  id                String   @id @default(cuid())
+  userId            String
+  provider          String
+  providerAccountId String
+  createdAt         DateTime @default(now())
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+/// Unified namespace for @mentions and URLs: a handle belongs to exactly one user,
+/// organization or project (CHECK constraint in SQL migration).
+model Handle {
+  handle         String        @id @db.Citext
+  userId         String?       @unique
+  organizationId String?       @unique
+  projectId      String?       @unique
+  user           User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project        Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────────── Profiles ─────────────────────────────
+
+model Profile {
+  userId             String              @id
+  displayName        String
+  headline           String?
+  bio                String?
+  location           String?
+  avatarKey          String?
+  coverKey           String?
+  // Illustrations from the Colmeia catalog (public/brand/colmeia/catalogo.json), stored by id.
+  // Kept apart from uploaded media keys; at most one of avatarKey/avatarArt (and coverKey/coverArt) is set.
+  avatarArt          String?
+  coverArt           String?
+  languages          String[]            @default([])
+  links              Json                @default("[]")
+  availability       Availability[]      @default([])
+  experienceLevel    ExperienceLevel?
+  preferredWorkModes WorkMode[]          @default([])
+  preferredCollabs   CollaborationType[] @default([])
+  // Privacy
+  visibility         ProfileVisibility   @default(PUBLIC)
+  showLocation       Boolean             @default(true)
+  connectionsVisible AudienceSetting     @default(EVERYONE)
+  messagePermission  MessagePermission   @default(EVERYONE)
+  followApproval     Boolean             @default(false)
+  searchable         Boolean             @default(true)
+  updatedAt          DateTime            @updatedAt
+  user               User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([displayName])
+}
+
+model Experience {
+  id             String        @id @default(cuid())
+  userId         String
+  title          String
+  company        String
+  organizationId String?
+  location       String?
+  startDate      DateTime
+  endDate        DateTime?
+  description    String?
+  position       Int           @default(0)
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+}
+
+model Education {
+  id          String  @id @default(cuid())
+  userId      String
+  school      String
+  degree      String?
+  field       String?
+  startYear   Int?
+  endYear     Int?
+  description String?
+  position    Int     @default(0)
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// ───────────────────────────── Tags ─────────────────────────────
+
+model Tag {
+  id         String      @id @default(cuid())
+  slug       String      @unique
+  name       String
+  category   TagCategory @default(OTHER)
+  usageCount Int         @default(0)
+  createdAt  DateTime    @default(now())
+
+  users         UserTag[]
+  projects      ProjectTag[]
+  organizations OrganizationTag[]
+  opportunities OpportunityTag[]
+  posts         PostTag[]
+
+  @@index([usageCount])
+}
+
+model UserTag {
+  userId String
+  tagId  String
+  kind   UserTagKind
+  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tag    Tag         @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([userId, tagId, kind])
+  @@index([tagId, kind])
+}
+
+model ProjectTag {
+  projectId String
+  tagId     String
+  kind      ProjectTagKind
+  project   Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  tag       Tag            @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, tagId, kind])
+  @@index([tagId, kind])
+}
+
+model OrganizationTag {
+  organizationId String
+  tagId          String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  tag            Tag          @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([organizationId, tagId])
+  @@index([tagId])
+}
+
+model OpportunityTag {
+  opportunityId String
+  tagId         String
+  kind          OpportunityTagKind
+  opportunity   Opportunity        @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  tag           Tag                @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([opportunityId, tagId, kind])
+  @@index([tagId, kind])
+}
+
+model PostTag {
+  postId String
+  tagId  String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@index([tagId])
+}
+
+// ───────────────────────────── Organizations ─────────────────────────────
+
+model Organization {
+  id          String       @id @default(cuid())
+  slug        String       @unique @db.Citext
+  name        String
+  type        OrgType      @default(COMPANY)
+  tagline     String?
+  description String?
+  industry    String?
+  website     String?
+  location    String?
+  size        OrgSize?
+  logoKey     String?
+  coverKey    String?
+  status      EntityStatus @default(ACTIVE)
+  createdById String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  createdBy     User?                @relation("OrgCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  members       OrganizationMember[]
+  tags          OrganizationTag[]
+  projects      Project[]
+  opportunities Opportunity[]
+  posts         Post[]
+  followers     Follow[]
+  invitations   Invitation[]
+  experiences   Experience[]
+  applications  Application[]        @relation("ApplicantOrg")
+  partnershipsA Partnership[]        @relation("PartnerOrgA")
+  partnershipsB Partnership[]        @relation("PartnerOrgB")
+  mentions      Mention[]
+  handle        Handle?
+
+  @@index([status])
+  @@index([type])
+}
+
+model OrganizationMember {
+  organizationId String
+  userId         String
+  role           MemberRole   @default(MEMBER)
+  title          String?
+  createdAt      DateTime     @default(now())
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([organizationId, userId])
+  @@index([userId])
+}
+
+// ───────────────────────────── Projects ─────────────────────────────
+
+model Project {
+  id             String            @id @default(cuid())
+  slug           String            @unique @db.Citext
+  name           String
+  summary        String
+  description    String?
+  goals          String?
+  needs          String?
+  category       ProjectCategory   @default(OTHER)
+  stage          ProjectStage      @default(IDEA)
+  visibility     ProjectVisibility @default(PUBLIC)
+  websiteUrl     String?
+  repoUrl        String?
+  isOpenSource   Boolean           @default(false)
+  acceptsBeginners Boolean         @default(false)
+  logoKey        String?
+  coverKey       String?
+  status         EntityStatus      @default(ACTIVE)
+  createdById    String?
+  organizationId String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  createdBy     User?           @relation("ProjectCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  organization  Organization?   @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  members       ProjectMember[]
+  tags          ProjectTag[]
+  images        ProjectImage[]
+  opportunities Opportunity[]
+  posts         Post[]
+  followers     Follow[]
+  invitations   Invitation[]
+  partnershipsA Partnership[]   @relation("PartnerProjectA")
+  partnershipsB Partnership[]   @relation("PartnerProjectB")
+  mentions      Mention[]
+  handle        Handle?
+
+  @@index([status, visibility])
+  @@index([category])
+  @@index([stage])
+  @@index([organizationId])
+  @@index([createdAt])
+}
+
+model ProjectMember {
+  projectId     String
+  userId        String
+  role          MemberRole   @default(MEMBER)
+  title         String?
+  opportunityId String?
+  joinedAt      DateTime     @default(now())
+  project       Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  opportunity   Opportunity? @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+
+  @@id([projectId, userId])
+  @@index([userId])
+}
+
+model ProjectImage {
+  id        String  @id @default(cuid())
+  projectId String
+  key       String
+  caption   String?
+  position  Int     @default(0)
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+}
+
+/// A formal collaboration between two entities (project↔project, org↔org, project↔org).
+/// `pairKey` is the sorted pair of entity refs, so two entities can only have one partnership row.
+model Partnership {
+  id            String            @id @default(cuid())
+  pairKey       String            @unique
+  status        PartnershipStatus @default(PENDING)
+  message       String?
+  // Side A = requesting entity, side B = target entity.
+  projectAId    String?
+  orgAId        String?
+  projectBId    String?
+  orgBId        String?
+  requestedById String?
+  respondedById String?
+  createdAt     DateTime          @default(now())
+  respondedAt   DateTime?
+  endedAt       DateTime?
+
+  projectA    Project?      @relation("PartnerProjectA", fields: [projectAId], references: [id], onDelete: Cascade)
+  orgA        Organization? @relation("PartnerOrgA", fields: [orgAId], references: [id], onDelete: Cascade)
+  projectB    Project?      @relation("PartnerProjectB", fields: [projectBId], references: [id], onDelete: Cascade)
+  orgB        Organization? @relation("PartnerOrgB", fields: [orgBId], references: [id], onDelete: Cascade)
+  requestedBy User?         @relation("PartnershipRequester", fields: [requestedById], references: [id], onDelete: SetNull)
+  respondedBy User?         @relation("PartnershipResponder", fields: [respondedById], references: [id], onDelete: SetNull)
+
+  @@index([projectAId])
+  @@index([projectBId])
+  @@index([orgAId])
+  @@index([orgBId])
+}
+
+model Invitation {
+  id             String           @id @default(cuid())
+  type           InvitationType
+  projectId      String?
+  organizationId String?
+  inviteeId      String
+  inviterId      String?
+  role           MemberRole       @default(MEMBER)
+  title          String?
+  message        String?
+  status         InvitationStatus @default(PENDING)
+  createdAt      DateTime         @default(now())
+  respondedAt    DateTime?
+
+  project      Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  invitee      User          @relation("Invitee", fields: [inviteeId], references: [id], onDelete: Cascade)
+  inviter      User?         @relation("Inviter", fields: [inviterId], references: [id], onDelete: SetNull)
+
+  @@index([inviteeId, status])
+  @@index([projectId])
+  @@index([organizationId])
+}
+
+// ───────────────────────────── Opportunities ─────────────────────────────
+
+model Opportunity {
+  id               String              @id @default(cuid())
+  title            String
+  description      String
+  category         OpportunityCategory
+  collaborationType CollaborationType
+  workMode         WorkMode            @default(REMOTE)
+  location         String?
+  experienceLevel  ExperienceLevel?
+  duration         DurationEstimate?
+  commitment       Commitment?
+  compensationType CompensationType    @default(NONE)
+  compensation     String?
+  isPaid           Boolean             @default(false)
+  deadline         DateTime?
+  status           OpportunityStatus   @default(OPEN)
+  publishedAt      DateTime?
+  closedAt         DateTime?
+  createdById      String?
+  projectId        String?
+  organizationId   String?
+  filledById       String?
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+
+  createdBy     User?            @relation("OpportunityCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  project       Project?         @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  organization  Organization?    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  filledBy      User?            @relation("OpportunityFilledBy", fields: [filledById], references: [id], onDelete: SetNull)
+  tags          OpportunityTag[]
+  applications  Application[]
+  posts         Post[]
+  filledMembers ProjectMember[]
+
+  @@index([status, publishedAt])
+  @@index([projectId])
+  @@index([organizationId])
+  @@index([createdById])
+  @@index([category])
+  @@index([collaborationType])
+}
+
+model Application {
+  id               String            @id @default(cuid())
+  opportunityId    String
+  applicantId      String
+  organizationId   String?           // applying on behalf of an organization
+  message          String
+  portfolioUrl     String?
+  status           ApplicationStatus @default(RECEIVED)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  opportunity  Opportunity        @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  applicant    User               @relation("Applicant", fields: [applicantId], references: [id], onDelete: Cascade)
+  organization Organization?      @relation("ApplicantOrg", fields: [organizationId], references: [id], onDelete: SetNull)
+  events       ApplicationEvent[]
+
+  @@unique([opportunityId, applicantId])
+  @@index([applicantId, status])
+  @@index([opportunityId, status])
+}
+
+model ApplicationEvent {
+  id            String             @id @default(cuid())
+  applicationId String
+  actorId       String?
+  fromStatus    ApplicationStatus?
+  toStatus      ApplicationStatus
+  note          String?
+  createdAt     DateTime           @default(now())
+  application   Application        @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  actor         User?              @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([applicationId])
+}
+
+// ───────────────────────────── Social ─────────────────────────────
+
+model Post {
+  id             String        @id @default(cuid())
+  authorId       String
+  organizationId String?       // posted on behalf of an organization
+  projectId      String?       // posted on behalf of a project
+  type           PostType      @default(TEXT)
+  body           String        @default("")
+  linkUrl        String?
+  opportunityId  String?
+  repostOfId     String?
+  status         ContentStatus @default(PUBLISHED)
+  likeCount      Int           @default(0)
+  commentCount   Int           @default(0)
+  shareCount     Int           @default(0)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  author       User          @relation("PostAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  opportunity  Opportunity?  @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  repostOf     Post?         @relation("Repost", fields: [repostOfId], references: [id], onDelete: SetNull)
+  reposts      Post[]        @relation("Repost")
+  images       PostImage[]
+  comments     Comment[]
+  reactions    Reaction[]
+  savedBy      SavedPost[]
+  tags         PostTag[]
+  mentions     Mention[]
+
+  @@index([status, createdAt])
+  @@index([authorId, createdAt])
+  @@index([organizationId, createdAt])
+  @@index([projectId, createdAt])
+  @@index([repostOfId])
+}
+
+model PostImage {
+  id       String  @id @default(cuid())
+  postId   String
+  key      String
+  alt      String?
+  position Int     @default(0)
+  post     Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+}
+
+model Comment {
+  id        String        @id @default(cuid())
+  postId    String
+  authorId  String
+  parentId  String?
+  body      String
+  status    ContentStatus @default(PUBLISHED)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  post     Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author   User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parent   Comment?  @relation("Replies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies  Comment[] @relation("Replies")
+  mentions Mention[]
+
+  @@index([postId, createdAt])
+  @@index([parentId])
+}
+
+/// Resolved @mention inside a post or comment.
+model Mention {
+  id             String        @id @default(cuid())
+  postId         String?
+  commentId      String?
+  handle         String
+  userId         String?
+  organizationId String?
+  projectId      String?
+
+  post         Post?         @relation(fields: [postId], references: [id], onDelete: Cascade)
+  comment      Comment?      @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user         User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@index([commentId])
+  @@index([userId])
+}
+
+model Reaction {
+  postId    String
+  userId    String
+  type      ReactionType @default(LIKE)
+  createdAt DateTime     @default(now())
+  post      Post         @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([postId, userId])
+  @@index([userId])
+}
+
+model SavedPost {
+  userId    String
+  postId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@id([userId, postId])
+}
+
+/// Follow a user, an organization or a project (exactly one target; CHECK in SQL).
+model Follow {
+  id             String       @id @default(cuid())
+  followerId     String
+  userId         String?
+  organizationId String?
+  projectId      String?
+  status         FollowStatus @default(ACTIVE)
+  createdAt      DateTime     @default(now())
+
+  follower     User          @relation("Follower", fields: [followerId], references: [id], onDelete: Cascade)
+  user         User?         @relation("FollowedUser", fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  project      Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, userId])
+  @@unique([followerId, organizationId])
+  @@unique([followerId, projectId])
+  @@index([userId, status])
+  @@index([organizationId])
+  @@index([projectId])
+}
+
+/// Reciprocal professional connection. Stored once per unordered pair (userAId < userBId).
+model Connection {
+  userAId     String
+  userBId     String
+  requesterId String
+  status      ConnectionStatus @default(PENDING)
+  message     String?
+  createdAt   DateTime         @default(now())
+  respondedAt DateTime?
+
+  userA     User @relation("ConnectionA", fields: [userAId], references: [id], onDelete: Cascade)
+  userB     User @relation("ConnectionB", fields: [userBId], references: [id], onDelete: Cascade)
+  requester User @relation("ConnectionRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+
+  @@id([userAId, userBId])
+  @@index([userBId, status])
+  @@index([requesterId])
+}
+
+model Block {
+  blockerId String
+  blockedId String
+  createdAt DateTime @default(now())
+  blocker   User     @relation("Blocker", fields: [blockerId], references: [id], onDelete: Cascade)
+  blocked   User     @relation("Blocked", fields: [blockedId], references: [id], onDelete: Cascade)
+
+  @@id([blockerId, blockedId])
+  @@index([blockedId])
+}
+
+// ───────────────────────────── Messaging ─────────────────────────────
+
+model Conversation {
+  id            String                    @id @default(cuid())
+  /// Sorted participant ids for 1:1 conversations; prevents duplicates.
+  pairKey       String                    @unique
+  createdAt     DateTime                  @default(now())
+  lastMessageAt DateTime                  @default(now())
+  participants  ConversationParticipant[]
+  messages      Message[]
+
+  @@index([lastMessageAt])
+}
+
+model ConversationParticipant {
+  conversationId String
+  userId         String
+  lastReadAt     DateTime?
+  joinedAt       DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([conversationId, userId])
+  @@index([userId])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  senderId       String
+  body           String
+  createdAt      DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+}
+
+// ───────────────────────────── Notifications ─────────────────────────────
+
+model Notification {
+  id             String           @id @default(cuid())
+  userId         String
+  type           NotificationType
+  actorId        String?
+  /// Relative URL the notification links to.
+  href           String
+  /// Snapshot text rendered in the UI (keeps notifications readable if the source changes).
+  text           String
+  readAt         DateTime?
+  emailStatus    EmailStatus?
+  createdAt      DateTime         @default(now())
+  user           User             @relation("NotificationRecipient", fields: [userId], references: [id], onDelete: Cascade)
+  actor          User?            @relation("NotificationActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([userId, readAt])
+  @@index([userId, createdAt])
+}
+
+model NotificationPreference {
+  userId String
+  type   NotificationType
+  inApp  Boolean          @default(true)
+  email  Boolean          @default(false)
+  user   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, type])
+}
+
+// ───────────────────────────── Moderation & ops ─────────────────────────────
+
+model Report {
+  id             String       @id @default(cuid())
+  reporterId     String?
+  targetType     ReportTarget
+  targetId       String
+  reason         ReportReason
+  details        String?
+  status         ReportStatus @default(OPEN)
+  resolvedById   String?
+  resolvedAt     DateTime?
+  resolutionNote String?
+  createdAt      DateTime     @default(now())
+  reporter       User?        @relation("Reporter", fields: [reporterId], references: [id], onDelete: SetNull)
+  resolvedBy     User?        @relation("Resolver", fields: [resolvedById], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@index([targetType, targetId])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json     @default("{}")
+  ip         String?
+  createdAt  DateTime @default(now())
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([entityType, entityId])
+  @@index([actorId])
+  @@index([createdAt])
+}
+
+model MediaAsset {
+  id        String   @id @default(cuid())
+  ownerId   String?
+  key       String   @unique
+  mimeType  String
+  sizeBytes Int
+  width     Int?
+  height    Int?
+  /// For pixel portraits (avatar uploads): key of the private original photo they were made from.
+  /// The original is never attached anywhere, so only its owner can read it.
+  sourceKey String?
+  createdAt DateTime @default(now())
+  owner     User?    @relation(fields: [ownerId], references: [id], onDelete: SetNull)
+
+  @@index([ownerId])
+}
+
+model EmailOutbox {
+  id        String      @id @default(cuid())
+  to        String
+  subject   String
+  text      String
+  kind      String
+  status    EmailStatus @default(QUEUED)
+  error     String?
+  createdAt DateTime    @default(now())
+  sentAt    DateTime?
+
+  @@index([createdAt])
+  @@index([to])
+}
+
+model RateLimit {
+  key         String   @id
+  count       Int
+  windowStart DateTime
+}

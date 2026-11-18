@@ -1,0 +1,77 @@
+-- search-opportunities-q (408.45745800000077 ms in Prisma)
+-- params: ["OPEN","2026-11-11T00:00:00.000Z","ACTIVE","PUBLIC","ACTIVE","ACTIVE","design","design","design","design","design","design","0"]
+SELECT COUNT(*) AS "_count$_all" FROM (SELECT "public"."Opportunity"."id" FROM "public"."Opportunity" LEFT JOIN "public"."Project" AS "j0" ON ("j0"."id") = ("public"."Opportunity"."projectId") LEFT JOIN "public"."Organization" AS "j1" ON ("j1"."id") = ("public"."Opportunity"."organizationId") LEFT JOIN "public"."User" AS "j2" ON ("j2"."id") = ("public"."Opportunity"."createdById") LEFT JOIN "public"."Project" AS "j5" ON ("j5"."id") = ("public"."Opportunity"."projectId") LEFT JOIN "public"."Organization" AS "j6" ON ("j6"."id") = ("public"."Opportunity"."organizationId") WHERE ("public"."Opportunity"."status" = CAST($1::text AS "public"."OpportunityStatus") AND ("public"."Opportunity"."deadline" IS NULL OR "public"."Opportunity"."deadline" >= $2) AND ("public"."Opportunity"."projectId" IS NULL OR ("j0"."status" = CAST($3::text AS "public"."EntityStatus") AND "j0"."visibility" = CAST($4::text AS "public"."ProjectVisibility") AND ("j0"."id" IS NOT NULL))) AND ("public"."Opportunity"."organizationId" IS NULL OR ("j1"."status" = CAST($5::text AS "public"."EntityStatus") AND ("j1"."id" IS NOT NULL))) AND ("public"."Opportunity"."createdById" IS NULL OR ("j2"."status" = CAST($6::text AS "public"."UserStatus") AND ("j2"."id" IS NOT NULL))) AND ("public"."Opportunity"."title" ILIKE ('%' || $7 || '%') OR "public"."Opportunity"."description" ILIKE ('%' || $8 || '%') OR EXISTS(SELECT "t3"."opportunityId" FROM "public"."OpportunityTag" AS "t3" LEFT JOIN "public"."Tag" AS "j4" ON ("j4"."id") = ("t3"."tagId") WHERE (("j4"."name" ILIKE ('%' || $9 || '%') OR "j4"."slug"::text LIKE ($10 || '%')) AND ("j4"."id" IS NOT NULL) AND ("public"."Opportunity"."id") = ("t3"."opportunityId") AND "t3"."opportunityId" IS NOT NULL)) OR ("j5"."name" ILIKE ('%' || $11 || '%') AND ("j5"."id" IS NOT NULL)) OR ("j6"."name" ILIKE ('%' || $12 || '%') AND ("j6"."id" IS NOT NULL)))) OFFSET $13) AS "sub"
+
+Aggregate  (cost=16351.68..16351.69 rows=1 width=8) (actual time=325.627..325.634 rows=1 loops=1)
+  Buffers: shared hit=7741 read=6632
+  ->  Hash Left Join  (cost=10319.00..16163.10 rows=15086 width=32) (actual time=82.323..324.670 rows=12306 loops=1)
+        Hash Cond: ("Opportunity"."createdById" = j2.id)
+        Filter: (("Opportunity"."createdById" IS NULL) OR ((j2.status = ('ACTIVE'::cstring)::"UserStatus") AND (j2.id IS NOT NULL)))
+        Rows Removed by Filter: 56
+        Buffers: shared hit=7741 read=6632
+        ->  Hash Left Join  (cost=7679.00..13483.31 rows=15159 width=6) (actual time=47.252..281.287 rows=12362 loops=1)
+              Hash Cond: ("Opportunity"."organizationId" = j1.id)
+              Filter: (("Opportunity"."organizationId" IS NULL) OR ((j1.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j1.id IS NOT NULL)))
+              Rows Removed by Filter: 52
+              Buffers: shared hit=6226 read=6632
+              ->  Hash Left Join  (cost=7149.50..12913.80 rows=15235 width=11) (actual time=41.473..272.292 rows=12414 loops=1)
+                    Hash Cond: ("Opportunity"."projectId" = j0.id)
+                    Filter: (("Opportunity"."projectId" IS NULL) OR ((j0.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j0.visibility = ('PUBLIC'::cstring)::"ProjectVisibility") AND (j0.id IS NOT NULL)))
+                    Rows Removed by Filter: 790
+                    Buffers: shared hit=5809 read=6632
+                    ->  Hash Left Join  (cost=3839.50..9560.01 rows=16683 width=17) (actual time=30.987..251.428 rows=13204 loops=1)
+                          Hash Cond: ("Opportunity"."organizationId" = j6.id)
+                          Filter: (("Opportunity".title ~~* '%design%'::text) OR ("Opportunity".description ~~* '%design%'::text) OR (hashed SubPlan 2) OR ((j5.name ~~* '%design%'::text) AND (j5.id IS NOT NULL)) OR ((j6.name ~~* '%design%'::text) AND (j6.id IS NOT NULL)))
+                          Rows Removed by Filter: 13762
+                          Buffers: shared hit=2949 read=6632
+                          ->  Hash Left Join  (cost=3310.00..8916.52 rows=23051 width=641) (actual time=6.673..52.254 rows=26966 loops=1)
+                                Hash Cond: ("Opportunity"."projectId" = j5.id)
+                                Buffers: shared hit=2874 read=4532
+                                ->  Seq Scan on "Opportunity"  (cost=0.00..5546.00 rows=23051 width=614) (actual time=0.013..35.187 rows=26966 loops=1)
+                                      Filter: (((deadline IS NULL) OR (deadline >= '2026-11-11 00:00:00'::timestamp without time zone)) AND (status = ('OPEN'::cstring)::"OpportunityStatus"))
+                                      Rows Removed by Filter: 23040
+                                      Buffers: shared hit=15 read=4531
+                                ->  Hash  (cost=3060.00..3060.00 rows=20000 width=27) (actual time=6.653..6.654 rows=20000 loops=1)
+                                      Buckets: 32768  Batches: 1  Memory Usage: 1425kB
+                                      Buffers: shared hit=2859 read=1
+                                      ->  Seq Scan on "Project" j5  (cost=0.00..3060.00 rows=20000 width=27) (actual time=0.002..4.704 rows=20000 loops=1)
+                                            Buffers: shared hit=2859 read=1
+                          ->  Hash  (cost=467.00..467.00 rows=5000 width=29) (actual time=3.142..3.143 rows=5000 loops=1)
+                                Buckets: 8192  Batches: 1  Memory Usage: 370kB
+                                Buffers: shared hit=54 read=363
+                                ->  Seq Scan on "Organization" j6  (cost=0.00..467.00 rows=5000 width=29) (actual time=0.007..2.551 rows=5000 loops=1)
+                                      Buffers: shared hit=54 read=363
+                          SubPlan 2
+                            ->  Nested Loop  (cost=5.64..583.75 rows=173 width=7) (actual time=0.371..19.802 rows=3872 loops=1)
+                                  Buffers: shared hit=21 read=1737
+                                  ->  Seq Scan on "Tag" j4  (cost=0.00..49.00 rows=1 width=5) (actual time=0.036..0.707 rows=1 loops=1)
+                                        Filter: ((id IS NOT NULL) AND ((name ~~* '%design%'::text) OR (slug ~~ 'design%'::text)))
+                                        Rows Removed by Filter: 2000
+                                        Buffers: shared hit=19
+                                  ->  Bitmap Heap Scan on "OpportunityTag" t3  (cost=5.64..533.02 rows=173 width=11) (actual time=0.332..18.709 rows=3872 loops=1)
+                                        Recheck Cond: ("tagId" = j4.id)
+                                        Filter: ("opportunityId" IS NOT NULL)
+                                        Heap Blocks: exact=1735
+                                        Buffers: shared hit=2 read=1737
+                                        ->  Bitmap Index Scan on "OpportunityTag_tagId_kind_idx"  (cost=0.00..5.60 rows=173 width=0) (actual time=0.214..0.214 rows=3872 loops=1)
+                                              Index Cond: ("tagId" = j4.id)
+                                              Buffers: shared hit=1 read=3
+                    ->  Hash  (cost=3060.00..3060.00 rows=20000 width=14) (actual time=10.462..10.462 rows=20000 loops=1)
+                          Buckets: 32768  Batches: 1  Memory Usage: 1164kB
+                          Buffers: shared hit=2860
+                          ->  Seq Scan on "Project" j0  (cost=0.00..3060.00 rows=20000 width=14) (actual time=0.009..8.065 rows=20000 loops=1)
+                                Buffers: shared hit=2860
+              ->  Hash  (cost=467.00..467.00 rows=5000 width=9) (actual time=5.749..5.749 rows=5000 loops=1)
+                    Buckets: 8192  Batches: 1  Memory Usage: 268kB
+                    Buffers: shared hit=417
+                    ->  Seq Scan on "Organization" j1  (cost=0.00..467.00 rows=5000 width=9) (actual time=0.009..3.607 rows=5000 loops=1)
+                          Buffers: shared hit=417
+        ->  Hash  (cost=2015.00..2015.00 rows=50000 width=10) (actual time=35.041..35.042 rows=50000 loops=1)
+              Buckets: 65536  Batches: 1  Memory Usage: 2601kB
+              Buffers: shared hit=1515
+              ->  Seq Scan on "User" j2  (cost=0.00..2015.00 rows=50000 width=10) (actual time=0.008..26.111 rows=50000 loops=1)
+                    Buffers: shared hit=1515
+Planning:
+  Buffers: shared hit=169 read=34
+Planning Time: 2.894 ms
+Execution Time: 325.944 ms

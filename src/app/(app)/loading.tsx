@@ -1,0 +1,10 @@
+import { ListSkeleton, Skeleton } from "@/components/ui/misc";
+
+export default function Loading() {
+  return (
+    <div className="flex flex-col gap-4" aria-busy="true">
+      <Skeleton className="h-7 w-56" />
+      <ListSkeleton rows={4} />
+    </div>
+  );
+}

@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "covers": [
+    {
+      "id": "costa-ao-entardecer",
+      "label": "Costa ao entardecer",
+      "src": "/brand/colmeia/capas/costa-ao-entardecer.webp",
+      "width": 1600,
+      "height": 593,
+      "alt": "Apiário de azulejos acima do mar turquesa, ao pôr do sol",
+      "focalPoint": {
+        "x": 0.62,
+        "y": 0.58
+      }
+    },
+    {
+      "id": "lagoa-ao-amanhecer",
+      "label": "Lagoa ao amanhecer",
+      "src": "/brand/colmeia/capas/lagoa-ao-amanhecer.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Apiário de madeira e flores refletidos numa lagoa ao amanhecer",
+      "focalPoint": {
+        "x": 0.59,
+        "y": 0.52
+      }
+    },
+    {
+      "id": "estufa-de-azulejos",
+      "label": "Estufa de azulejos",
+      "src": "/brand/colmeia/capas/estufa-de-azulejos.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Frascos de mel e favos numa estufa de azulejos, lavanda e citrinos",
+      "focalPoint": {
+        "x": 0.47,
+        "y": 0.56
+      }
+    },
+    {
+      "id": "olival-a-hora-azul",
+      "label": "Olival à hora azul",
+      "src": "/brand/colmeia/capas/olival-a-hora-azul.webp",
+      "width": 1600,
+      "height": 593,
+      "alt": "Colmeias num olival noturno, iluminadas por uma lanterna sob a lua crescente",
+      "focalPoint": {
+        "x": 0.43,
+        "y": 0.54
+      }
+    }
+  ],
+  "avatars": [
+    {
+      "id": "apicultora-ambar",
+      "label": "Apicultora âmbar",
+      "src": "/brand/colmeia/avatares/apicultora-ambar.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa de cabelo cacheado e capuz de abelha sobre fundo âmbar"
+    },
+    {
+      "id": "flor-de-lavanda",
+      "label": "Flor de lavanda",
+      "src": "/brand/colmeia/avatares/flor-de-lavanda.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa ruiva com uma flor de lavanda e avental lilás"
+    },
+    {
+      "id": "oculos-dourados",
+      "label": "Óculos dourados",
+      "src": "/brand/colmeia/avatares/oculos-dourados.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa de barba, óculos redondos e camisa verde sobre fundo turquesa"
+    },
+    {
+      "id": "chapeu-de-palha",
+      "label": "Chapéu de palha",
+      "src": "/brand/colmeia/avatares/chapeu-de-palha.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa de cabelo escuro e chapéu de apicultura sobre fundo coral"
+    },
+    {
+      "id": "bandana-verde",
+      "label": "Bandana verde",
+      "src": "/brand/colmeia/avatares/bandana-verde.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa de cabelo curto cacheado, bandana verde e casaco mel"
+    },
+    {
+      "id": "oculos-terracota",
+      "label": "Óculos terracota",
+      "src": "/brand/colmeia/avatares/oculos-terracota.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa de cabelo curto escuro, óculos terracota e cachecol lavanda"
+    },
+    {
+      "id": "lenco-lilas",
+      "label": "Lenço lilás",
+      "src": "/brand/colmeia/avatares/lenco-lilas.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa de cabelo prateado, lenço lilás e casaco azul sobre fundo rosa"
+    },
+    {
+      "id": "trancas-e-acafrao",
+      "label": "Tranças e açafrão",
+      "src": "/brand/colmeia/avatares/trancas-e-acafrao.webp",
+      "width": 256,
+      "height": 256,
+      "alt": "Pessoa de tranças longas, presilha floral e colete açafrão"
+    }
+  ]
+}

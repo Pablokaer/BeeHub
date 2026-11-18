@@ -1,0 +1,38 @@
+-- feed-latest-p20 (384.34899999999993 ms in Prisma)
+-- params: ["PUBLISHED","ACTIVE","ACTIVE","PUBLIC","ACTIVE","u25000","u42394","u19815","u44140","u5","u1330","u14879","u47093","u44486","u9495","u33607","u2580","u21300","u27","u27479","u24395","u45952","u1308","u13182","u45858","u57","u18365","u24647","u32428","u13539","u43415","u38235","u1990","u2223","u9996","u37511","u10082","u10580","u11841","u1278","u13573","u15392","u21876","u22856","u26821","u2686","u2772","u27878","u35343","u40114","u429","u46950","u8987","u9299","u962","p1","p2277","p2540","p298","p362","p714","p9636","o662","o814","o4805","16","285"]
+SELECT "public"."Post"."id", "public"."Post"."type"::text, "public"."Post"."body", "public"."Post"."linkUrl", "public"."Post"."status"::text, "public"."Post"."likeCount", "public"."Post"."commentCount", "public"."Post"."shareCount", "public"."Post"."createdAt", "public"."Post"."authorId", "public"."Post"."organizationId", "public"."Post"."projectId", "public"."Post"."opportunityId", "public"."Post"."repostOfId" FROM "public"."Post" LEFT JOIN "public"."User" AS "j0" ON ("j0"."id") = ("public"."Post"."authorId") LEFT JOIN "public"."Project" AS "j1" ON ("j1"."id") = ("public"."Post"."projectId") LEFT JOIN "public"."Organization" AS "j2" ON ("j2"."id") = ("public"."Post"."organizationId") WHERE ("public"."Post"."status" = CAST($1::text AS "public"."ContentStatus") AND ("j0"."status" = CAST($2::text AS "public"."UserStatus") AND ("j0"."id" IS NOT NULL)) AND ("public"."Post"."projectId" IS NULL OR ("j1"."status" = CAST($3::text AS "public"."EntityStatus") AND "j1"."visibility" = CAST($4::text AS "public"."ProjectVisibility") AND ("j1"."id" IS NOT NULL))) AND ("public"."Post"."organizationId" IS NULL OR ("j2"."status" = CAST($5::text AS "public"."EntityStatus") AND ("j2"."id" IS NOT NULL))) AND (("public"."Post"."authorId" IN ($6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,$51,$52,$53,$54,$55) AND "public"."Post"."projectId" IS NULL AND "public"."Post"."organizationId" IS NULL) OR "public"."Post"."projectId" IN ($56,$57,$58,$59,$60,$61,$62) OR "public"."Post"."organizationId" IN ($63,$64,$65))) ORDER BY "public"."Post"."createdAt" DESC, "public"."Post"."id" DESC LIMIT $66 OFFSET $67
+
+Limit  (cost=8304.17..8768.66 rows=16 width=375) (actual time=254.898..261.164 rows=16 loops=1)
+  Buffers: shared hit=23433 read=37859
+  ->  Incremental Sort  (cost=30.42..157434.86 rows=5422 width=375) (actual time=29.712..261.155 rows=301 loops=1)
+        Sort Key: "Post"."createdAt" DESC, "Post".id DESC
+        Presorted Key: "Post"."createdAt"
+        Full-sort Groups: 10  Sort Method: quicksort  Average Memory: 36kB  Peak Memory: 36kB
+        Buffers: shared hit=23433 read=37859
+        ->  Nested Loop Left Join  (cost=1.41..157190.87 rows=5422 width=375) (actual time=0.078..260.915 rows=302 loops=1)
+              Filter: (("Post"."organizationId" IS NULL) OR ((j2.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j2.id IS NOT NULL)))
+              Buffers: shared hit=23427 read=37859
+              ->  Nested Loop Left Join  (cost=1.13..153671.41 rows=5426 width=319) (actual time=0.065..260.713 rows=302 loops=1)
+                    Filter: (("Post"."projectId" IS NULL) OR ((j1.status = ('ACTIVE'::cstring)::"EntityStatus") AND (j1.visibility = ('PUBLIC'::cstring)::"ProjectVisibility") AND (j1.id IS NOT NULL)))
+                    Buffers: shared hit=23425 read=37859
+                    ->  Nested Loop  (cost=0.84..140336.59 rows=5466 width=319) (actual time=0.059..260.443 rows=302 loops=1)
+                          Buffers: shared hit=23320 read=37859
+                          ->  Index Scan Backward using "Post_status_createdAt_idx" on "Post"  (cost=0.55..131580.57 rows=5493 width=319) (actual time=0.052..258.532 rows=303 loops=1)
+                                Index Cond: (status = ('PUBLISHED'::cstring)::"ContentStatus")
+                                Filter: ((("authorId" = ANY ('{u25000,u42394,u19815,u44140,u5,u1330,u14879,u47093,u44486,u9495,u33607,u2580,u21300,u27,u27479,u24395,u45952,u1308,u13182,u45858,u57,u18365,u24647,u32428,u13539,u43415,u38235,u1990,u2223,u9996,u37511,u10082,u10580,u11841,u1278,u13573,u15392,u21876,u22856,u26821,u2686,u2772,u27878,u35343,u40114,u429,u46950,u8987,u9299,u962}'::text[])) AND ("projectId" IS NULL) AND ("organizationId" IS NULL)) OR ("projectId" = ANY ('{p1,p2277,p2540,p298,p362,p714,p9636}'::text[])) OR ("organizationId" = ANY ('{o662,o814,o4805}'::text[])))
+                                Rows Removed by Filter: 59410
+                                Buffers: shared hit=22490 read=37780
+                          ->  Index Scan using "User_pkey" on "User" j0  (cost=0.29..1.59 rows=1 width=6) (actual time=0.005..0.005 rows=1 loops=303)
+                                Index Cond: ((id = "Post"."authorId") AND (id IS NOT NULL))
+                                Filter: (status = ('ACTIVE'::cstring)::"UserStatus")
+                                Rows Removed by Filter: 0
+                                Buffers: shared hit=830 read=79
+                    ->  Index Scan using "Project_pkey" on "Project" j1  (cost=0.29..2.41 rows=1 width=14) (actual time=0.000..0.000 rows=0 loops=302)
+                          Index Cond: (id = "Post"."projectId")
+                          Buffers: shared hit=105
+              ->  Index Scan using "Organization_pkey" on "Organization" j2  (cost=0.28..0.62 rows=1 width=9) (actual time=0.000..0.000 rows=0 loops=302)
+                    Index Cond: (id = "Post"."organizationId")
+Planning:
+  Buffers: shared hit=32 read=21
+Planning Time: 0.899 ms
+Execution Time: 261.289 ms

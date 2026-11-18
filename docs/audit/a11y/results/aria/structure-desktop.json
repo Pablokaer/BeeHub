@@ -1,0 +1,280 @@
+{
+  "feed": {
+    "landmarks": [
+      "banner",
+      "  search",
+      "  navigation \"Main\"",
+      "main",
+      "  complementary",
+      "    navigation \"Shortcuts\"",
+      "  region \"Create a post\"",
+      "  navigation \"Feed mode\"",
+      "  complementary",
+      "contentinfo"
+    ],
+    "duplicateLandmarks": [
+      "complementary x2"
+    ],
+    "title": "Home · Collab Hub",
+    "lang": "en",
+    "domLandmarksHeuristic": [
+      "banner?",
+      "search",
+      "navigation \"Main\"",
+      "main",
+      "complementary",
+      "navigation \"Shortcuts\"",
+      "region \"Create a post\"",
+      "navigation \"Feed mode\"",
+      "complementary",
+      "contentinfo?"
+    ],
+    "domDuplicateLandmarks": [
+      "complementary x2"
+    ],
+    "headings": [
+      {
+        "level": 1,
+        "text": "Home feed"
+      },
+      {
+        "level": 2,
+        "text": "Opportunities for you"
+      },
+      {
+        "level": 2,
+        "text": "People you may know"
+      },
+      {
+        "level": 2,
+        "text": "Popular tags"
+      }
+    ],
+    "headingSkips": [],
+    "h1Count": 1,
+    "imgNoAlt": 0,
+    "imagesWithEmptyAlt": 0,
+    "imagesTotal": 0,
+    "svgNotHidden": 0,
+    "svgNotHiddenSample": [],
+    "liveRegions": [
+      {
+        "tag": "div",
+        "role": "status",
+        "live": "polite",
+        "label": null,
+        "children": 0,
+        "visible": true
+      }
+    ],
+    "unlabeledControls": [],
+    "ambiguousControlNames": {
+      "more": 2
+    }
+  },
+  "profile": {
+    "landmarks": [
+      "banner",
+      "  search",
+      "  navigation \"Main\"",
+      "main",
+      "  region \"Diogo Alves\"",
+      "  region \"About\"",
+      "  region \"Activity\"",
+      "  complementary",
+      "contentinfo"
+    ],
+    "duplicateLandmarks": [],
+    "title": "@diogo · Collab Hub",
+    "lang": "en",
+    "domLandmarksHeuristic": [
+      "banner?",
+      "search",
+      "navigation \"Main\"",
+      "main",
+      "region \"Diogo Alves\"",
+      "region \"About\"",
+      "region \"Activity\"",
+      "complementary",
+      "contentinfo?"
+    ],
+    "domDuplicateLandmarks": [],
+    "headings": [
+      {
+        "level": 1,
+        "text": "Diogo Alves"
+      },
+      {
+        "level": 2,
+        "text": "About"
+      },
+      {
+        "level": 2,
+        "text": "Skills & interests"
+      },
+      {
+        "level": 2,
+        "text": "Projects"
+      },
+      {
+        "level": 2,
+        "text": "Activity"
+      },
+      {
+        "level": 2,
+        "text": "Details"
+      }
+    ],
+    "headingSkips": [],
+    "h1Count": 1,
+    "imgNoAlt": 0,
+    "imagesWithEmptyAlt": 0,
+    "imagesTotal": 0,
+    "svgNotHidden": 0,
+    "svgNotHiddenSample": [],
+    "liveRegions": [
+      {
+        "tag": "div",
+        "role": "status",
+        "live": "polite",
+        "label": null,
+        "children": 0,
+        "visible": true
+      }
+    ],
+    "unlabeledControls": [],
+    "ambiguousControlNames": {
+      "report": 1
+    }
+  },
+  "opportunity": {
+    "landmarks": [
+      "banner",
+      "  search",
+      "  navigation \"Main\"",
+      "main",
+      "  complementary",
+      "    region \"Why this matches you\"",
+      "contentinfo"
+    ],
+    "duplicateLandmarks": [],
+    "title": "Opportunity · Collab Hub",
+    "lang": "en",
+    "domLandmarksHeuristic": [
+      "banner?",
+      "search",
+      "navigation \"Main\"",
+      "main",
+      "complementary",
+      "region \"Why this matches you\"",
+      "contentinfo?"
+    ],
+    "domDuplicateLandmarks": [],
+    "headings": [
+      {
+        "level": 1,
+        "text": "Pixel artist for character sprites"
+      },
+      {
+        "level": 2,
+        "text": "Description"
+      },
+      {
+        "level": 2,
+        "text": "Details"
+      },
+      {
+        "level": 3,
+        "text": "Skills wanted"
+      },
+      {
+        "level": 3,
+        "text": "Topics"
+      },
+      {
+        "level": 2,
+        "text": "About Pixel Garden"
+      },
+      {
+        "level": 2,
+        "text": "Your application"
+      },
+      {
+        "level": 2,
+        "text": "Why this matches you"
+      }
+    ],
+    "headingSkips": [],
+    "h1Count": 1,
+    "imgNoAlt": 0,
+    "imagesWithEmptyAlt": 0,
+    "imagesTotal": 0,
+    "svgNotHidden": 0,
+    "svgNotHiddenSample": [],
+    "liveRegions": [
+      {
+        "tag": "div",
+        "role": "status",
+        "live": "polite",
+        "label": null,
+        "children": 0,
+        "visible": true
+      }
+    ],
+    "unlabeledControls": [],
+    "ambiguousControlNames": {}
+  },
+  "conversation": {
+    "landmarks": [
+      "banner",
+      "  search",
+      "  navigation \"Main\"",
+      "main",
+      "  region \"Conversation with Bruno Costa\"",
+      "contentinfo"
+    ],
+    "duplicateLandmarks": [],
+    "title": "Conversation · Collab Hub",
+    "lang": "en",
+    "domLandmarksHeuristic": [
+      "banner?",
+      "search",
+      "navigation \"Main\"",
+      "main",
+      "region \"Conversation with Bruno Costa\"",
+      "banner?",
+      "contentinfo?"
+    ],
+    "domDuplicateLandmarks": [
+      "banner? x2"
+    ],
+    "headings": [],
+    "headingSkips": [],
+    "h1Count": 0,
+    "imgNoAlt": 0,
+    "imagesWithEmptyAlt": 0,
+    "imagesTotal": 0,
+    "svgNotHidden": 0,
+    "svgNotHiddenSample": [],
+    "liveRegions": [
+      {
+        "tag": "ol",
+        "role": null,
+        "live": "polite",
+        "label": "Messages with Bruno Costa",
+        "children": 4,
+        "visible": true
+      },
+      {
+        "tag": "div",
+        "role": "status",
+        "live": "polite",
+        "label": null,
+        "children": 0,
+        "visible": true
+      }
+    ],
+    "unlabeledControls": [],
+    "ambiguousControlNames": {}
+  }
+}

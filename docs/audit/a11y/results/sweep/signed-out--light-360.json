@@ -1,0 +1,1383 @@
+[
+  {
+    "route": "/",
+    "path": "/",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Find the people your project is missing."
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 20,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "div > a.link.text-\\[13px\\]",
+        "text": "See all",
+        "w": 38.9,
+        "h": 19.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Terms",
+        "w": 33.4,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Privacy",
+        "w": 38.8,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Discover",
+        "w": 46.3,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Opportunities",
+        "w": 74.1,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": []
+  },
+  {
+    "route": "/login",
+    "path": "/login",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Sign in · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Welcome back"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 24,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "div > a.link.text-\\[13px\\]",
+        "text": "Forgot your password?",
+        "w": 131.9,
+        "h": 17,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.link.font-medium",
+        "text": "Create an account",
+        "w": 115.8,
+        "h": 18,
+        "inline": true,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=playwright",
+        "tags": [
+          "cat.keyboard",
+          "best-practice",
+          "RGAAv4",
+          "RGAA-9.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "a[aria-label=\"Collab Hub home\"]"
+        ],
+        "sampleHtml": "<a class=\"flex items-center gap-2 font-semibold text-ink\" aria-label=\"Collab Hub home\" href=\"/\">",
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      }
+    ]
+  },
+  {
+    "route": "/signup",
+    "path": "/signup",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/signup",
+    "redirected": false,
+    "title": "Create your account · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Join Collab Hub"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "div > input#_R_2plfiv9fdb_.mt-0\\.5.size-4.rounded",
+        "text": "",
+        "w": 16,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "span > a.link",
+        "text": "Terms",
+        "w": 39.6,
+        "h": 18,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "span > a.link",
+        "text": "Privacy Policy",
+        "w": 88.5,
+        "h": 18,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.link.font-medium",
+        "text": "Sign in",
+        "w": 42.9,
+        "h": 18,
+        "inline": true,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "help": "All page content should be contained by landmarks",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/region?application=playwright",
+        "tags": [
+          "cat.keyboard",
+          "best-practice",
+          "RGAAv4",
+          "RGAA-9.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "a[aria-label=\"Collab Hub home\"]"
+        ],
+        "sampleHtml": "<a class=\"flex items-center gap-2 font-semibold text-ink\" aria-label=\"Collab Hub home\" href=\"/\">",
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      }
+    ]
+  },
+  {
+    "route": "/discover",
+    "path": "/discover",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/discover",
+    "redirected": false,
+    "title": "Discover · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Discover"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "a[href=\"/discover?type=posts\"]"
+        ],
+        "sampleHtml": "<a class=\"-mb-px inline-flex h-9 items-center gap-1.5 whitespace-nowrap border-b-2 px-2.5 text-sm transition-colors border-transparent text-muted hover:text-ink\" href=\"/discover?type=posts\">Posts</a>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+      }
+    ],
+    "passes": 27,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "div > a.link.text-\\[13px\\]",
+        "text": "See all",
+        "w": 38.9,
+        "h": 19.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "h3 > a.truncate.hover\\:underline",
+        "text": "OpenHarbor",
+        "w": 83.8,
+        "h": 22.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Porto Dev Community",
+        "w": 126.9,
+        "h": 17,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "li > a.font-medium.hover\\:underline",
+        "text": "Testing assistance for our 1.0 release",
+        "w": 220.7,
+        "h": 17,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "h3 > a.truncate.hover\\:underline",
+        "text": "Pixel Garden",
+        "w": 87.3,
+        "h": 22.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "li > a.font-medium.hover\\:underline",
+        "text": "Pixel artist for character sprites",
+        "w": 187.2,
+        "h": 17,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "h3 > a.truncate.hover\\:underline",
+        "text": "StudyPilot",
+        "w": 71,
+        "h": 22.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Nova Labs",
+        "w": 60,
+        "h": 17,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "li > a.font-medium.hover\\:underline",
+        "text": "Marketing specialist for school pilot launch",
+        "w": 254.1,
+        "h": 17,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "li > a.font-medium.hover\\:underline",
+        "text": "Frontend developer for our study assistant",
+        "w": 252,
+        "h": 17,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.link.text-\\[13px\\]",
+        "text": "See all",
+        "w": 38.9,
+        "h": 19.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "h3 > a.hover\\:underline",
+        "text": "Porto Dev Community",
+        "w": 148.3,
+        "h": 19,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "h3 > a.hover\\:underline",
+        "text": "Greenleaf Retail",
+        "w": 110.3,
+        "h": 19,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "h3 > a.hover\\:underline",
+        "text": "Nova Labs",
+        "w": 70.1,
+        "h": 19,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Terms",
+        "w": 33.4,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Privacy",
+        "w": 38.8,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Discover",
+        "w": 46.3,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Opportunities",
+        "w": 74.1,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": []
+  },
+  {
+    "route": "/opportunities",
+    "path": "/opportunities",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/opportunities",
+    "redirected": false,
+    "title": "Opportunities · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Opportunities"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 37,
+        "targets": [
+          "input[value=\"PAID\"]",
+          "input[value=\"FREELANCE\"]",
+          "input[value=\"VOLUNTEER\"]",
+          "input[value=\"PROJECT_PARTNERSHIP\"]",
+          "input[value=\"BUSINESS_PARTNERSHIP\"]"
+        ],
+        "sampleHtml": "<input type=\"checkbox\" class=\"size-3.5 accent-[var(--c-accent)]\" name=\"type\" value=\"PAID\">",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (14px by 14px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 23px instead of at least 24px."
+      }
+    ],
+    "incomplete": [],
+    "passes": 26,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "label > input.size-3\\.5.accent-\\[var\\(--c-accent\\)\\]",
+        "text": "",
+        "w": 14,
+        "h": 14,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Grace Okafor",
+        "w": 76.5,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Mentoring students who want to\""
+      },
+      {
+        "selector": "h3 > a.hover\\:underline",
+        "text": "Pixel artist for character sprites",
+        "w": 214.5,
+        "h": 19,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Pixel Garden",
+        "w": 74,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Pixel artist for character spr\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "OpenHarbor",
+        "w": 71.8,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Testing assistance for our 1.0\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Greenleaf Retail",
+        "w": 93.9,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Commercial partner for a susta\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Nova Labs",
+        "w": 60,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Technical co-founder (backend \""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "StudyPilot",
+        "w": 60,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Marketing specialist for schoo\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "StudyPilot",
+        "w": 60,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Frontend developer for our stu\""
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Terms",
+        "w": 33.4,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Privacy",
+        "w": 38.8,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Discover",
+        "w": 46.3,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Opportunities",
+        "w": 74.1,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/heading-order?application=playwright",
+        "tags": [
+          "cat.semantics",
+          "best-practice"
+        ],
+        "nodes": 1,
+        "targets": [
+          "article:nth-child(1) > .flex-1.min-w-0 > .items-start.gap-x-3.gap-y-1 > .min-w-0 > h3"
+        ],
+        "sampleHtml": "<h3 class=\"text-[15px] font-semibold leading-snug\"><a class=\"hover:underline\" href=\"/opportunities/cmwbxjlk20034pci3hmygfl5y\">Mentoring students who want to get into ML</a></h3>",
+        "failureSummary": "Fix any of the following:\n  Heading order invalid"
+      }
+    ]
+  },
+  {
+    "route": "/opportunities/[id]",
+    "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "redirected": false,
+    "title": "Opportunity · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Pixel artist for character sprites"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "section > a.link.mt-2.inline-block",
+        "text": "View project",
+        "w": 77.9,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Terms",
+        "w": 33.4,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Privacy",
+        "w": 38.8,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Discover",
+        "w": 46.3,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Opportunities",
+        "w": 74.1,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": []
+  },
+  {
+    "route": "/u/[username]",
+    "path": "/u/diogo",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/u/diogo",
+    "redirected": false,
+    "title": "@diogo · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Diogo Alves"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 3,
+        "targets": [
+          ".hover\\:underline.hover\\:text-ink",
+          ".link[href$=\"design\"]",
+          "a[href$=\"gamedevelopment\"]"
+        ],
+        "sampleHtml": "<a class=\"hover:text-ink hover:underline\" href=\"/posts/cmwbxjlod004rpci306n1iz99\"><time datetime=\"2026-11-11T09:41:54.685Z\">18 minutes ago</time></a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 23,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "div > a.text-sm.hover\\:underline",
+        "text": "2 connections",
+        "w": 88.2,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.text-sm.hover\\:underline",
+        "text": "0 followers",
+        "w": 69.7,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.text-sm.hover\\:underline",
+        "text": "0 following",
+        "w": 69,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.block.truncate.text-sm",
+        "text": "Pixel Garden",
+        "w": 224,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.block.truncate.text-sm",
+        "text": "Diogo Alves",
+        "w": 228.1,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "18 minutes ago",
+        "w": 83.2,
+        "h": 15,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "div > a.block.truncate.text-sm \"Diogo Alves\""
+      },
+      {
+        "selector": "div > a.link",
+        "text": "#Design",
+        "w": 54.6,
+        "h": 19,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.link",
+        "text": "#GameDevelopment",
+        "w": 135.8,
+        "h": 19,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.link.ml-auto.text-\\[13px\\]",
+        "text": "Sign in to interact",
+        "w": 101.7,
+        "h": 19.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Terms",
+        "w": 33.4,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Privacy",
+        "w": 38.8,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Discover",
+        "w": 46.3,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Opportunities",
+        "w": 74.1,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": []
+  },
+  {
+    "route": "/p/[slug]",
+    "path": "/p/studypilot",
+    "auth": "signed-out",
+    "variant": "light-360",
+    "status": 200,
+    "finalUrl": "/p/studypilot",
+    "redirected": false,
+    "title": "studypilot · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "StudyPilot"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 3,
+        "targets": [
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(2) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(3) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".prose-plain.leading-relaxed.text-sm:nth-child(2) > span",
+          ".text-\\[14\\.5px\\].prose-plain.leading-relaxed > span:nth-child(3)"
+        ],
+        "sampleHtml": "<span>StudyPilot reads your notes and generates spaced-repetition quizzes. The model works; now we need a great web experience and a launch plan.</span>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".link[href$=\"artificial-intelligence\"]",
+          ".link[href$=\"education\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 24,
+    "axeVersion": "4.14.0",
+    "smallTargets": [
+      {
+        "selector": "h3 > a.hover\\:underline",
+        "text": "Marketing specialist for school pilot launch",
+        "w": 290.6,
+        "h": 19,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "StudyPilot",
+        "w": 60,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Marketing specialist for schoo\""
+      },
+      {
+        "selector": "h3 > a.hover\\:underline",
+        "text": "Frontend developer for our study assistant",
+        "w": 288.4,
+        "h": 19,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "StudyPilot",
+        "w": 60,
+        "h": 17,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "h3 > a.hover\\:underline \"Frontend developer for our stu\""
+      },
+      {
+        "selector": "div > a.block.truncate.text-sm",
+        "text": "StudyPilot",
+        "w": 170.5,
+        "h": 20,
+        "inline": false,
+        "spacingOk": false,
+        "conflict": "p > a.hover\\:text-ink.hover\\:underline \"18 minutes ago\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Ana Ribeiro",
+        "w": 62,
+        "h": 15,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "div > a.block.truncate.text-sm \"StudyPilot\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "18 minutes ago",
+        "w": 83.2,
+        "h": 15,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "div > a.block.truncate.text-sm \"StudyPilot\""
+      },
+      {
+        "selector": "div > a.font-medium.text-accent.hover\\:underline",
+        "text": "@grace",
+        "w": 49.5,
+        "h": 19,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.link",
+        "text": "#AI",
+        "w": 25.4,
+        "h": 19,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.link",
+        "text": "#Education",
+        "w": 75.4,
+        "h": 19,
+        "inline": true,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.link.ml-auto.text-\\[13px\\]",
+        "text": "Sign in to interact",
+        "w": 101.7,
+        "h": 19.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.block.truncate.text-sm",
+        "text": "StudyPilot",
+        "w": 170.5,
+        "h": 20,
+        "inline": false,
+        "spacingOk": false,
+        "conflict": "p > a.hover\\:text-ink.hover\\:underline \"18 minutes ago\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Ana Ribeiro",
+        "w": 62,
+        "h": 15,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "div > a.block.truncate.text-sm \"StudyPilot\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "18 minutes ago",
+        "w": 83.2,
+        "h": 15,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "div > a.block.truncate.text-sm \"StudyPilot\""
+      },
+      {
+        "selector": "div > a.link.ml-auto.text-\\[13px\\]",
+        "text": "Sign in to interact",
+        "w": 101.7,
+        "h": 19.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.block.truncate.text-sm",
+        "text": "StudyPilot",
+        "w": 170.5,
+        "h": 20,
+        "inline": false,
+        "spacingOk": false,
+        "conflict": "p > a.hover\\:text-ink.hover\\:underline \"18 minutes ago\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "Ana Ribeiro",
+        "w": 62,
+        "h": 15,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "div > a.block.truncate.text-sm \"StudyPilot\""
+      },
+      {
+        "selector": "p > a.hover\\:text-ink.hover\\:underline",
+        "text": "18 minutes ago",
+        "w": 83.2,
+        "h": 15,
+        "inline": true,
+        "spacingOk": false,
+        "conflict": "div > a.block.truncate.text-sm \"StudyPilot\""
+      },
+      {
+        "selector": "div > a.link.ml-auto.text-\\[13px\\]",
+        "text": "Sign in to interact",
+        "w": 101.7,
+        "h": 19.5,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.block.truncate.text-sm",
+        "text": "Ana Ribeiro",
+        "w": 89.8,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.block.truncate.text-sm",
+        "text": "Grace Okafor",
+        "w": 99.5,
+        "h": 20,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "dd > a.link",
+        "text": "Nova Labs",
+        "w": 64.6,
+        "h": 18,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "dd > a.link",
+        "text": "Ana Ribeiro",
+        "w": 72.4,
+        "h": 18,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Terms",
+        "w": 33.4,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Privacy",
+        "w": 38.8,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Discover",
+        "w": 46.3,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      },
+      {
+        "selector": "div > a.hover\\:text-ink",
+        "text": "Opportunities",
+        "w": 74.1,
+        "h": 16,
+        "inline": false,
+        "spacingOk": true
+      }
+    ],
+    "bestPractice": []
+  }
+]

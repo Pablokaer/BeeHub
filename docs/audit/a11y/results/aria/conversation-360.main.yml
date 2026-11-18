@@ -1,0 +1,21 @@
+- main:
+  - region "Conversation with Bruno Costa":
+    - link "Back to conversations":
+      - /url: /messages
+    - link "Bruno Costa":
+      - /url: /u/bruno
+    - paragraph: Computer Science student · frontend enthusiast
+    - list "Messages with Bruno Costa":
+      - listitem:
+        - text: Hi Bruno! Thanks for applying. Do you have time for a short call on Thursday?
+        - time: 09:41 AM
+      - listitem:
+        - text: Hi Ana! Thursday works great, any time after 5pm.
+        - time: 09:41 AM
+      - listitem:
+        - text: "[a11y-audit] keyboard message 1794391732716"
+        - time: 10:08 AM
+    - text: Message
+    - textbox "Message":
+      - /placeholder: Write a message… (Enter to send, Shift+Enter for a new line)
+    - button "Send" [disabled]

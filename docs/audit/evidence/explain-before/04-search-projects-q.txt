@@ -1,0 +1,68 @@
+-- search-projects-q (673.5870840000007 ms in Prisma)
+-- params: ["OPEN","ACTIVE","PUBLIC","climate","climate","climate","climate","climate","20","0"]
+SELECT "public"."Project"."id", "public"."Project"."slug", "public"."Project"."name", "public"."Project"."summary", "public"."Project"."logoKey", "public"."Project"."stage"::text, "public"."Project"."category"::text, "public"."Project"."visibility"::text, "public"."Project"."isOpenSource", "public"."Project"."acceptsBeginners", "public"."Project"."updatedAt", "public"."Project"."organizationId", COALESCE("aggr_selection_0_ProjectMember"."_aggr_count_members", 0) AS "_aggr_count_members", COALESCE("aggr_selection_1_Opportunity"."_aggr_count_opportunities", 0) AS "_aggr_count_opportunities" FROM "public"."Project" LEFT JOIN (SELECT "public"."ProjectMember"."projectId", COUNT(*) AS "_aggr_count_members" FROM "public"."ProjectMember" WHERE 1=1 GROUP BY "public"."ProjectMember"."projectId") AS "aggr_selection_0_ProjectMember" ON ("public"."Project"."id" = "aggr_selection_0_ProjectMember"."projectId") LEFT JOIN (SELECT "public"."Opportunity"."projectId", COUNT(*) AS "_aggr_count_opportunities" FROM "public"."Opportunity" WHERE "public"."Opportunity"."status" = CAST($1::text AS "public"."OpportunityStatus") GROUP BY "public"."Opportunity"."projectId") AS "aggr_selection_1_Opportunity" ON ("public"."Project"."id" = "aggr_selection_1_Opportunity"."projectId") WHERE ("public"."Project"."status" = CAST($2::text AS "public"."EntityStatus") AND "public"."Project"."visibility" = CAST($3::text AS "public"."ProjectVisibility") AND ("public"."Project"."name" ILIKE ('%' || $4 || '%') OR "public"."Project"."summary" ILIKE ('%' || $5 || '%') OR "public"."Project"."description" ILIKE ('%' || $6 || '%') OR EXISTS(SELECT "t0"."projectId" FROM "public"."ProjectTag" AS "t0" LEFT JOIN "public"."Tag" AS "j1" ON ("j1"."id") = ("t0"."tagId") WHERE (("j1"."name" ILIKE ('%' || $7 || '%') OR "j1"."slug"::text LIKE ($8 || '%')) AND ("j1"."id" IS NOT NULL) AND ("public"."Project"."id") = ("t0"."projectId") AND "t0"."projectId" IS NOT NULL)))) ORDER BY "public"."Project"."updatedAt" DESC LIMIT $9 OFFSET $10
+
+Limit  (cost=880347.18..880347.23 rows=20 width=294) (actual time=344.165..344.180 rows=20 loops=1)
+  Buffers: shared hit=376 read=8134
+  ->  Sort  (cost=880347.18..880379.99 rows=13125 width=294) (actual time=162.603..162.616 rows=20 loops=1)
+        Sort Key: "Project"."updatedAt" DESC
+        Sort Method: top-N heapsort  Memory: 33kB
+        Buffers: shared hit=376 read=8134
+        ->  Hash Left Join  (cost=8390.18..879997.93 rows=13125 width=294) (actual time=49.000..160.928 rows=9601 loops=1)
+              Hash Cond: ("Project".id = "aggr_selection_1_Opportunity"."projectId")
+              Buffers: shared hit=376 read=8134
+              ->  Hash Left Join  (cost=2375.68..873752.09 rows=13125 width=202) (actual time=18.859..127.529 rows=9601 loops=1)
+                    Hash Cond: ("Project".id = "aggr_selection_0_ProjectMember"."projectId")
+                    Buffers: shared hit=344 read=3586
+                    ->  Index Scan using "Project_status_visibility_idx" on "Project"  (cost=0.30..871342.24 rows=13125 width=194) (actual time=1.066..106.245 rows=9601 loops=1)
+                          Index Cond: ((status = ('ACTIVE'::cstring)::"EntityStatus") AND (visibility = ('PUBLIC'::cstring)::"ProjectVisibility"))
+                          Filter: ((name ~~* '%climate%'::text) OR (summary ~~* '%climate%'::text) OR (description ~~* '%climate%'::text) OR (hashed SubPlan 2))
+                          Rows Removed by Filter: 8399
+                          Buffers: shared hit=344 read=3018
+                          SubPlan 2
+                            ->  Nested Loop  (cost=4.75..232.63 rows=59 width=6) (actual time=8.473..12.195 rows=759 loops=1)
+                                  Buffers: shared hit=2 read=485
+                                  ->  Seq Scan on "Tag" j1  (cost=0.00..49.00 rows=1 width=5) (actual time=8.374..8.924 rows=1 loops=1)
+                                        Filter: ((id IS NOT NULL) AND ((name ~~* '%climate%'::text) OR (slug ~~ 'climate%'::text)))
+                                        Rows Removed by Filter: 2000
+                                        Buffers: shared hit=1 read=18
+                                  ->  Bitmap Heap Scan on "ProjectTag" t0  (cost=4.75..183.04 rows=59 width=10) (actual time=0.095..3.213 rows=759 loops=1)
+                                        Recheck Cond: ("tagId" = j1.id)
+                                        Filter: ("projectId" IS NOT NULL)
+                                        Heap Blocks: exact=466
+                                        Buffers: shared hit=1 read=467
+                                        ->  Bitmap Index Scan on "ProjectTag_tagId_kind_idx"  (cost=0.00..4.74 rows=59 width=0) (actual time=0.046..0.048 rows=759 loops=1)
+                                              Index Cond: ("tagId" = j1.id)
+                                              Buffers: shared hit=1 read=1
+                    ->  Hash  (cost=2141.74..2141.74 rows=18691 width=14) (actual time=17.778..17.779 rows=20000 loops=1)
+                          Buckets: 32768  Batches: 1  Memory Usage: 1164kB
+                          Buffers: shared read=568
+                          ->  Subquery Scan on "aggr_selection_0_ProjectMember"  (cost=1767.92..2141.74 rows=18691 width=14) (actual time=14.362..16.400 rows=20000 loops=1)
+                                Buffers: shared read=568
+                                ->  HashAggregate  (cost=1767.92..1954.84 rows=18691 width=14) (actual time=14.360..15.480 rows=20000 loops=1)
+                                      Group Key: "ProjectMember"."projectId"
+                                      Batches: 1  Memory Usage: 2065kB
+                                      Buffers: shared read=568
+                                      ->  Seq Scan on "ProjectMember"  (cost=0.00..1367.95 rows=79995 width=6) (actual time=0.019..6.346 rows=79995 loops=1)
+                                            Buffers: shared read=568
+              ->  Hash  (cost=5843.89..5843.89 rows=13649 width=14) (actual time=30.091..30.094 rows=12685 loops=1)
+                    Buckets: 16384  Batches: 1  Memory Usage: 704kB
+                    Buffers: shared read=4546
+                    ->  Subquery Scan on "aggr_selection_1_Opportunity"  (cost=5570.91..5843.89 rows=13649 width=14) (actual time=27.834..29.197 rows=12686 loops=1)
+                          Buffers: shared read=4546
+                          ->  HashAggregate  (cost=5570.91..5707.40 rows=13649 width=14) (actual time=27.829..28.645 rows=12686 loops=1)
+                                Group Key: "Opportunity"."projectId"
+                                Batches: 1  Memory Usage: 1425kB
+                                Buffers: shared read=4546
+                                ->  Seq Scan on "Opportunity"  (cost=0.00..5421.00 rows=29982 width=6) (actual time=0.075..23.614 rows=30006 loops=1)
+                                      Filter: (status = ('OPEN'::cstring)::"OpportunityStatus")
+                                      Rows Removed by Filter: 20000
+                                      Buffers: shared read=4546
+Planning:
+  Buffers: shared hit=223 read=60
+Planning Time: 2.093 ms
+JIT:
+  Functions: 55
+  Options: Inlining true, Optimization true, Expressions true, Deforming true
+  Timing: Generation 1.644 ms, Inlining 12.874 ms, Optimization 97.037 ms, Emission 82.921 ms, Total 194.475 ms
+Execution Time: 346.403 ms

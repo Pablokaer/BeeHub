@@ -1,0 +1,640 @@
+[
+  {
+    "flow": "Skip link → main (signed out /)",
+    "steps": [
+      {
+        "action": "Tab from top of page",
+        "focus": "a \"Skip to content\"",
+        "indicator": true,
+        "indicatorContrast": 4.52
+      },
+      {
+        "action": "Enter on skip link",
+        "focus": "<body> (focus lost)",
+        "note": "url=#main"
+      },
+      {
+        "action": "Tab after skip link",
+        "focus": "a \"Create your profile\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      }
+    ],
+    "issues": [
+      "After activating the skip link document.activeElement is <body> (main#main has no tabindex=\"-1\"); sequential focus start point moves, but SR virtual cursor/focus is not explicitly placed"
+    ],
+    "ok": [
+      "Skip link is first Tab stop and becomes visible (125x39)",
+      "Next Tab lands inside <main>: a \"Create your profile\" [main]"
+    ]
+  },
+  {
+    "flow": "Skip link → main (signed in /feed)",
+    "steps": [
+      {
+        "action": "Tab from top of page",
+        "focus": "a \"Skip to content\"",
+        "indicator": true,
+        "indicatorContrast": 4.52
+      },
+      {
+        "action": "Enter on skip link",
+        "focus": "<body> (focus lost)",
+        "note": "url=#main"
+      },
+      {
+        "action": "Tab after skip link",
+        "focus": "a \"Ana Ribeiro\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      }
+    ],
+    "issues": [
+      "After activating the skip link document.activeElement is <body> (main#main has no tabindex=\"-1\"); sequential focus start point moves, but SR virtual cursor/focus is not explicitly placed"
+    ],
+    "ok": [
+      "Skip link is first Tab stop and becomes visible (125x39)",
+      "Next Tab lands inside <main>: a \"Ana Ribeiro\" [main]"
+    ]
+  },
+  {
+    "flow": "Skip link → main (signed out /login)",
+    "steps": [
+      {
+        "action": "Page load (autofocus)",
+        "focus": "input#_R_19lfiv9fdb_ \"Email\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Tab x2 to skip link (Shift+Tab)",
+        "focus": "a \"Skip to content\"",
+        "indicator": true,
+        "indicatorContrast": 4.52
+      },
+      {
+        "action": "Enter on skip link",
+        "focus": "<body> (focus lost)",
+        "note": "url=#main"
+      },
+      {
+        "action": "Tab after skip link",
+        "focus": "input#_R_19lfiv9fdb_ \"Email\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      }
+    ],
+    "issues": [
+      "Page loads with focus already in the form (input#_R_19lfiv9fdb_ \"Email\" [main]); the skip link is only reachable with Shift+Tab — acceptable, noted",
+      "After activating the skip link document.activeElement is <body> (main#main has no tabindex=\"-1\"); sequential focus start point moves, but SR virtual cursor/focus is not explicitly placed"
+    ],
+    "ok": [
+      "Skip link is first Tab stop and becomes visible (125x39)",
+      "Next Tab lands inside <main>: input#_R_19lfiv9fdb_ \"Email\" [main]"
+    ]
+  },
+  {
+    "flow": "Sign in (/login)",
+    "steps": [
+      {
+        "action": "Page load",
+        "focus": "input#_R_19lfiv9fdb_ \"Email\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Tab x1 to Password field",
+        "focus": "input#_R_1plfiv9fdb_ \"Password\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Tab x2 to Sign in button",
+        "focus": "button \"Sign in\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "After sign-in navigation to /feed",
+        "focus": "<body> (focus lost)"
+      },
+      {
+        "action": "Next.js route announcer",
+        "note": "Home · Collab Hub"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_1plfiv9fdb_ \"Password\" [main]",
+      "After sign-in redirect focus is on <body>; nothing focuses the page heading/main (route announcer: Home · Collab Hub)"
+    ],
+    "ok": [
+      "Email field is autofocused on load",
+      "Sign-in completes with keyboard only"
+    ]
+  },
+  {
+    "flow": "Validation: /login empty submit",
+    "steps": [
+      {
+        "action": "Submit empty /login",
+        "focus": "input#_R_19lfiv9fdb_ \"Email\" [main]",
+        "note": "{\"alerts\":[\"Please check the highlighted fields.\"],\"toasts\":[],\"invalid\":[{\"name\":\"email\",\"describedBy\":\"_R_19lfiv9fdb_-error\",\"describedText\":\"Enter a valid email address\",\"required\":true,\"ariaRequired\":null},{\"name\":\"password\",\"describedBy\":\"_R_1plfiv9fdb_-error\",\"describedText\":\"Enter your password\",\"required\":true,\"ariaRequired\":null}],\"visibleErrorTexts\":[\"Please check the highlighted fields.\",\"Enter a valid email address\",\"Enter your password\"],\"focusOnFirstInvalid\":true,\"focusOnAlert\":false}"
+      }
+    ],
+    "issues": [],
+    "ok": [
+      "/login: focus moved to first invalid field",
+      "/login: form-level error rendered in role=\"alert\" (\"Please check the highlighted fields.\")",
+      "/login: 2 field(s) aria-invalid with aria-describedby pointing at the error text"
+    ]
+  },
+  {
+    "flow": "Validation: /signup empty submit",
+    "steps": [
+      {
+        "action": "Tab x7 to Create account button",
+        "focus": "button \"Create account\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Submit empty /signup",
+        "focus": "<body> (focus lost)",
+        "note": "{\"alerts\":[\"Please check the highlighted fields.\"],\"toasts\":[],\"invalid\":[{\"name\":\"displayName\",\"describedBy\":\"_R_plfiv9fdb_-error\",\"describedText\":\"Name must be at least 2 characters\",\"required\":true,\"ariaRequired\":null},{\"name\":\"username\",\"describedBy\":\"_R_19lfiv9fdb_-hint _R_19lfiv9fdb_-error\",\"describedText\":\" | 3–40 characters: lowercase letters, numbers and dashes\",\"required\":true,\"ariaRequired\":null},{\"name\":\"email\",\"describedBy\":\"_R_1plfiv9fdb_-error\",\"describedText\":\"Enter a valid email address\",\"required\":true,\"ariaRequired\":null},{\"name\":\"password\",\"describedBy\":\"_R_29lfiv9fdb_-hint _R_29lfiv9fdb_-error\",\"describedText\":\" | Use at least 10 characters\",\"required\":true,\"ariaRequired\":null}],\"visibleErrorTexts\":[\"Please check the highlighted fields.\",\"Name must be at least 2 characters\",\"3–40 characters: lowercase letters, numbers and dashes\",\"Enter a valid email address\",\"Use at least 10 characters\"],\"focusOnFirstInvalid\":false,\"focusOnAlert\":false}"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_19lfiv9fdb_ \"Username\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_1plfiv9fdb_ \"Email\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_29lfiv9fdb_ \"Password\" [main]",
+      "/signup: after an invalid submit focus stays on <body> (focus lost) — not moved to an error summary or the first invalid field"
+    ],
+    "ok": [
+      "/signup: form-level error rendered in role=\"alert\" (\"Please check the highlighted fields.\")",
+      "/signup: 4 field(s) aria-invalid with aria-describedby pointing at the error text"
+    ]
+  },
+  {
+    "flow": "Validation: /forgot-password empty submit",
+    "steps": [
+      {
+        "action": "Tab x1 to submit button",
+        "focus": "button \"Send reset link\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Submit empty /forgot-password",
+        "focus": "<body> (focus lost)",
+        "note": "{\"alerts\":[\"Please check the highlighted fields.\"],\"toasts\":[],\"invalid\":[{\"name\":\"email\",\"describedBy\":\"_R_plfiv9fdb_-error\",\"describedText\":\"Enter a valid email address\",\"required\":true,\"ariaRequired\":null}],\"visibleErrorTexts\":[\"Please check the highlighted fields.\",\"Enter a valid email address\"],\"focusOnFirstInvalid\":false,\"focusOnAlert\":false}"
+      }
+    ],
+    "issues": [
+      "/forgot-password: after an invalid submit focus stays on <body> (focus lost) — not moved to an error summary or the first invalid field"
+    ],
+    "ok": [
+      "/forgot-password: form-level error rendered in role=\"alert\" (\"Please check the highlighted fields.\")",
+      "/forgot-password: 1 field(s) aria-invalid with aria-describedby pointing at the error text"
+    ]
+  },
+  {
+    "flow": "Validation: /projects/new empty submit",
+    "steps": [
+      {
+        "action": "Tab x31 to Create project button",
+        "focus": "button \"Create project\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Submit empty /projects/new",
+        "focus": "<body> (focus lost)",
+        "note": "{\"alerts\":[\"Please check the highlighted fields.\"],\"toasts\":[],\"invalid\":[{\"name\":\"name\",\"describedBy\":\"_R_2aqnpfiv9fdb_-error\",\"describedText\":\"Name must be at least 2 characters\",\"required\":true,\"ariaRequired\":null},{\"name\":\"slug\",\"describedBy\":\"_R_4aqnpfiv9fdb_-hint _R_4aqnpfiv9fdb_-error\",\"describedText\":\" | 3–40 characters: lowercase letters, numbers and dashes\",\"required\":true,\"ariaRequired\":null},{\"name\":\"summary\",\"describedBy\":\"_R_eqnpfiv9fdb_-hint _R_eqnpfiv9fdb_-error\",\"describedText\":\" | Summary must be at least 10 characters\",\"required\":true,\"ariaRequired\":null}],\"visibleErrorTexts\":[\"Please check the highlighted fields.\",\"Name must be at least 2 characters\",\"3–40 characters: lowercase letters, numbers and dashes\",\"Summary must be at least 10 characters\"],\"focusOnFirstInvalid\":false,\"focusOnAlert\":false}"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_2aqnpfiv9fdb_ \"Project name\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_4aqnpfiv9fdb_ \"Project URL\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_eqnpfiv9fdb_ \"One-line summary\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on select#_R_2iqnpfiv9fdb_ \"Category\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on select#_R_4iqnpfiv9fdb_ \"Stage\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on select#_R_6iqnpfiv9fdb_ \"Visibility\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on select#_R_mqnpfiv9fdb_ \"Organization(optional)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on combobox#_R_2qqnpfiv9fdb_ \"Technologies (0/20)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on combobox#_R_4qqnpfiv9fdb_ \"Topics (0/15)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#_R_uqnpfiv9fdb_ \"Description(optional)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#_R_32qnpfiv9fdb_ \"Goals(optional)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#_R_52qnpfiv9fdb_ \"Current needs(optional)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_36qnpfiv9fdb_ \"Website(optional)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_56qnpfiv9fdb_ \"Repository(optional)\" [main]",
+      "Low-contrast focus indicator (1.97:1 vs background; ring 2px rgba(30,92,77,0.40); border 1.64:1) on input \"Upload\" [main]",
+      "/projects/new: after an invalid submit focus stays on <body> (focus lost) — not moved to an error summary or the first invalid field"
+    ],
+    "ok": [
+      "/projects/new: form-level error rendered in role=\"alert\" (\"Please check the highlighted fields.\")",
+      "/projects/new: 3 field(s) aria-invalid with aria-describedby pointing at the error text"
+    ]
+  },
+  {
+    "flow": "Create a post in the feed composer",
+    "steps": [
+      {
+        "action": "Tab x17 to composer textarea",
+        "focus": "textarea#composer-body \"Post text\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Tab x5 to Post button",
+        "focus": "button \"Post\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "After publishing",
+        "focus": "<body> (focus lost)"
+      },
+      {
+        "action": "Status region text",
+        "note": "Posted."
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#composer-body \"Post text\" [main]",
+      "Low-contrast focus indicator (1.97:1 vs background; ring 2px rgba(30,92,77,0.40); border 0:1) on input \"Image\" [main]",
+      "After publishing, the composer collapses and focus is dropped to <body> (Post button unmounted)"
+    ],
+    "ok": [
+      "Success announced in polite status region: \"Posted.\""
+    ]
+  },
+  {
+    "flow": "Like a post (feed)",
+    "steps": [
+      {
+        "action": "Tab x32 to first Like button",
+        "focus": "button \"3Like\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Space on Like",
+        "focus": "<body> (focus lost)",
+        "note": "aria-pressed false -> true; focus while pending: {\"disabled\":null,\"tag\":\"BODY\"}"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#composer-body \"Post text\" [main]",
+      "Low-contrast focus indicator (1.97:1 vs background; ring 2px rgba(30,92,77,0.40); border 0:1) on input \"Image\" [main]",
+      "Focus lost to <body> after toggling Like: the button is disabled while the action is pending (disabled={liking}), which blurs it"
+    ],
+    "ok": [
+      "Like toggles via Space, aria-pressed false -> true"
+    ]
+  },
+  {
+    "flow": "Comment on a post (/posts/[id])",
+    "steps": [
+      {
+        "action": "Tab x33 to first comments link",
+        "focus": "a \"2comments\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "After client-side navigation to post",
+        "focus": "<body> (focus lost)"
+      },
+      {
+        "action": "Tab x1 to comment textarea",
+        "focus": "textarea#c-root \"Comment\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Tab x1 to Comment button",
+        "focus": "button \"Comment\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "After submitting comment",
+        "focus": "<body> (focus lost)"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#composer-body \"Post text\" [main]",
+      "Low-contrast focus indicator (1.97:1 vs background; ring 2px rgba(30,92,77,0.40); border 0:1) on input \"Image\" [main]",
+      "After navigating to the post, focus is on <body> (not moved to the post/heading)",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#c-root \"Comment\" [main]",
+      "Focus lost to <body> after submitting a comment",
+      "Comment submission is not announced (successToast=false; comments list is not a live region)"
+    ],
+    "ok": []
+  },
+  {
+    "flow": "User menu (header)",
+    "steps": [
+      {
+        "action": "Tab x10 to Account menu button",
+        "focus": "button \"ARAccount menu\"",
+        "indicator": true,
+        "indicatorContrast": 4.52
+      },
+      {
+        "action": "Enter on Account menu",
+        "focus": "button \"ARAccount menu\"",
+        "indicator": true,
+        "indicatorContrast": 4.52,
+        "note": "aria-expanded=true"
+      },
+      {
+        "action": "ArrowDown",
+        "focus": "button \"ARAccount menu\"",
+        "indicator": true,
+        "indicatorContrast": 4.52
+      },
+      {
+        "action": "Escape",
+        "focus": "button \"ARAccount menu\"",
+        "indicator": true,
+        "indicatorContrast": 4.52
+      },
+      {
+        "action": "Tab out of menu after 10 presses",
+        "focus": "a \"Ana Ribeiro\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93,
+        "note": "menu still open: true"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Opening the menu leaves focus on button \"ARAccount menu\"; focus is not moved to the first menuitem (role=\"menu\" pattern expects it)",
+      "ArrowDown does not move focus into/through the role=menu items (no arrow-key support; items are reachable only with Tab)",
+      "User menu stays open after focus moves out of it (focus now on a \"Ana Ribeiro\" [main]); it can cover content"
+    ],
+    "ok": [
+      "Escape closes the menu and focus returns to the trigger"
+    ]
+  },
+  {
+    "flow": "Post options menu + Report dialog (/posts/[id])",
+    "steps": [
+      {
+        "action": "Tab x13 to Post options button",
+        "focus": "button \"Post options\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Enter on Post options",
+        "focus": "button \"Post options\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Escape (menu)",
+        "focus": "button \"Post options\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Tab x1 to Report post menuitem",
+        "focus": "menuitem \"Report post\" [main] [menu]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Enter on Report post (dialog opens)",
+        "focus": "select#_r_0_ \"What's the problem?\" [main] [dialog]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Tab x10 inside dialog",
+        "note": "textarea#_r_1_ \"Details(optional)\" [main] [dialog] → button \"Cancel\" [main] [dialog] → button \"Send report\" [main] [dialog] → <body> (focus lost) → select#_r_0_ \"What's the problem?\" [main] [dialog] → textarea#_r_1_ \"Details(optional)\" [main] [dialog] → button \"Cancel\" [main] [dialog] → button \"Send report\" [main] [dialog] → <body> (focus lost) → select#_r_0_ \"What's the problem?\" [main] [dialog]"
+      },
+      {
+        "action": "Escape (dialog)",
+        "focus": "<body> (focus lost)"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Post options menu opens but focus stays on button \"Post options\" [main] (not moved into the menu)",
+      "After closing the Report dialog focus is on <body> (focus lost), not the \"Post options\" trigger (the \"Report post\" menuitem that opened it was unmounted)"
+    ],
+    "ok": [
+      "Escape closes Post options menu, focus on trigger",
+      "Dialog opens with focus inside: select#_r_0_ \"What's the problem?\" [main] [dialog]",
+      "Tabbing past the last control leaves the page for browser chrome (activeElement=<body>) and cycles back into the dialog — native showModal() behaviour, page content stays inert",
+      "Focus stays within the modal dialog (native <dialog>.showModal)"
+    ]
+  },
+  {
+    "flow": "Share options menu (feed)",
+    "steps": [
+      {
+        "action": "Tab x34 to Share options button",
+        "focus": "button \"0Share options\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Enter on Share options",
+        "focus": "button \"0Share options\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Tab",
+        "focus": "menuitem \"Share now\" [main] [menu]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Escape",
+        "focus": "<body> (focus lost)"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#composer-body \"Post text\" [main]",
+      "Low-contrast focus indicator (1.97:1 vs background; ring 2px rgba(30,92,77,0.40); border 0:1) on input \"Image\" [main]",
+      "Share menu opens but focus stays on the trigger",
+      "Escape from Share menu (with focus on a menuitem) closes it but focus goes to <body> (focus lost), not back to the trigger"
+    ],
+    "ok": []
+  },
+  {
+    "flow": "Mobile bottom nav + tab order at 360px",
+    "steps": [
+      {
+        "action": "Tab x40 from top",
+        "note": "1:a \"Skip to content\" | 2:a \"Collab Hub home\" | 3:a \"Search\" | 4:button \"ARAccount menu\" | 5:a \"Home\" [bottom-nav] | 6:a \"Opportunities\" [bottom-nav] | 7:a \"Network\" [bottom-nav] | 8:a \"Messages\" [bottom-nav] | 9:a \"Alerts16\" [bottom-nav] | 10:textarea#composer-body \"Post text\" [main] | 11:input \"Image\" [main] | 12:button \"Link\" [main] | 13:select#composer-type \"Post type\" [main] | 14:select#composer-as \"Post as\" [main] | 15:button \"Post\" [main] | 16:a \"For you\" [main] | 17:a \"Latest from your network\" [main] | 18:a \"StudyPilot\" [main] | 19:a \"Ana Ribeiro\" [main] | 20:a \"26 minutes ago\" [main] | 21:button \"Post options\" [main] | 22:a \"@grace\" [main] | 23:a \"#AI\" [main] | 24:a \"#Education\" [main] | 25:button \"3Like\" [main] | 26:a \"3comments\" [main] | 27:button \"0Share options\" [main] | 28:button \"Save\" [main] | 29:a \"Diogo Alves\" [main] | 30:a \"26 minutes ago\" [main] | 31:button \"Post options\" [main] | 32:a \"#Design\" [main] | 33:a \"#GameDevelopment\" [main] | 34:button \"0Like\" [main] | 35:a \"0comments\" [main] | 36:button \"0Share options\" [main] | 37:button \"Save\" [main] | 38:a \"Farid Haddad\" [main] | 39:a \"26 minutes ago\" [main] | 40:button \"Post options\" [main]"
+      },
+      {
+        "action": "Tab x7 to bottom-nav Network link",
+        "focus": "a \"Network\"",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "After activating Network",
+        "focus": "a \"Network\"",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "aria-current in bottom nav",
+        "note": "Network"
+      },
+      {
+        "action": "Tab x3 to Account menu (mobile)",
+        "focus": "button \"ARAccount menu\"",
+        "indicator": true,
+        "indicatorContrast": 4.52
+      },
+      {
+        "action": "Open user menu at 360px",
+        "note": "{\"x\":104,\"y\":42,\"width\":240,\"height\":382}"
+      }
+    ],
+    "issues": [
+      "Bottom nav (visually at the bottom) comes before <main> in tab order: bottom nav at stop 5, main at stop 10 (DOM order differs from visual order, WCAG 2.4.3)",
+      "Focused element >=50% hidden behind sticky header / fixed bottom nav (WCAG 2.4.11): a \"Diogo Alves\" [main] (100% covered); a \"26 minutes ago\" [main] (100% covered); button \"Post options\" [main] (100% covered)"
+    ],
+    "ok": [
+      "Bottom nav reachable by keyboard (first stop 5)",
+      "Bottom nav marks the current page with aria-current=\"page\"",
+      "After client navigation focus stays on a \"Network\" (Next.js keeps focus on the clicked link; route announcer handles the title)"
+    ]
+  },
+  {
+    "flow": "Send a connection request (/u/elena)",
+    "steps": [
+      {
+        "action": "Tab x14 to Connect button",
+        "focus": "button \"Connect with Elena Rossi\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "After Enter on Connect",
+        "focus": "<body> (focus lost)"
+      },
+      {
+        "action": "Status region",
+        "note": "Connection request sent."
+      },
+      {
+        "action": "Tab x1 to Withdraw/pending button",
+        "focus": "button \"Request sent\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Enter (arms inline confirm)",
+        "focus": "button \"Withdraw request?\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Enter (confirm withdraw)",
+        "focus": "<body> (focus lost)"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "After sending the request the Connect button is replaced and focus drops to <body>",
+      "Focus lost to <body> after withdrawing the request"
+    ],
+    "ok": [
+      "Result announced in polite status region: \"Connection request sent.\"",
+      "Inline confirm changes the focused button name to \"Withdraw request?\" (name change only, not announced as a live message)"
+    ]
+  },
+  {
+    "flow": "Apply to an opportunity (/opportunities/[id])",
+    "steps": [
+      {
+        "action": "Tab x20 to Send application button",
+        "focus": "button \"Send application\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "Submit empty Apply form",
+        "focus": "<body> (focus lost)",
+        "note": "{\"alerts\":[\"Please check the highlighted fields.\"],\"toasts\":[],\"invalid\":[{\"name\":\"message\",\"describedBy\":\"_R_l5inpfiv9fdb_-hint _R_l5inpfiv9fdb_-error\",\"describedText\":\" | Message must be at least 20 characters\",\"required\":true,\"ariaRequired\":null}],\"visibleErrorTexts\":[\"Please check the highlighted fields.\",\"Message must be at least 20 characters\"],\"focusOnFirstInvalid\":false,\"focusOnAlert\":false}"
+      },
+      {
+        "action": "Tab x3 to message textarea",
+        "focus": "textarea#_R_l5inpfiv9fdb_ \"Why are you a good fit?\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Tab x3 to Send application button",
+        "focus": "button \"Send application\" [main]",
+        "indicator": true,
+        "indicatorContrast": 4.93
+      },
+      {
+        "action": "After sending application",
+        "focus": "<body> (focus lost)"
+      },
+      {
+        "action": "Status region",
+        "note": "Application sent. You can follow its status under Applications."
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.37:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.16:1) on input#global-search \"Search people, projects, organizations and opportunities\"",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#_R_l5inpfiv9fdb_ \"Why are you a good fit?\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on input#_R_t5inpfiv9fdb_ \"Portfolio or relevant link(optional)\" [main]",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on select#_R_155inpfiv9fdb_ \"Apply as\" [main]",
+      "Apply form: after an invalid submit focus stays on <body> (focus lost) — not moved to an error summary or the first invalid field",
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 6.57:1) on textarea#_R_l5inpfiv9fdb_ \"Why are you a good fit?\" [main]",
+      "After applying, the form is replaced and focus drops to <body>"
+    ],
+    "ok": [
+      "Apply form: form-level error rendered in role=\"alert\" (\"Please check the highlighted fields.\")",
+      "Apply form: 1 field(s) aria-invalid with aria-describedby pointing at the error text",
+      "Application result announced: \"Application sent. You can follow its status under Applications.\""
+    ]
+  },
+  {
+    "flow": "Send a message (/messages/[id])",
+    "steps": [
+      {
+        "action": "Tab x1 to message textarea",
+        "focus": "textarea#msg-body \"Message\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Enter to send",
+        "focus": "textarea#msg-body \"Message\" [main]",
+        "indicator": true,
+        "indicatorContrast": 1.38
+      },
+      {
+        "action": "Message list live region",
+        "note": "{\"live\":\"polite\",\"relevant\":null,\"items\":4}"
+      }
+    ],
+    "issues": [
+      "Low-contrast focus indicator (1.38:1 vs background; ring 2px rgba(30,90,75,0.20); border 7.81:1) on textarea#msg-body \"Message\" [main]",
+      "Whole message history (<ol aria-live=\"polite\">, 4 items) is a live region — every poll/re-render can re-announce; prefer role=\"log\" with aria-relevant=\"additions\""
+    ],
+    "ok": [
+      "Enter sends; focus stays in the message box"
+    ]
+  }
+]

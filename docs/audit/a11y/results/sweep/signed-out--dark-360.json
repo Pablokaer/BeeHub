@@ -1,0 +1,301 @@
+[
+  {
+    "route": "/",
+    "path": "/",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/",
+    "redirected": false,
+    "title": "Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Find the people your project is missing."
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 20,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/login",
+    "path": "/login",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/login",
+    "redirected": false,
+    "title": "Sign in · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Welcome back"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 24,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/signup",
+    "path": "/signup",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/signup",
+    "redirected": false,
+    "title": "Create your account · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Join Collab Hub"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 25,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/discover",
+    "path": "/discover",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/discover",
+    "redirected": false,
+    "title": "Discover · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Discover"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 1,
+        "targets": [
+          "a[href=\"/discover?type=posts\"]"
+        ],
+        "sampleHtml": "<a class=\"-mb-px inline-flex h-9 items-center gap-1.5 whitespace-nowrap border-b-2 px-2.5 text-sm transition-colors border-transparent text-muted hover:text-ink\" href=\"/discover?type=posts\">Posts</a>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+      }
+    ],
+    "passes": 27,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/opportunities",
+    "path": "/opportunities",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/opportunities",
+    "redirected": false,
+    "title": "Opportunities · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Opportunities"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 37,
+        "targets": [
+          "input[value=\"PAID\"]",
+          "input[value=\"FREELANCE\"]",
+          "input[value=\"VOLUNTEER\"]",
+          "input[value=\"PROJECT_PARTNERSHIP\"]",
+          "input[value=\"BUSINESS_PARTNERSHIP\"]"
+        ],
+        "sampleHtml": "<input type=\"checkbox\" class=\"size-3.5 accent-[var(--c-accent)]\" name=\"type\" value=\"PAID\">",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (14px by 14px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 23px instead of at least 24px."
+      }
+    ],
+    "incomplete": [],
+    "passes": 26,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/opportunities/[id]",
+    "path": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/opportunities/cmwbxjljt0030pci3ldy7uv23",
+    "redirected": false,
+    "title": "Opportunity · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Pixel artist for character sprites"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [],
+    "passes": 21,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/u/[username]",
+    "path": "/u/diogo",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/u/diogo",
+    "redirected": false,
+    "title": "@diogo · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "Diogo Alves"
+    ],
+    "robots": [],
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 3,
+        "targets": [
+          ".hover\\:underline.hover\\:text-ink",
+          ".link[href$=\"design\"]",
+          "a[href$=\"gamedevelopment\"]"
+        ],
+        "sampleHtml": "<a class=\"hover:text-ink hover:underline\" href=\"/posts/cmwbxjlod004rpci306n1iz99\"><time datetime=\"2026-11-11T09:41:54.685Z\">18 minutes ago</time></a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 23,
+    "axeVersion": "4.14.0"
+  },
+  {
+    "route": "/p/[slug]",
+    "path": "/p/studypilot",
+    "auth": "signed-out",
+    "variant": "dark-360",
+    "status": 200,
+    "finalUrl": "/p/studypilot",
+    "redirected": false,
+    "title": "studypilot · Collab Hub",
+    "lang": "en",
+    "h1": [
+      "StudyPilot"
+    ],
+    "robots": [],
+    "violations": [
+      {
+        "id": "target-size",
+        "impact": "serious",
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/target-size?application=playwright",
+        "tags": [
+          "cat.sensory-and-visual-cues",
+          "wcag22aa",
+          "wcag258",
+          "EN-301-549v4",
+          "EN-9.2.5.8"
+        ],
+        "nodes": 3,
+        "targets": [
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(1) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(2) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]",
+          "article[aria-label=\"Post by Ana Ribeiro\"]:nth-child(3) > .items-start.justify-between.gap-2 > .gap-2\\.5.min-w-0.flex > .leading-tight.min-w-0 > .block.truncate[href$=\"studypilot\"]"
+        ],
+        "sampleHtml": "<a class=\"block truncate text-sm font-semibold hover:underline\" href=\"/p/studypilot\">StudyPilot</a>",
+        "failureSummary": "Fix any of the following:\n  Target has insufficient size (170.5px by 20px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 20.4px instead of at least 24px."
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2aa",
+          "wcag143",
+          "TTv5",
+          "TT13.c",
+          "EN-301-549",
+          "EN-9.1.4.3",
+          "ACT",
+          "RGAAv4",
+          "RGAA-3.2.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".prose-plain.leading-relaxed.text-sm:nth-child(2) > span",
+          ".text-\\[14\\.5px\\].prose-plain.leading-relaxed > span:nth-child(3)"
+        ],
+        "sampleHtml": "<span>StudyPilot reads your notes and generates spaced-repetition quizzes. The model works; now we need a great web experience and a launch plan.</span>",
+        "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "help": "Links must be distinguishable without relying on color",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/link-in-text-block?application=playwright",
+        "tags": [
+          "cat.color",
+          "wcag2a",
+          "wcag141",
+          "TTv5",
+          "TT13.a",
+          "EN-301-549",
+          "EN-9.1.4.1",
+          "RGAAv4",
+          "RGAA-10.6.1"
+        ],
+        "nodes": 2,
+        "targets": [
+          ".link[href$=\"artificial-intelligence\"]",
+          ".link[href$=\"education\"]"
+        ],
+        "sampleHtml": "<a class=\"link\" href=\"/tags/artificial-intelligence\">#AI</a>",
+        "failureSummary": "Fix any of the following:\n  Element's contrast ratio could not be determined because of element overlap"
+      }
+    ],
+    "passes": 24,
+    "axeVersion": "4.14.0"
+  }
+]

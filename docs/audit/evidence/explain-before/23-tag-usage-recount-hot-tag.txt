@@ -1,0 +1,54 @@
+-- tag-usage-recount-hot-tag
+UPDATE "Tag" t SET "usageCount" =
+      (SELECT count(*) FROM "UserTag" x WHERE x."tagId" = t.id) + (SELECT count(*) FROM "ProjectTag" x WHERE x."tagId" = t.id) +
+      (SELECT count(*) FROM "OrganizationTag" x WHERE x."tagId" = t.id) + (SELECT count(*) FROM "OpportunityTag" x WHERE x."tagId" = t.id) +
+      (SELECT count(*) FROM "PostTag" x WHERE x."tagId" = t.id) WHERE t.id = ANY(ARRAY['t1','t2','t3'])
+
+Update on "Tag" t  (cost=12.86..11033.02 rows=0 width=0) (actual time=38.365..38.368 rows=0 loops=1)
+  Buffers: shared hit=2188 read=1202 dirtied=9
+  ->  Bitmap Heap Scan on "Tag" t  (cost=12.86..11033.02 rows=3 width=10) (actual time=17.433..37.798 rows=3 loops=1)
+        Recheck Cond: (id = ANY ('{t1,t2,t3}'::text[]))
+        Heap Blocks: exact=2
+        Buffers: shared hit=2160 read=1189
+        ->  Bitmap Index Scan on "Tag_pkey"  (cost=0.00..12.86 rows=3 width=0) (actual time=0.245..0.245 rows=5 loops=1)
+              Index Cond: (id = ANY ('{t1,t2,t3}'::text[]))
+              Buffers: shared hit=4 read=2
+        SubPlan 1
+          ->  Aggregate  (cost=8.38..8.39 rows=1 width=8) (actual time=1.181..1.181 rows=1 loops=3)
+                Buffers: shared hit=37 read=5
+                ->  Index Only Scan using "UserTag_tagId_kind_idx" on "UserTag" x  (cost=0.42..7.89 rows=198 width=0) (actual time=0.075..0.815 rows=13956 loops=3)
+                      Index Cond: ("tagId" = t.id)
+                      Heap Fetches: 0
+                      Buffers: shared hit=37 read=5
+        SubPlan 2
+          ->  Aggregate  (cost=5.47..5.48 rows=1 width=8) (actual time=0.547..0.547 rows=1 loops=3)
+                Buffers: shared hit=2 read=14
+                ->  Index Only Scan using "ProjectTag_tagId_kind_idx" on "ProjectTag" x_1  (cost=0.29..5.33 rows=59 width=0) (actual time=0.152..0.433 rows=4299 loops=3)
+                      Index Cond: ("tagId" = t.id)
+                      Heap Fetches: 0
+                      Buffers: shared hit=2 read=14
+        SubPlan 3
+          ->  Aggregate  (cost=4.49..4.50 rows=1 width=8) (actual time=0.166..0.166 rows=1 loops=3)
+                Buffers: shared hit=2 read=6
+                ->  Index Only Scan using "OrganizationTag_tagId_idx" on "OrganizationTag" x_2  (cost=0.29..4.46 rows=10 width=0) (actual time=0.120..0.147 rows=699 loops=3)
+                      Index Cond: ("tagId" = t.id)
+                      Heap Fetches: 0
+                      Buffers: shared hit=2 read=6
+        SubPlan 4
+          ->  Aggregate  (cost=7.76..7.77 rows=1 width=8) (actual time=1.303..1.303 rows=1 loops=3)
+                Buffers: shared hit=5 read=33
+                ->  Index Only Scan using "OpportunityTag_tagId_kind_idx" on "OpportunityTag" x_3  (cost=0.30..7.33 rows=173 width=0) (actual time=0.094..0.951 rows=12118 loops=3)
+                      Index Cond: ("tagId" = t.id)
+                      Heap Fetches: 17
+                      Buffers: shared hit=5 read=33
+        SubPlan 5
+          ->  Aggregate  (cost=3644.40..3644.41 rows=1 width=8) (actual time=9.310..9.310 rows=1 loops=3)
+                Buffers: shared hit=2108 read=1129
+                ->  Index Only Scan using "PostTag_tagId_idx" on "PostTag" x_4  (cost=0.42..3628.90 rows=6202 width=0) (actual time=0.185..8.047 rows=40735 loops=3)
+                      Index Cond: ("tagId" = t.id)
+                      Heap Fetches: 29366
+                      Buffers: shared hit=2108 read=1129
+Planning:
+  Buffers: shared hit=31 read=7
+Planning Time: 0.762 ms
+Execution Time: 38.612 ms

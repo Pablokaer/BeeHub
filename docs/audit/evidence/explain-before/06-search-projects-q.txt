@@ -1,0 +1,34 @@
+-- search-projects-q (447.0388330000005 ms in Prisma)
+-- params: ["ACTIVE","PUBLIC","climate","climate","climate","climate","climate","0"]
+SELECT COUNT(*) AS "_count$_all" FROM (SELECT "public"."Project"."id" FROM "public"."Project" WHERE ("public"."Project"."status" = CAST($1::text AS "public"."EntityStatus") AND "public"."Project"."visibility" = CAST($2::text AS "public"."ProjectVisibility") AND ("public"."Project"."name" ILIKE ('%' || $3 || '%') OR "public"."Project"."summary" ILIKE ('%' || $4 || '%') OR "public"."Project"."description" ILIKE ('%' || $5 || '%') OR EXISTS(SELECT "t0"."projectId" FROM "public"."ProjectTag" AS "t0" LEFT JOIN "public"."Tag" AS "j1" ON ("j1"."id") = ("t0"."tagId") WHERE (("j1"."name" ILIKE ('%' || $6 || '%') OR "j1"."slug"::text LIKE ($7 || '%')) AND ("j1"."id" IS NOT NULL) AND ("public"."Project"."id") = ("t0"."projectId") AND "t0"."projectId" IS NOT NULL)))) OFFSET $8) AS "sub"
+
+Aggregate  (cost=871506.30..871506.31 rows=1 width=8) (actual time=171.153..171.155 rows=1 loops=1)
+  Buffers: shared hit=3309 read=53
+  ->  Index Scan using "Project_status_visibility_idx" on "Project"  (cost=0.30..871342.24 rows=13125 width=32) (actual time=61.677..170.676 rows=9601 loops=1)
+        Index Cond: ((status = ('ACTIVE'::cstring)::"EntityStatus") AND (visibility = ('PUBLIC'::cstring)::"ProjectVisibility"))
+        Filter: ((name ~~* '%climate%'::text) OR (summary ~~* '%climate%'::text) OR (description ~~* '%climate%'::text) OR (hashed SubPlan 2))
+        Rows Removed by Filter: 8399
+        Buffers: shared hit=3309 read=53
+        SubPlan 2
+          ->  Nested Loop  (cost=4.75..232.63 rows=59 width=6) (actual time=7.998..9.791 rows=759 loops=1)
+                Buffers: shared hit=487
+                ->  Seq Scan on "Tag" j1  (cost=0.00..49.00 rows=1 width=5) (actual time=7.903..8.370 rows=1 loops=1)
+                      Filter: ((id IS NOT NULL) AND ((name ~~* '%climate%'::text) OR (slug ~~ 'climate%'::text)))
+                      Rows Removed by Filter: 2000
+                      Buffers: shared hit=19
+                ->  Bitmap Heap Scan on "ProjectTag" t0  (cost=4.75..183.04 rows=59 width=10) (actual time=0.091..1.350 rows=759 loops=1)
+                      Recheck Cond: ("tagId" = j1.id)
+                      Filter: ("projectId" IS NOT NULL)
+                      Heap Blocks: exact=466
+                      Buffers: shared hit=468
+                      ->  Bitmap Index Scan on "ProjectTag_tagId_kind_idx"  (cost=0.00..4.74 rows=59 width=0) (actual time=0.045..0.045 rows=759 loops=1)
+                            Index Cond: ("tagId" = j1.id)
+                            Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=33
+Planning Time: 1.070 ms
+JIT:
+  Functions: 27
+  Options: Inlining true, Optimization true, Expressions true, Deforming true
+  Timing: Generation 0.995 ms, Inlining 9.659 ms, Optimization 35.822 ms, Emission 26.568 ms, Total 73.044 ms
+Execution Time: 172.255 ms

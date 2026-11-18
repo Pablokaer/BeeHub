@@ -1,0 +1,19 @@
+landing /                            200      ttfb p50      4 ms   total p50     55 ms  p95     72 ms  max     76 ms
+feed (for you)                       200      ttfb p50      3 ms   total p50    142 ms  p95    167 ms  max    191 ms
+feed (latest)                        200      ttfb p50      3 ms   total p50    137 ms  p95    144 ms  max    157 ms
+discover q=react                     200      ttfb p50      5 ms   total p50    560 ms  p95    649 ms  max    718 ms
+discover people q=react              200      ttfb p50      4 ms   total p50    295 ms  p95    334 ms  max    455 ms
+opportunities                        200      ttfb p50      2 ms   total p50    133 ms  p95    180 ms  max    212 ms
+opportunities sort=match             200      ttfb p50      2 ms   total p50    134 ms  p95    192 ms  max    592 ms
+opportunities (signed out)           200      ttfb p50      2 ms   total p50    119 ms  p95    162 ms  max    190 ms
+profile /u/user1 (heavy)             200      ttfb p50      2 ms   total p50     81 ms  p95    153 ms  max    214 ms
+profile /u/user25000                 200      ttfb p50      2 ms   total p50     20 ms  p95     40 ms  max     44 ms
+connections /u/user1/connections     200      ttfb p50      2 ms   total p50    102 ms  p95    177 ms  max    189 ms
+project /p/project-1                 200      ttfb p50      2 ms   total p50     31 ms  p95     47 ms  max     68 ms
+org /o/org-1                         200      ttfb p50      2 ms   total p50     91 ms  p95    107 ms  max    161 ms
+opportunity /opportunities/op1       200      ttfb p50      2 ms   total p50     14 ms  p95     24 ms  max     36 ms
+tag /tags/react                      200      ttfb p50      5 ms   total p50    993 ms  p95   1298 ms  max   1385 ms
+notifications                        200      ttfb p50      1 ms   total p50     10 ms  p95     12 ms  max     13 ms
+messages list                        200      ttfb p50      1 ms   total p50      7 ms  p95      9 ms  max      9 ms
+message poll API                     200      ttfb p50      2 ms   total p50      3 ms  p95      4 ms  max      5 ms
+missing profile /u/nope              200      ttfb p50      1 ms   total p50      6 ms  p95      7 ms  max      8 ms
