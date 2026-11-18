@@ -7,6 +7,9 @@ import { AVATAR_ART, COVER_ART } from "@/lib/art-catalog";
 import { createUser, resetDb, setSkills, viewerOf } from "../helpers";
 import { readMedia, storeImage } from "@/server/uploads";
 import { syntheticPortrait } from "../fixtures/portrait";
+import { CUSTOM_PREFIX, encodeAvatar } from "@/lib/avatar/code";
+import { DEFAULT_AVATAR } from "@/lib/avatar/options";
+import { GET } from "@/app/api/avatars/[code]/route";
 
 const key = "2026/security-test-image-key.webp";
 describe("media visibility", () => {
@@ -111,47 +114,55 @@ describe("profile catalog art", () => {
   });
 });
 
-describe("profile photos become pixel portraits", () => {
+describe("profile photos", () => {
   beforeEach(resetDb);
   const upload = async (actor: Parameters<typeof storeImage>[0], purpose: Parameters<typeof storeImage>[2]) =>
     storeImage(actor, new File([new Uint8Array(await syntheticPortrait())], "me.jpg", { type: "image/jpeg" }), purpose);
 
-  it("stores the portrait plus a private original, and serves only the portrait once attached", async () => {
+  it("are stored as photos (no pixel filter) and served once attached", async () => {
     const owner = await createUser();
     const stranger = await createUser();
     const stored = await upload(owner, "avatar");
-    expect(stored.key).toMatch(/\.px\.webp$/);
-    expect([stored.width, stored.height]).toEqual([288, 288]);
-    const portrait = await db.mediaAsset.findUniqueOrThrow({ where: { key: stored.key } });
-    expect(portrait.sourceKey).toBeTruthy();
-    const original = await db.mediaAsset.findUniqueOrThrow({ where: { key: portrait.sourceKey! } });
-    expect(original.ownerId).toBe(owner.id);
-    expect(original.key).not.toMatch(/\.px\.webp$/);
+    expect(stored.key).not.toMatch(/\.px\.webp$/);
+    expect([stored.width, stored.height]).toEqual([400, 400]);
+    const asset = await db.mediaAsset.findUniqueOrThrow({ where: { key: stored.key } });
+    expect(asset.sourceKey).toBeNull();
+    expect(await db.mediaAsset.count({ where: { ownerId: owner.id } })).toBe(1);
     expect(await readMedia(stored.key)).not.toBeNull();
-    expect(await readMedia(original.key)).not.toBeNull();
-
+    expect(await canReadMedia(viewerOf(stranger), stored.key)).toBe(false);
     await setSkills(owner, [], { avatarKey: stored.key });
     expect(await canReadMedia(null, stored.key)).toBe(true);
     expect(await canReadMedia(viewerOf(stranger), stored.key)).toBe(true);
-    // The original stays private to its owner.
-    expect(await canReadMedia(null, original.key)).toBe(false);
-    expect(await canReadMedia(viewerOf(stranger), original.key)).toBe(false);
-    expect(await canReadMedia(viewerOf(owner), original.key)).toBe(true);
   });
 
-  it("refuses an unfiltered image as a new profile photo, but keeps an existing one", async () => {
+  it("keeps pixel portraits made before the filter was removed", async () => {
     const owner = await createUser();
-    const portrait = await upload(owner, "avatar");
-    const original = (await db.mediaAsset.findUniqueOrThrow({ where: { key: portrait.key } })).sourceKey!;
-    const cover = await upload(owner, "cover");
-    expect(cover.key).not.toMatch(/\.px\.webp$/);
-    await expect(setSkills(owner, [], { avatarKey: original })).rejects.toMatchObject({ code: "VALIDATION" });
-    await expect(setSkills(owner, [], { avatarKey: cover.key })).rejects.toMatchObject({ code: "VALIDATION" });
+    const legacy = "2026/legacy-portrait-key-0000001.px.webp";
+    await db.mediaAsset.create({ data: { key: legacy, ownerId: owner.id, mimeType: "image/webp", sizeBytes: 1 } });
+    await setSkills(owner, [], { avatarKey: legacy });
+    expect((await db.profile.findUniqueOrThrow({ where: { userId: owner.id } })).avatarKey).toBe(legacy);
+  });
+});
 
-    // A photo uploaded before the filter existed stays as it is.
+describe("avatars made in the avatar builder", () => {
+  beforeEach(resetDb);
+  it("are saved on the profile, shown to visitors and served as SVG", async () => {
+    const owner = await createUser();
+    const code = encodeAvatar({ ...DEFAULT_AVATAR, hair: 4, hat: 2, background: 9 });
+    await setSkills(owner, [], { avatarArt: CUSTOM_PREFIX + code });
+    const p = await getPublicProfile(null, owner.username);
+    expect(p && !p.restricted && p.avatarArt).toBe(CUSTOM_PREFIX + code);
+    const res = await GET(new Request("http://x"), { params: Promise.resolve({ code }) });
+    expect(res.status).toBe(200);
+    expect(res.headers.get("Content-Type")).toMatch(/image\/svg\+xml/);
+    expect(res.headers.get("Cache-Control")).toMatch(/immutable/);
+    expect(await res.text()).toMatch(/^<svg/);
+    expect((await GET(new Request("http://x"), { params: Promise.resolve({ code: "v1-nope" }) })).status).toBe(404);
+  });
+
+  it("cannot be combined with an uploaded photo", async () => {
+    const owner = await createUser();
     await db.mediaAsset.create({ data: { key, ownerId: owner.id, mimeType: "image/webp", sizeBytes: 1 } });
-    await db.profile.update({ where: { userId: owner.id }, data: { avatarKey: key } });
-    await setSkills(owner, [], { avatarKey: key, coverKey: cover.key });
-    expect((await db.profile.findUniqueOrThrow({ where: { userId: owner.id } })).avatarKey).toBe(key);
+    await expect(setSkills(owner, [], { avatarKey: key, avatarArt: CUSTOM_PREFIX + encodeAvatar(DEFAULT_AVATAR) })).rejects.toMatchObject({ code: "VALIDATION" });
   });
 });

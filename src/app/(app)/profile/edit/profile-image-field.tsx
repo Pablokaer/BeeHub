@@ -2,7 +2,8 @@
 
 import { useId, useRef, useState } from "react";
 import { Check, ImagePlus, Loader2, Palette, Trash2, X } from "lucide-react";
-import { ART_LANG, AVATAR_ART, COVER_ART, findArt, focalPosition, type ArtKind } from "@/lib/art-catalog";
+import { ART_LANG, AVATAR_ART, COVER_ART, findArt, focalPosition, isCustomArt, type ArtKind } from "@/lib/art-catalog";
+import { AvatarStudio } from "./avatar-studio";
 import { Avatar, ProfileCover } from "@/components/ui/avatar";
 import { UPLOAD_ACCEPT, useImageUpload } from "@/components/ui/image-upload";
 import { isPixelPortraitKey } from "@/lib/media";
@@ -35,7 +36,7 @@ export function ProfileImageField({ kind, personName, initial }: { kind: ArtKind
   const seed = personName || "profile";
 
   const openPicker = () => {
-    setPending(choice.art ?? catalog[0]!.id);
+    setPending(choice.art && !isCustomArt(choice.art) ? choice.art : catalog[0]!.id);
     dialog.current?.showModal();
   };
   const closePicker = () => dialog.current?.close();
@@ -44,12 +45,14 @@ export function ProfileImageField({ kind, personName, initial }: { kind: ArtKind
     closePicker();
   };
 
-  const summary = art ? (
+  const summary = art && isCustomArt(art.id) ? (
+    "Your custom avatar."
+  ) : art ? (
     <>
       Illustration: <span lang={ART_LANG}>{art.label}</span>
     </>
   ) : choice.key ? (
-    kind === "avatar" && isPixelPortraitKey(choice.key) ? "Your photo, as a pixel portrait." : "Your uploaded image."
+    kind === "avatar" && isPixelPortraitKey(choice.key) ? "Your photo, as a pixel portrait." : "Your uploaded photo."
   ) : (
     copy.empty
   );
@@ -83,10 +86,11 @@ export function ProfileImageField({ kind, personName, initial }: { kind: ArtKind
       )}
 
       <p id={`${id}-status`} ref={status} className="text-[13px] text-ink-2" aria-live="polite">
-        {busy ? (kind === "avatar" ? "Creating your pixel portrait…" : "Uploading…") : summary}
+        {busy ? "Uploading…" : summary}
       </p>
 
       <div className="flex flex-wrap items-center gap-2">
+        {kind === "avatar" && <AvatarStudio current={choice.art} onApply={(artId) => setChoice({ key: null, art: artId })} />}
         <button ref={trigger} type="button" className="cm-wax inline-flex h-10 items-center gap-1.5 px-3 text-[13px] font-semibold" aria-haspopup="dialog" onClick={openPicker}>
           <Palette className="size-4" aria-hidden /> Choose illustration
         </button>
@@ -113,7 +117,6 @@ export function ProfileImageField({ kind, personName, initial }: { kind: ArtKind
         )}
       </div>
       <p className="text-xs text-muted">
-        {kind === "avatar" && "Photos are turned into a pixel portrait in the Colmeia style; the original is kept privately, visible only to you. "}
         Uploads: JPEG, PNG, WebP or GIF, up to 5 MB. Metadata is removed. Changes apply when you save the profile.
       </p>
 

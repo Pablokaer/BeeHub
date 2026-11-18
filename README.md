@@ -56,7 +56,8 @@ create a profile ─▶ discover people, projects and opportunities ─▶ apply
 - Name, headline, bio (with @mentions and #hashtags), location (can be hidden), languages, links.
 - Skills and interests with suggestion chips and autocomplete; availability (open to collaborate, looking for projects, hiring, paid work, volunteering, co-founding, networking); experience level; preferred work modes and collaboration types.
 - Work experience and education history.
-- **Profile picture and cover**: pick an illustration from the Colmeia catalog, or upload a photo. Uploaded profile photos are turned into a **pixel portrait** in the BeeHub style (the original is kept privately); covers stay as photos.
+- **Profile picture**: build a pixel avatar in the **avatar studio** (16 skin tones, 6 face shapes, 22 hairstyles in 18 colours, 8 eye styles in 11 colours, eyebrows, noses, mouths, beards, face details, 12 outfits in 20 colours, glasses, accessories, jewelry, 13 hats and 22 backgrounds), pick an illustration from the Colmeia catalog, or upload a photo (kept as a photo).
+- **Profile cover**: 16 pixel-art covers in the catalog (apiaries by day and night, seasons, mountains, coast, city rooftops, honeycomb…), or an uploaded image.
 - Profile page with cover, honeycomb portrait, network counters that open the real lists, and **Posts / Projects / About** tabs.
 - Privacy: public or members-only profile, location visibility, who can see connections, who can message, follow approval, search visibility.
 
@@ -133,7 +134,7 @@ Prisma 7 (pg adapter) ─▶ PostgreSQL 16 (constraints, trigram indexes)
 
 ### Media
 1. Uploads go to `POST /api/uploads` (same-origin check, rate limited). Images are decoded and re-encoded to WebP with **sharp**, and all metadata (EXIF, GPS) is removed.
-2. **Profile photos** become a 48 × 48 pixel portrait on the server (`src/server/media/pixel-portrait.ts`): bust crop, detail-preserving reduction, a palette leaning toward the brand tones (skin tones are preserved), a flat backdrop and cocoa contours. No external service is involved. The re-encoded original is stored separately and readable only by its owner.
+2. **Avatars from the studio** are not uploads: the chosen parts are stored as a short code in `avatarArt` (`custom:v1-…`), and `GET /api/avatars/<code>` draws the 48 × 48 pixel portrait as SVG (`src/lib/avatar/`), cached for a year since the code fully determines the image. Profile photos uploaded while an automatic pixel filter existed keep their `.px.webp` keys and are still shown with crisp pixels.
 3. Files are served by `GET /api/media/…`, which re-checks on every request that the viewer may see the image (profile visibility, project privacy, deleted posts, blocks).
 4. Catalog illustrations are static files and are stored on profiles only as validated ids.
 
@@ -162,7 +163,7 @@ Content Security Policy and security headers on every response, same-origin chec
 | Data | **PostgreSQL 16**, **Prisma 7** with the `pg` driver adapter; SQL migrations with CHECK constraints, `citext` and `pg_trgm` |
 | Validation | **Zod 4**, shared by forms, actions and services |
 | UI | **Tailwind CSS 4** with semantic design tokens; Colmeia components in `src/styles/colmeia.css`; **IBM Plex Sans** for text and **Pixelify Sans** for short headings (self-hosted with `next/font`); pixel-art SVG glyphs plus `lucide-react` icons |
-| Images | **sharp**: validation, re-encoding, metadata removal and the pixel-portrait filter |
+| Images | **sharp**: validation, re-encoding and metadata removal; avatars are drawn as SVG pixel art in code |
 | Email | **nodemailer** over SMTP with a database outbox |
 | Tests | **Vitest** (unit and integration against a real Postgres), **Playwright** (end-to-end, mobile, accessibility with **axe-core**) |
 | Delivery | Docker (standalone Next.js output), Docker Compose, GitHub Actions |
@@ -217,12 +218,13 @@ To review the product with a fuller community around an existing account, run `n
 | `npm run db:placeholders -- <email>` | Fill an account and its surroundings with fictitious data (local only) |
 | `npm run notifications:email` | Send queued notification email digests |
 | `npm run perf:seed` / `perf:services` / `perf:http` | Large synthetic dataset and performance measurements |
+| `node scripts/design/build-pixel-covers.mjs` | Regenerate the procedural pixel-art covers and their catalog entries |
 
 ---
 
 ## Testing
 
-- **Unit** (`tests/unit`): validation, tags, slugs, matching, the pixel-portrait filter and other pure logic.
+- **Unit** (`tests/unit`): validation, tags, slugs, matching, the avatar builder, position and vocabulary catalogs and other pure logic.
 - **Integration** (`tests/integration`): services against a real Postgres: auth, social graph, collaboration flows, media access and profile images.
 - **End-to-end** (`tests/e2e`): signup and email confirmation, profile editing, catalog art and photo upload, posting with images, connections, applications, partnerships, mobile layout, security and accessibility (axe).
 
@@ -247,9 +249,9 @@ src/app/                routes
 src/server/             domain services: auth, authz, profiles, organizations, projects,
                         opportunities, applications, posts, feed, search, matching,
                         messaging, notifications, partnerships, invitations, moderation,
-                        uploads and media (incl. the pixel-portrait filter)
+                        uploads and media
 src/lib/                isomorphic code: validation, labels, tags, text, matching engine,
-                        art catalog, media keys
+                        art catalog, avatar builder (avatar/), positions, vocabularies
 src/config/             tunable feed, matching and promotion settings
 src/components/         shared UI: ui/ primitives, shell (header, rail, theme), colmeia/
                         (pixel glyphs, apiary, blocks), cards, composer, post actions

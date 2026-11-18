@@ -48,6 +48,150 @@
         "x": 0.43,
         "y": 0.54
       }
+    },
+    {
+      "id": "prado-ao-meio-dia",
+      "label": "Prado ao meio-dia",
+      "src": "/brand/colmeia/capas/prado-ao-meio-dia.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Colmeias de palha num prado verde sob céu azul com nuvens e abelhas",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.6
+      }
+    },
+    {
+      "id": "mel-ao-por-do-sol",
+      "label": "Mel ao pôr do sol",
+      "src": "/brand/colmeia/capas/mel-ao-por-do-sol.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Silhuetas de colmeias de madeira e colinas diante de um grande sol ao entardecer",
+      "focalPoint": {
+        "x": 0.55,
+        "y": 0.55
+      }
+    },
+    {
+      "id": "colmeias-sob-estrelas",
+      "label": "Colmeias sob as estrelas",
+      "src": "/brand/colmeia/capas/colmeias-sob-estrelas.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Apiário noturno com colmeias iluminadas, lua crescente, estrelas e vagalumes",
+      "focalPoint": {
+        "x": 0.45,
+        "y": 0.6
+      }
+    },
+    {
+      "id": "campos-de-lavanda",
+      "label": "Campos de lavanda",
+      "src": "/brand/colmeia/capas/campos-de-lavanda.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Fileiras de lavanda em perspectiva até colmeias brancas, com sol suave e uma árvore",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "id": "montanhas-em-flor",
+      "label": "Montanhas em flor",
+      "src": "/brand/colmeia/capas/montanhas-em-flor.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Picos nevados sobre um prado alpino florido com uma colmeia de palha",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.6
+      }
+    },
+    {
+      "id": "favo-dourado",
+      "label": "Favo dourado",
+      "src": "/brand/colmeia/capas/favo-dourado.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Padrão de favos de mel dourados com mel escorrendo e abelhas",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "id": "falesias-e-colmeias",
+      "label": "Falésias e colmeias",
+      "src": "/brand/colmeia/capas/falesias-e-colmeias.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Colmeias de madeira no alto de falésias sobre o mar azul com gaivotas",
+      "focalPoint": {
+        "x": 0.6,
+        "y": 0.55
+      }
+    },
+    {
+      "id": "outono-no-apiario",
+      "label": "Outono no apiário",
+      "src": "/brand/colmeia/capas/outono-no-apiario.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Árvores de outono alaranjadas, folhas caindo e colmeias num campo dourado",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.6
+      }
+    },
+    {
+      "id": "inverno-na-colmeia",
+      "label": "Inverno na colmeia",
+      "src": "/brand/colmeia/capas/inverno-na-colmeia.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Colinas nevadas com colmeias cobertas de neve, pinheiros e flocos caindo",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.6
+      }
+    },
+    {
+      "id": "jardim-no-telhado",
+      "label": "Jardim no telhado",
+      "src": "/brand/colmeia/capas/jardim-no-telhado.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Horta num telhado da cidade ao entardecer, com colmeias, vasos e prédios iluminados",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.6
+      }
+    },
+    {
+      "id": "pomar-de-laranjeiras",
+      "label": "Pomar de laranjeiras",
+      "src": "/brand/colmeia/capas/pomar-de-laranjeiras.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Pomar de laranjeiras carregadas, com colmeias pintadas entre as árvores",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.6
+      }
+    },
+    {
+      "id": "arco-iris-na-chuva",
+      "label": "Arco-íris na chuva",
+      "src": "/brand/colmeia/capas/arco-iris-na-chuva.webp",
+      "width": 1600,
+      "height": 592,
+      "alt": "Chuva leve sobre um prado com colmeias de palha e um arco-íris no céu",
+      "focalPoint": {
+        "x": 0.5,
+        "y": 0.55
+      }
     }
   ],
   "avatars": [
@@ -57,7 +201,21 @@
       "src": "/brand/colmeia/avatares/apicultora-ambar.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa de cabelo cacheado e capuz de abelha sobre fundo âmbar"
+      "alt": "Pessoa de cabelo cacheado e capuz de abelha sobre fundo âmbar",
+      "traits": {
+        "presentation": "feminine",
+        "age": "young",
+        "skin": "medium-dark",
+        "hair": "long-curly",
+        "hairColor": "dark-brown",
+        "facialHair": "none",
+        "glasses": "none",
+        "headwear": "bee-antennae",
+        "accessory": "earrings",
+        "clothing": "scarf",
+        "clothingColor": "honey",
+        "background": "amber"
+      }
     },
     {
       "id": "flor-de-lavanda",
@@ -65,7 +223,21 @@
       "src": "/brand/colmeia/avatares/flor-de-lavanda.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa ruiva com uma flor de lavanda e avental lilás"
+      "alt": "Pessoa ruiva com uma flor de lavanda e avental lilás",
+      "traits": {
+        "presentation": "feminine",
+        "age": "young",
+        "skin": "light",
+        "hair": "curly-short",
+        "hairColor": "ginger",
+        "facialHair": "none",
+        "glasses": "none",
+        "headwear": "none",
+        "accessory": "flower",
+        "clothing": "apron",
+        "clothingColor": "lavender",
+        "background": "plum"
+      }
     },
     {
       "id": "oculos-dourados",
@@ -73,7 +245,21 @@
       "src": "/brand/colmeia/avatares/oculos-dourados.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa de barba, óculos redondos e camisa verde sobre fundo turquesa"
+      "alt": "Pessoa de barba, óculos redondos e camisa verde sobre fundo turquesa",
+      "traits": {
+        "presentation": "masculine",
+        "age": "adult",
+        "skin": "medium-dark",
+        "hair": "short",
+        "hairColor": "black",
+        "facialHair": "beard",
+        "glasses": "round",
+        "headwear": "none",
+        "accessory": "none",
+        "clothing": "shirt",
+        "clothingColor": "olive",
+        "background": "teal"
+      }
     },
     {
       "id": "chapeu-de-palha",
@@ -81,7 +267,21 @@
       "src": "/brand/colmeia/avatares/chapeu-de-palha.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa de cabelo escuro e chapéu de apicultura sobre fundo coral"
+      "alt": "Pessoa de cabelo escuro e chapéu de apicultura sobre fundo coral",
+      "traits": {
+        "presentation": "masculine",
+        "age": "young",
+        "skin": "medium",
+        "hair": "short",
+        "hairColor": "black",
+        "facialHair": "none",
+        "glasses": "none",
+        "headwear": "beekeeper-hat",
+        "accessory": "none",
+        "clothing": "beekeeper-suit",
+        "clothingColor": "cream",
+        "background": "coral"
+      }
     },
     {
       "id": "bandana-verde",
@@ -89,7 +289,21 @@
       "src": "/brand/colmeia/avatares/bandana-verde.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa de cabelo curto cacheado, bandana verde e casaco mel"
+      "alt": "Pessoa de cabelo curto cacheado, bandana verde e casaco mel",
+      "traits": {
+        "presentation": "masculine",
+        "age": "adult",
+        "skin": "medium-dark",
+        "hair": "curly-short",
+        "hairColor": "dark-brown",
+        "facialHair": "beard",
+        "glasses": "none",
+        "headwear": "none",
+        "accessory": "none",
+        "clothing": "beekeeper-suit",
+        "clothingColor": "honey",
+        "background": "sage"
+      }
     },
     {
       "id": "oculos-terracota",
@@ -97,7 +311,21 @@
       "src": "/brand/colmeia/avatares/oculos-terracota.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa de cabelo curto escuro, óculos terracota e cachecol lavanda"
+      "alt": "Pessoa de cabelo curto escuro, óculos terracota e cachecol lavanda",
+      "traits": {
+        "presentation": "feminine",
+        "age": "adult",
+        "skin": "light-medium",
+        "hair": "bob",
+        "hairColor": "black",
+        "facialHair": "none",
+        "glasses": "round",
+        "headwear": "none",
+        "accessory": "none",
+        "clothing": "hoodie",
+        "clothingColor": "cream",
+        "background": "plum"
+      }
     },
     {
       "id": "lenco-lilas",
@@ -105,7 +333,21 @@
       "src": "/brand/colmeia/avatares/lenco-lilas.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa de cabelo prateado, lenço lilás e casaco azul sobre fundo rosa"
+      "alt": "Pessoa de cabelo prateado, lenço lilás e casaco azul sobre fundo rosa",
+      "traits": {
+        "presentation": "androgynous",
+        "age": "senior",
+        "skin": "medium",
+        "hair": "short",
+        "hairColor": "gray",
+        "facialHair": "none",
+        "glasses": "none",
+        "headwear": "none",
+        "accessory": "freckles",
+        "clothing": "hoodie",
+        "clothingColor": "sky",
+        "background": "coral"
+      }
     },
     {
       "id": "trancas-e-acafrao",
@@ -113,7 +355,21 @@
       "src": "/brand/colmeia/avatares/trancas-e-acafrao.webp",
       "width": 256,
       "height": 256,
-      "alt": "Pessoa de tranças longas, presilha floral e colete açafrão"
+      "alt": "Pessoa de tranças longas, presilha floral e colete açafrão",
+      "traits": {
+        "presentation": "feminine",
+        "age": "adult",
+        "skin": "dark",
+        "hair": "braids",
+        "hairColor": "black",
+        "facialHair": "none",
+        "glasses": "none",
+        "headwear": "none",
+        "accessory": "earrings",
+        "clothing": "vest",
+        "clothingColor": "mustard",
+        "background": "teal"
+      }
     }
   ]
 }
