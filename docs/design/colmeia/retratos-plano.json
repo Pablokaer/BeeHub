@@ -1,0 +1,1522 @@
+[
+  {
+    "id": "retrato-001",
+    "batch": 1,
+    "slot": "top left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "light",
+      "hair": "short",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "beekeeper-hat",
+      "accessory": "earrings",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "navy",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-002",
+    "batch": 1,
+    "slot": "top right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "deep",
+      "hair": "locs",
+      "hairColor": "ginger",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "bandana",
+      "accessory": "headphones",
+      "clothing": "jacket",
+      "clothingColor": "sky",
+      "background": "coral"
+    }
+  },
+  {
+    "id": "retrato-003",
+    "batch": 1,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "dark",
+      "hair": "pixie",
+      "hairColor": "pink",
+      "facialHair": "none",
+      "glasses": "sunglasses",
+      "headwear": "bee-antennae",
+      "accessory": "freckles",
+      "clothing": "overalls",
+      "clothingColor": "lavender",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-004",
+    "batch": 1,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "senior",
+      "skin": "medium-dark",
+      "hair": "long-curly",
+      "hairColor": "brown",
+      "facialHair": "none",
+      "glasses": "round",
+      "headwear": "straw-hat",
+      "accessory": "nose-ring",
+      "clothing": "turtleneck",
+      "clothingColor": "honey",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-005",
+    "batch": 2,
+    "slot": "top left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "medium",
+      "hair": "bald",
+      "hairColor": "none",
+      "facialHair": "beard",
+      "glasses": "none",
+      "headwear": "flower-crown",
+      "accessory": "flower",
+      "clothing": "hoodie",
+      "clothingColor": "terracotta",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-006",
+    "batch": 2,
+    "slot": "top right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "light-medium",
+      "hair": "long-straight",
+      "hairColor": "blonde",
+      "facialHair": "beard",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "none",
+      "clothing": "shirt",
+      "clothingColor": "teal",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-007",
+    "batch": 2,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "light-medium",
+      "hair": "bob",
+      "hairColor": "blue",
+      "facialHair": "none",
+      "glasses": "square",
+      "headwear": "none",
+      "accessory": "necklace",
+      "clothing": "vest",
+      "clothingColor": "plum",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-008",
+    "batch": 2,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "light",
+      "hair": "covered",
+      "hairColor": "none",
+      "facialHair": "stubble",
+      "glasses": "none",
+      "headwear": "headscarf",
+      "accessory": "bee-pin",
+      "clothing": "apron",
+      "clothingColor": "coral",
+      "background": "sage"
+    }
+  },
+  {
+    "id": "retrato-009",
+    "batch": 3,
+    "slot": "top left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "senior",
+      "skin": "deep",
+      "hair": "bun",
+      "hairColor": "black",
+      "facialHair": "stubble",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "earrings",
+      "clothing": "sweater",
+      "clothingColor": "olive",
+      "background": "teal"
+    }
+  },
+  {
+    "id": "retrato-010",
+    "batch": 3,
+    "slot": "top right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "dark",
+      "hair": "short",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "sunglasses",
+      "headwear": "cap",
+      "accessory": "headphones",
+      "clothing": "scarf",
+      "clothingColor": "mustard",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-011",
+    "batch": 3,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "medium-dark",
+      "hair": "braids",
+      "hairColor": "purple",
+      "facialHair": "mustache",
+      "glasses": "round",
+      "headwear": "none",
+      "accessory": "freckles",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "sage",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-012",
+    "batch": 3,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "medium",
+      "hair": "undercut",
+      "hairColor": "black",
+      "facialHair": "mustache",
+      "glasses": "none",
+      "headwear": "beanie",
+      "accessory": "nose-ring",
+      "clothing": "jacket",
+      "clothingColor": "cream",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-013",
+    "batch": 4,
+    "slot": "top left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "medium",
+      "hair": "long-wavy",
+      "hairColor": "auburn",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "flower",
+      "clothing": "overalls",
+      "clothingColor": "navy",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-014",
+    "batch": 4,
+    "slot": "top right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "senior",
+      "skin": "light-medium",
+      "hair": "buzz",
+      "hairColor": "gray",
+      "facialHair": "none",
+      "glasses": "square",
+      "headwear": "beekeeper-hat",
+      "accessory": "none",
+      "clothing": "turtleneck",
+      "clothingColor": "sky",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-015",
+    "batch": 4,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "light",
+      "hair": "afro",
+      "hairColor": "green",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "bandana",
+      "accessory": "necklace",
+      "clothing": "hoodie",
+      "clothingColor": "lavender",
+      "background": "coral"
+    }
+  },
+  {
+    "id": "retrato-016",
+    "batch": 4,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "deep",
+      "hair": "ponytail",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "bee-antennae",
+      "accessory": "bee-pin",
+      "clothing": "shirt",
+      "clothingColor": "honey",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-017",
+    "batch": 5,
+    "slot": "top left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "dark",
+      "hair": "short",
+      "hairColor": "ginger",
+      "facialHair": "goatee",
+      "glasses": "sunglasses",
+      "headwear": "straw-hat",
+      "accessory": "earrings",
+      "clothing": "vest",
+      "clothingColor": "terracotta",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-018",
+    "batch": 5,
+    "slot": "top right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "medium-dark",
+      "hair": "locs",
+      "hairColor": "pink",
+      "facialHair": "goatee",
+      "glasses": "round",
+      "headwear": "flower-crown",
+      "accessory": "headphones",
+      "clothing": "apron",
+      "clothingColor": "teal",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-019",
+    "batch": 5,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "senior",
+      "skin": "medium-dark",
+      "hair": "pixie",
+      "hairColor": "brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "freckles",
+      "clothing": "sweater",
+      "clothingColor": "plum",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-020",
+    "batch": 5,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "medium",
+      "hair": "long-curly",
+      "hairColor": "brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "nose-ring",
+      "clothing": "scarf",
+      "clothingColor": "coral",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-021",
+    "batch": 6,
+    "slot": "top left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "light-medium",
+      "hair": "covered",
+      "hairColor": "none",
+      "facialHair": "none",
+      "glasses": "square",
+      "headwear": "headscarf",
+      "accessory": "flower",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "olive",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-022",
+    "batch": 6,
+    "slot": "top right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "light",
+      "hair": "long-straight",
+      "hairColor": "blue",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "none",
+      "clothing": "jacket",
+      "clothingColor": "mustard",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-023",
+    "batch": 6,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "deep",
+      "hair": "bob",
+      "hairColor": "white",
+      "facialHair": "beard",
+      "glasses": "none",
+      "headwear": "cap",
+      "accessory": "necklace",
+      "clothing": "overalls",
+      "clothingColor": "sage",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-024",
+    "batch": 6,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "senior",
+      "skin": "dark",
+      "hair": "curly-short",
+      "hairColor": "black",
+      "facialHair": "beard",
+      "glasses": "sunglasses",
+      "headwear": "none",
+      "accessory": "bee-pin",
+      "clothing": "turtleneck",
+      "clothingColor": "cream",
+      "background": "sage"
+    }
+  },
+  {
+    "id": "retrato-025",
+    "batch": 7,
+    "slot": "top left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "dark",
+      "hair": "bun",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "round",
+      "headwear": "beanie",
+      "accessory": "earrings",
+      "clothing": "hoodie",
+      "clothingColor": "navy",
+      "background": "teal"
+    }
+  },
+  {
+    "id": "retrato-026",
+    "batch": 7,
+    "slot": "top right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "medium-dark",
+      "hair": "short",
+      "hairColor": "purple",
+      "facialHair": "stubble",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "headphones",
+      "clothing": "shirt",
+      "clothingColor": "sky",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-027",
+    "batch": 7,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "medium",
+      "hair": "braids",
+      "hairColor": "black",
+      "facialHair": "stubble",
+      "glasses": "none",
+      "headwear": "beekeeper-hat",
+      "accessory": "freckles",
+      "clothing": "vest",
+      "clothingColor": "lavender",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-028",
+    "batch": 7,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "light-medium",
+      "hair": "undercut",
+      "hairColor": "auburn",
+      "facialHair": "none",
+      "glasses": "square",
+      "headwear": "bandana",
+      "accessory": "nose-ring",
+      "clothing": "apron",
+      "clothingColor": "honey",
+      "background": "coral"
+    }
+  },
+  {
+    "id": "retrato-029",
+    "batch": 8,
+    "slot": "top left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "senior",
+      "skin": "light",
+      "hair": "long-wavy",
+      "hairColor": "gray",
+      "facialHair": "mustache",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "flower",
+      "clothing": "sweater",
+      "clothingColor": "terracotta",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-030",
+    "batch": 8,
+    "slot": "top right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "deep",
+      "hair": "buzz",
+      "hairColor": "green",
+      "facialHair": "mustache",
+      "glasses": "none",
+      "headwear": "straw-hat",
+      "accessory": "none",
+      "clothing": "scarf",
+      "clothingColor": "teal",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-031",
+    "batch": 8,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "deep",
+      "hair": "afro",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "sunglasses",
+      "headwear": "flower-crown",
+      "accessory": "necklace",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "plum",
+      "background": "coral"
+    }
+  },
+  {
+    "id": "retrato-032",
+    "batch": 8,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "dark",
+      "hair": "ponytail",
+      "hairColor": "ginger",
+      "facialHair": "none",
+      "glasses": "round",
+      "headwear": "none",
+      "accessory": "bee-pin",
+      "clothing": "jacket",
+      "clothingColor": "coral",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-033",
+    "batch": 9,
+    "slot": "top left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "medium-dark",
+      "hair": "short",
+      "hairColor": "pink",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "earrings",
+      "clothing": "overalls",
+      "clothingColor": "olive",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-034",
+    "batch": 9,
+    "slot": "top right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "senior",
+      "skin": "medium",
+      "hair": "covered",
+      "hairColor": "none",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "headscarf",
+      "accessory": "headphones",
+      "clothing": "turtleneck",
+      "clothingColor": "mustard",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-035",
+    "batch": 9,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "light-medium",
+      "hair": "pixie",
+      "hairColor": "brown",
+      "facialHair": "goatee",
+      "glasses": "square",
+      "headwear": "none",
+      "accessory": "freckles",
+      "clothing": "hoodie",
+      "clothingColor": "sage",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-036",
+    "batch": 9,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "light",
+      "hair": "long-curly",
+      "hairColor": "blonde",
+      "facialHair": "goatee",
+      "glasses": "none",
+      "headwear": "cap",
+      "accessory": "nose-ring",
+      "clothing": "shirt",
+      "clothingColor": "cream",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-037",
+    "batch": 10,
+    "slot": "top left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "light",
+      "hair": "bald",
+      "hairColor": "none",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "flower",
+      "clothing": "vest",
+      "clothingColor": "navy",
+      "background": "sage"
+    }
+  },
+  {
+    "id": "retrato-038",
+    "batch": 10,
+    "slot": "top right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "deep",
+      "hair": "long-straight",
+      "hairColor": "white",
+      "facialHair": "none",
+      "glasses": "sunglasses",
+      "headwear": "beanie",
+      "accessory": "none",
+      "clothing": "apron",
+      "clothingColor": "sky",
+      "background": "teal"
+    }
+  },
+  {
+    "id": "retrato-039",
+    "batch": 10,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "senior",
+      "skin": "dark",
+      "hair": "bob",
+      "hairColor": "black",
+      "facialHair": "none",
+      "glasses": "round",
+      "headwear": "none",
+      "accessory": "necklace",
+      "clothing": "sweater",
+      "clothingColor": "lavender",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-040",
+    "batch": 10,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "medium-dark",
+      "hair": "curly-short",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "beekeeper-hat",
+      "accessory": "bee-pin",
+      "clothing": "scarf",
+      "clothingColor": "honey",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-041",
+    "batch": 11,
+    "slot": "top left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "medium",
+      "hair": "bun",
+      "hairColor": "purple",
+      "facialHair": "beard",
+      "glasses": "none",
+      "headwear": "bandana",
+      "accessory": "earrings",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "terracotta",
+      "background": "teal"
+    }
+  },
+  {
+    "id": "retrato-042",
+    "batch": 11,
+    "slot": "top right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "light-medium",
+      "hair": "short",
+      "hairColor": "black",
+      "facialHair": "beard",
+      "glasses": "square",
+      "headwear": "bee-antennae",
+      "accessory": "headphones",
+      "clothing": "jacket",
+      "clothingColor": "teal",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-043",
+    "batch": 11,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "light-medium",
+      "hair": "braids",
+      "hairColor": "auburn",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "straw-hat",
+      "accessory": "freckles",
+      "clothing": "overalls",
+      "clothingColor": "plum",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-044",
+    "batch": 11,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "senior",
+      "skin": "light",
+      "hair": "undercut",
+      "hairColor": "gray",
+      "facialHair": "stubble",
+      "glasses": "none",
+      "headwear": "flower-crown",
+      "accessory": "nose-ring",
+      "clothing": "turtleneck",
+      "clothingColor": "coral",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-045",
+    "batch": 12,
+    "slot": "top left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "deep",
+      "hair": "long-wavy",
+      "hairColor": "green",
+      "facialHair": "stubble",
+      "glasses": "sunglasses",
+      "headwear": "none",
+      "accessory": "flower",
+      "clothing": "hoodie",
+      "clothingColor": "olive",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-046",
+    "batch": 12,
+    "slot": "top right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "dark",
+      "hair": "buzz",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "round",
+      "headwear": "none",
+      "accessory": "none",
+      "clothing": "shirt",
+      "clothingColor": "mustard",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-047",
+    "batch": 12,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "medium-dark",
+      "hair": "covered",
+      "hairColor": "none",
+      "facialHair": "mustache",
+      "glasses": "none",
+      "headwear": "headscarf",
+      "accessory": "necklace",
+      "clothing": "vest",
+      "clothingColor": "sage",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-048",
+    "batch": 12,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "medium",
+      "hair": "ponytail",
+      "hairColor": "pink",
+      "facialHair": "mustache",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "bee-pin",
+      "clothing": "apron",
+      "clothingColor": "cream",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-049",
+    "batch": 13,
+    "slot": "top left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "senior",
+      "skin": "medium",
+      "hair": "short",
+      "hairColor": "brown",
+      "facialHair": "none",
+      "glasses": "square",
+      "headwear": "cap",
+      "accessory": "earrings",
+      "clothing": "sweater",
+      "clothingColor": "navy",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-050",
+    "batch": 13,
+    "slot": "top right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "light-medium",
+      "hair": "locs",
+      "hairColor": "brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "headphones",
+      "clothing": "scarf",
+      "clothingColor": "sky",
+      "background": "sage"
+    }
+  },
+  {
+    "id": "retrato-051",
+    "batch": 13,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "light",
+      "hair": "pixie",
+      "hairColor": "blonde",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "beanie",
+      "accessory": "freckles",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "lavender",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-052",
+    "batch": 13,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "deep",
+      "hair": "long-curly",
+      "hairColor": "blue",
+      "facialHair": "none",
+      "glasses": "sunglasses",
+      "headwear": "none",
+      "accessory": "nose-ring",
+      "clothing": "jacket",
+      "clothingColor": "honey",
+      "background": "teal"
+    }
+  },
+  {
+    "id": "retrato-053",
+    "batch": 14,
+    "slot": "top left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "dark",
+      "hair": "bald",
+      "hairColor": "none",
+      "facialHair": "goatee",
+      "glasses": "round",
+      "headwear": "beekeeper-hat",
+      "accessory": "flower",
+      "clothing": "overalls",
+      "clothingColor": "terracotta",
+      "background": "sage"
+    }
+  },
+  {
+    "id": "retrato-054",
+    "batch": 14,
+    "slot": "top right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "senior",
+      "skin": "medium-dark",
+      "hair": "long-straight",
+      "hairColor": "black",
+      "facialHair": "goatee",
+      "glasses": "none",
+      "headwear": "bandana",
+      "accessory": "none",
+      "clothing": "turtleneck",
+      "clothingColor": "teal",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-055",
+    "batch": 14,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "medium-dark",
+      "hair": "bob",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "bee-antennae",
+      "accessory": "necklace",
+      "clothing": "hoodie",
+      "clothingColor": "plum",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-056",
+    "batch": 14,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "medium",
+      "hair": "curly-short",
+      "hairColor": "purple",
+      "facialHair": "none",
+      "glasses": "square",
+      "headwear": "straw-hat",
+      "accessory": "bee-pin",
+      "clothing": "shirt",
+      "clothingColor": "coral",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-057",
+    "batch": 15,
+    "slot": "top left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "light-medium",
+      "hair": "bun",
+      "hairColor": "black",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "flower-crown",
+      "accessory": "earrings",
+      "clothing": "vest",
+      "clothingColor": "olive",
+      "background": "coral"
+    }
+  },
+  {
+    "id": "retrato-058",
+    "batch": 15,
+    "slot": "top right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "light",
+      "hair": "short",
+      "hairColor": "auburn",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "headphones",
+      "clothing": "apron",
+      "clothingColor": "mustard",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-059",
+    "batch": 15,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "senior",
+      "skin": "deep",
+      "hair": "braids",
+      "hairColor": "gray",
+      "facialHair": "beard",
+      "glasses": "sunglasses",
+      "headwear": "none",
+      "accessory": "freckles",
+      "clothing": "sweater",
+      "clothingColor": "sage",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-060",
+    "batch": 15,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "dark",
+      "hair": "covered",
+      "hairColor": "none",
+      "facialHair": "beard",
+      "glasses": "round",
+      "headwear": "headscarf",
+      "accessory": "nose-ring",
+      "clothing": "scarf",
+      "clothingColor": "cream",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-061",
+    "batch": 16,
+    "slot": "top left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "dark",
+      "hair": "long-wavy",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "flower",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "navy",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-062",
+    "batch": 16,
+    "slot": "top right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "medium-dark",
+      "hair": "buzz",
+      "hairColor": "ginger",
+      "facialHair": "stubble",
+      "glasses": "none",
+      "headwear": "cap",
+      "accessory": "none",
+      "clothing": "jacket",
+      "clothingColor": "sky",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-063",
+    "batch": 16,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "medium",
+      "hair": "afro",
+      "hairColor": "pink",
+      "facialHair": "stubble",
+      "glasses": "square",
+      "headwear": "none",
+      "accessory": "necklace",
+      "clothing": "overalls",
+      "clothingColor": "lavender",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-064",
+    "batch": 16,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "senior",
+      "skin": "light-medium",
+      "hair": "ponytail",
+      "hairColor": "brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "beanie",
+      "accessory": "bee-pin",
+      "clothing": "turtleneck",
+      "clothingColor": "honey",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-065",
+    "batch": 17,
+    "slot": "top left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "light",
+      "hair": "short",
+      "hairColor": "brown",
+      "facialHair": "mustache",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "earrings",
+      "clothing": "hoodie",
+      "clothingColor": "terracotta",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-066",
+    "batch": 17,
+    "slot": "top right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "deep",
+      "hair": "locs",
+      "hairColor": "blonde",
+      "facialHair": "mustache",
+      "glasses": "sunglasses",
+      "headwear": "beekeeper-hat",
+      "accessory": "headphones",
+      "clothing": "shirt",
+      "clothingColor": "teal",
+      "background": "sage"
+    }
+  },
+  {
+    "id": "retrato-067",
+    "batch": 17,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "deep",
+      "hair": "pixie",
+      "hairColor": "blue",
+      "facialHair": "none",
+      "glasses": "round",
+      "headwear": "bandana",
+      "accessory": "freckles",
+      "clothing": "vest",
+      "clothingColor": "plum",
+      "background": "teal"
+    }
+  },
+  {
+    "id": "retrato-068",
+    "batch": 17,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "dark",
+      "hair": "long-curly",
+      "hairColor": "white",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "bee-antennae",
+      "accessory": "nose-ring",
+      "clothing": "apron",
+      "clothingColor": "coral",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-069",
+    "batch": 18,
+    "slot": "top left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "senior",
+      "skin": "medium-dark",
+      "hair": "bald",
+      "hairColor": "none",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "straw-hat",
+      "accessory": "flower",
+      "clothing": "sweater",
+      "clothingColor": "olive",
+      "background": "amber"
+    }
+  },
+  {
+    "id": "retrato-070",
+    "batch": 18,
+    "slot": "top right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "young",
+      "skin": "medium",
+      "hair": "long-straight",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "square",
+      "headwear": "flower-crown",
+      "accessory": "none",
+      "clothing": "scarf",
+      "clothingColor": "mustard",
+      "background": "coral"
+    }
+  },
+  {
+    "id": "retrato-071",
+    "batch": 18,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "adult",
+      "skin": "light-medium",
+      "hair": "bob",
+      "hairColor": "purple",
+      "facialHair": "goatee",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "necklace",
+      "clothing": "beekeeper-suit",
+      "clothingColor": "sage",
+      "background": "mint"
+    }
+  },
+  {
+    "id": "retrato-072",
+    "batch": 18,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "light",
+      "hair": "curly-short",
+      "hairColor": "black",
+      "facialHair": "goatee",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "bee-pin",
+      "clothing": "jacket",
+      "clothingColor": "cream",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-073",
+    "batch": 19,
+    "slot": "top left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "light",
+      "hair": "covered",
+      "hairColor": "none",
+      "facialHair": "none",
+      "glasses": "sunglasses",
+      "headwear": "headscarf",
+      "accessory": "earrings",
+      "clothing": "overalls",
+      "clothingColor": "navy",
+      "background": "coral"
+    }
+  },
+  {
+    "id": "retrato-074",
+    "batch": 19,
+    "slot": "top right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "senior",
+      "skin": "deep",
+      "hair": "short",
+      "hairColor": "gray",
+      "facialHair": "none",
+      "glasses": "round",
+      "headwear": "none",
+      "accessory": "headphones",
+      "clothing": "turtleneck",
+      "clothingColor": "sky",
+      "background": "lavender"
+    }
+  },
+  {
+    "id": "retrato-075",
+    "batch": 19,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "young",
+      "skin": "dark",
+      "hair": "braids",
+      "hairColor": "green",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "cap",
+      "accessory": "freckles",
+      "clothing": "hoodie",
+      "clothingColor": "lavender",
+      "background": "butter"
+    }
+  },
+  {
+    "id": "retrato-076",
+    "batch": 19,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "feminine",
+      "age": "adult",
+      "skin": "medium-dark",
+      "hair": "undercut",
+      "hairColor": "dark-brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "nose-ring",
+      "clothing": "shirt",
+      "clothingColor": "honey",
+      "background": "plum"
+    }
+  },
+  {
+    "id": "retrato-077",
+    "batch": 20,
+    "slot": "top left",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "medium",
+      "hair": "long-wavy",
+      "hairColor": "ginger",
+      "facialHair": "beard",
+      "glasses": "square",
+      "headwear": "beanie",
+      "accessory": "flower",
+      "clothing": "vest",
+      "clothingColor": "terracotta",
+      "background": "sky"
+    }
+  },
+  {
+    "id": "retrato-078",
+    "batch": 20,
+    "slot": "top right",
+    "traits": {
+      "presentation": "androgynous",
+      "age": "adult",
+      "skin": "light-medium",
+      "hair": "buzz",
+      "hairColor": "pink",
+      "facialHair": "beard",
+      "glasses": "none",
+      "headwear": "none",
+      "accessory": "none",
+      "clothing": "apron",
+      "clothingColor": "teal",
+      "background": "peach"
+    }
+  },
+  {
+    "id": "retrato-079",
+    "batch": 20,
+    "slot": "bottom left",
+    "traits": {
+      "presentation": "feminine",
+      "age": "senior",
+      "skin": "light-medium",
+      "hair": "afro",
+      "hairColor": "brown",
+      "facialHair": "none",
+      "glasses": "none",
+      "headwear": "beekeeper-hat",
+      "accessory": "necklace",
+      "clothing": "sweater",
+      "clothingColor": "plum",
+      "background": "sage"
+    }
+  },
+  {
+    "id": "retrato-080",
+    "batch": 20,
+    "slot": "bottom right",
+    "traits": {
+      "presentation": "masculine",
+      "age": "young",
+      "skin": "light",
+      "hair": "ponytail",
+      "hairColor": "brown",
+      "facialHair": "stubble",
+      "glasses": "sunglasses",
+      "headwear": "bandana",
+      "accessory": "bee-pin",
+      "clothing": "scarf",
+      "clothingColor": "coral",
+      "background": "teal"
+    }
+  }
+]
