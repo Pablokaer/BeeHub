@@ -39,9 +39,14 @@ test("Scenarios D & F: connect, then post, mention, like, comment and share", as
   await expectToast(bPage, "Shared to your feed.");
 
   await bPage.goto("/feed?mode=latest");
-  await bPage.getByRole("article", { name: `Post by ${a.name}` }).first().getByRole("link", { name: /comments/ }).click();
-  await L(bPage, "Comment", { exact: true }).fill(`Count me in, @${a.username}!`);
-  await bPage.getByRole("button", { name: "Comment", exact: true }).click();
+  // Commenting from the feed opens the composer under the post instead of navigating away.
+  const feedPost = bPage.getByRole("article", { name: `Post by ${a.name}` }).first();
+  await feedPost.getByRole("button", { name: /Comment$/ }).click();
+  await expect(bPage).toHaveURL(/\/feed/);
+  await feedPost.getByLabel("Comment", { exact: true }).fill(`Count me in, @${a.username}!`);
+  await feedPost.getByRole("button", { name: "Comment", exact: true }).click();
+  await expectToast(bPage, "Comment posted.");
+  await feedPost.getByRole("link", { name: /View all 1 comment/ }).click();
   await expect(T(bPage, "Count me in,")).toBeVisible();
 
   await page.goto("/notifications");

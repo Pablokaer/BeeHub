@@ -130,7 +130,8 @@
     background: var(--c-header);
     border-bottom: 4px solid var(--c-header-rule);
   }
-  .cm-header::after { position: absolute; content: ""; inset: auto 0 -6px; height: 2px; background: #fff0a3; pointer-events: none; }
+  /* Repaints the rule above the drips' tucked-in top so their side outline never shows inside the rule. */
+  .cm-header::after { position: absolute; content: ""; inset: auto 0 -4px; height: 4px; background: var(--c-header-rule); pointer-events: none; }
   .cm-header :focus-visible { outline-color: #ffe291; }
   .cm-header-inner {
     display: grid;
@@ -157,9 +158,11 @@
   .cm-header-button { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-width: 44px; min-height: 44px; padding: 3px 6px; color: #ffe0a0; font-weight: 650; }
   .cm-header-button:hover { background: #4a3122; }
   .cm-header-badge { position: absolute; top: 5px; right: 2px; min-width: 16px; padding: 0 3px; background: #e16b41; color: #fff8ea; font-size: 10px; font-weight: 700; line-height: 16px; text-align: center; box-shadow: 0 0 0 2px var(--c-header); }
-  .cm-drips { position: absolute; inset: auto 0 -15px; display: flex; align-items: flex-start; justify-content: space-between; height: 15px; pointer-events: none; }
-  .cm-drips i { display: block; width: 59px; height: 17px; background: #f7b843; box-shadow: inset 0 4px #ffdc6b, inset 0 -3px #d4891d; clip-path: polygon(0 0,100% 0,100% 24%,85% 24%,85% 48%,73% 48%,73% 74%,64% 74%,64% 100%,52% 100%,52% 73%,40% 73%,40% 46%,23% 46%,23% 27%,0 27%); }
-  .cm-drips i:nth-child(2) { width: 33px; height: 11px; margin-inline: auto 16%; }
+  /* Drips hang from the 4px rule, in the rule's colour, and tuck 2px up under it: the overlap is invisible
+     but keeps a hairline of page background from opening between rule and drips at fractional zoom/DPR. */
+  .cm-drips { position: absolute; inset: auto 0 -17px; display: flex; align-items: flex-start; justify-content: space-between; height: 15px; pointer-events: none; }
+  .cm-drips i { display: block; width: 59px; height: 19px; background: var(--c-header-rule); box-shadow: inset 0 -3px #d4891d; clip-path: polygon(0 0,100% 0,100% 24%,85% 24%,85% 48%,73% 48%,73% 74%,64% 74%,64% 100%,52% 100%,52% 73%,40% 73%,40% 46%,23% 46%,23% 27%,0 27%); }
+  .cm-drips i:nth-child(2) { width: 33px; height: 13px; margin-inline: auto 16%; }
   .cm-drips i:last-child { transform: scaleX(-1); }
   .cm-verify { position: relative; z-index: 1; margin-top: 6px; border-bottom: 1px solid color-mix(in srgb, var(--c-warn) 30%, transparent); background: var(--c-warn-soft); color: var(--c-warn); }
 
@@ -182,7 +185,14 @@
   .cm-nav a[aria-current="page"] .cm-nav-badge { margin-inline-end: 12px; }
   /* Hive scene: bleeds to the frame's inner edge and closes the rail, as in the concept. */
   .cm-apiary { margin: auto -4px -6px; padding-top: 12px; overflow: hidden; clip-path: var(--cm-base); pointer-events: none; }
-  .cm-apiary img { display: block; width: 100%; height: auto; }
+  /* The artwork is 272 px wide: capped at 176 CSS px so it is only ever drawn at or below its native
+     resolution (up to 150 % display scaling) instead of being stretched soft across a wide rail. */
+  .cm-apiary img {
+    display: block; width: min(100%, 176px); height: auto; margin-inline: auto;
+    /* The art was cut to bleed edge to edge; once narrower than the rail, fade its sides into the panel. */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
   .cm-queen { margin-top: 6px; display: flex; align-items: center; justify-content: center; gap: 5px; width: 100%; min-height: 44px; padding: 4px; background: var(--c-sunken); border-top: 1px solid var(--c-line); font-size: 12px; font-weight: 700; }
   .cm-queen:hover { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -330,6 +340,12 @@
   /* Dialogs share the frame language. */
   .cm-dialog { width: min(460px, calc(100% - 24px)); max-height: calc(100% - 24px); padding: 0; margin: auto; color: var(--c-ink); background: var(--c-surface); border: 3px solid var(--c-line-strong); }
   .cm-dialog::backdrop { background: #2c1c12a0; }
+  /* Blurred backdrop: the page stays recognisable but out of focus behind the modal. */
+  .cm-dialog-blur::backdrop { background: #2c1c1266; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  .cm-quote-dialog[open] { display: flex; flex-direction: column; width: min(580px, calc(100% - 24px)); max-height: min(720px, calc(100dvh - 24px)); }
+  .cm-quote-dialog form { overflow: hidden; }
+  /* The original post scrolls on its own so the message field and the Post button stay in view. */
+  .cm-quote-preview { min-height: 0; overflow-y: auto; padding: 10px 12px; border: 2px solid var(--c-line-strong); background: var(--c-sunken); }
   .cm-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 8px 6px 14px; border-bottom: 1px solid var(--c-line); }
   .cm-dialog-head h2 { font: 700 24px/1.05 var(--font-pixel); }
 }

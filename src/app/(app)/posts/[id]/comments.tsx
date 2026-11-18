@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { commentAction, deleteCommentAction } from "@/app/actions/social";
+import { deleteCommentAction } from "@/app/actions/social";
 import { timeAgo } from "@/lib/format";
-import { ActionForm, SubmitButton, Textarea } from "@/components/ui/form";
+import { CommentForm } from "@/components/comment-form";
 import { ActionButton } from "@/components/ui/action-button";
 import { Avatar } from "@/components/ui/avatar";
 import { RichText, type MentionRef } from "@/components/rich-text";
@@ -18,27 +18,6 @@ type C = {
   author: { username: string; profile: { displayName: string; avatarKey: string | null; avatarArt?: string | null; headline: string | null } | null };
   mentions: MentionRef[];
 };
-
-function CommentForm({ postId, parentId, onDone, autoFocus }: { postId: string; parentId?: string; onDone?: () => void; autoFocus?: boolean }) {
-  return (
-    <ActionForm action={commentAction} resetOnSuccess successToast={false} onSuccess={onDone} className="flex flex-col gap-2">
-      <input type="hidden" name="postId" value={postId} />
-      {parentId && <input type="hidden" name="parentId" value={parentId} />}
-      <label htmlFor={`c-${parentId ?? "root"}`} className="sr-only">
-        {parentId ? "Reply" : "Comment"}
-      </label>
-      <Textarea id={`c-${parentId ?? "root"}`} name="body" rows={2} maxLength={1500} required placeholder={parentId ? "Write a reply… use @ to mention" : "Add a comment… use @ to mention"} autoFocus={autoFocus} />
-      <div className="flex justify-end gap-2">
-        {onDone && parentId && (
-          <button type="button" onClick={onDone} className="h-8 rounded-md px-2.5 text-[13px] text-muted hover:bg-sunken">
-            Cancel
-          </button>
-        )}
-        <SubmitButton size="sm">{parentId ? "Reply" : "Comment"}</SubmitButton>
-      </div>
-    </ActionForm>
-  );
-}
 
 function CommentItem({ c, viewerId, canModerate, onReply }: { c: C; viewerId: string | null; canModerate: boolean; onReply?: () => void }) {
   const name = c.author.profile?.displayName ?? c.author.username;
@@ -86,7 +65,7 @@ export function Comments({ postId, comments, viewerId, canComment, canModerate }
               {c.replies.map((r) => (
                 <CommentItem key={r.id} c={r} viewerId={viewerId} canModerate={canModerate} onReply={canComment ? () => setReplyTo(c.id) : undefined} />
               ))}
-              {replyTo === c.id && <CommentForm postId={postId} parentId={c.id} onDone={() => setReplyTo(null)} autoFocus />}
+              {replyTo === c.id && <CommentForm postId={postId} parentId={c.id} onDone={() => setReplyTo(null)} onCancel={() => setReplyTo(null)} autoFocus />}
             </div>
           )}
         </div>
