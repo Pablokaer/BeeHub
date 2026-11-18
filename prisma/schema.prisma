@@ -780,6 +780,8 @@ model Invitation {
 model Opportunity {
   id               String              @id @default(cuid())
   title            String
+  /// Position from the catalog in src/lib/positions.ts (stable id). Null only for opportunities created before positions existed.
+  position          String?
   description      String
   category         OpportunityCategory
   collaborationType CollaborationType
@@ -817,6 +819,7 @@ model Opportunity {
   @@index([createdById])
   @@index([category])
   @@index([collaborationType])
+  @@index([position])
 }
 
 model Application {

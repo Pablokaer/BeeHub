@@ -24,6 +24,7 @@ export default async function EditOpportunityPage({ params }: PageProps<"/opport
         values={{
           id: o.id,
           owner,
+          position: o.position,
           title: o.title,
           description: o.description,
           category: o.category,

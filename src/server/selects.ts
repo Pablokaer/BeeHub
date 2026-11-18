@@ -43,6 +43,7 @@ export const orgCardSelect = {
 export const opportunityCardSelect = {
   id: true,
   title: true,
+  position: true,
   category: true,
   collaborationType: true,
   workMode: true,

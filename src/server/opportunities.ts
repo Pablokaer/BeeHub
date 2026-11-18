@@ -1,4 +1,5 @@
 import "server-only";
+import { findPosition } from "@/lib/positions";
 import type { z } from "zod";
 import type { OpportunityStatus } from "@/generated/prisma/enums";
 import type { opportunitySchema } from "@/lib/validation";
@@ -19,9 +20,16 @@ const PAID_COLLABS = new Set(["PAID", "FREELANCE"]);
 
 type OpportunityInput = z.infer<typeof opportunitySchema>;
 
+/** The service re-checks the position, so callers that skip the form schema get the same rule. */
+function assertPosition(input: OpportunityInput) {
+  if (!findPosition(input.position)) throw new ValidationError("Choose a position from the list", { position: "Choose a position from the list" });
+}
+
 function fields(input: OpportunityInput) {
+  const position = findPosition(input.position)!;
   return {
-    title: input.title,
+    position: position.id,
+    title: input.title?.trim() || position.label,
     description: input.description,
     category: input.category,
     collaborationType: input.collaborationType,
@@ -68,6 +76,7 @@ export async function opportunityManagers(o: OpportunityOwnerRef, tx: Tx = db): 
 }
 
 export async function createOpportunity(actor: Actor, input: OpportunityInput, opts: { announce?: boolean } = {}) {
+  assertPosition(input);
   const owner = await resolveActingAs(actor, input.owner);
   const status: OpportunityStatus = input.publish ? "OPEN" : "DRAFT";
   if (owner.kind === "project" && status === "OPEN") {
@@ -119,6 +128,7 @@ async function afterPublish(actor: Actor, opportunityId: string, announce: boole
 }
 
 export async function updateOpportunity(actor: Actor, opportunityId: string, input: OpportunityInput) {
+  assertPosition(input);
   const o = await assertCanManageOpportunity(actor, opportunityId);
   const wasPublished = o.status !== "DRAFT";
   const publishNow = !wasPublished && input.publish;

@@ -7,9 +7,10 @@ import { formatDate, timeAgo } from "@/lib/format";
 import { Avatar, EntityLogo } from "./ui/avatar";
 import { Badge, TagList } from "./ui/misc";
 import { MatchBadge } from "./match";
+import { findPosition } from "@/lib/positions";
 
 type Opp = Pick<OpportunityCardData, "id" | "title" | "collaborationType" | "workMode" | "location" | "isPaid" | "status" | "publishedAt" | "createdAt" | "project" | "organization" | "createdBy"> &
-  Partial<Pick<OpportunityCardData, "tags" | "experienceLevel" | "deadline" | "_count" | "compensation">>;
+  Partial<Pick<OpportunityCardData, "tags" | "experienceLevel" | "deadline" | "_count" | "compensation" | "position">>;
 
 type EntityRef = { name: string; slug: string; logoKey: string | null } | null;
 type OwnerRef = {
@@ -54,7 +55,17 @@ export function OpportunityCard({ opportunity: o, match, showStatus }: { opportu
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-1">
           <div className="min-w-0">
-            <p className="eyebrow !normal-case !tracking-normal text-signal">Looking for</p>
+            <p className="eyebrow !normal-case !tracking-normal text-signal">
+              Looking for
+              {findPosition(o.position) && (
+                <>
+                  {" · "}
+                  <Link href={`/opportunities?position=${o.position}`} className="font-semibold underline underline-offset-2 hover:text-ink" title="See all opportunities for this position">
+                    {findPosition(o.position)!.label}
+                  </Link>
+                </>
+              )}
+            </p>
             <h3 className="text-[15px] font-semibold leading-snug">
               <Link href={`/opportunities/${o.id}`} className="hover:underline">
                 {o.title}

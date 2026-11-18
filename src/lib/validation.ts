@@ -26,6 +26,7 @@ import {
 import { HANDLE_RE, RESERVED_HANDLES } from "./slug";
 import { MAX_TAG_LENGTH } from "./tags";
 import { isArtId, type ArtKind } from "./art-catalog";
+import { isPositionId, positionCategory } from "./positions";
 
 // ───────────── Primitives ─────────────
 
@@ -266,9 +267,12 @@ export const inviteSchema = z.object({
 
 export const opportunitySchema = z.object({
   owner: actingAsSchema,
-  title: reqStr(5, 120, "Title"),
+  /** Chosen from the position catalog; drives the opportunity filters. */
+  position: z.string({ error: "Choose a position from the list" }).trim().refine(isPositionId, "Choose a position from the list"),
+  /** Optional headline; defaults to the position's label. */
+  title: optStr(120).refine((v) => v === undefined || v.length >= 5, "Title must be at least 5 characters"),
   description: reqStr(20, 8000, "Description"),
-  category: z.enum(OpportunityCategory),
+  category: optEnum(OpportunityCategory),
   collaborationType: z.enum(CollaborationType),
   workMode: z.enum(WorkMode),
   location: optStr(80),
@@ -281,7 +285,7 @@ export const opportunitySchema = z.object({
   skills: tagList(15).refine((v) => v.length > 0, "Add at least one skill"),
   topics: tagList(10),
   publish: checkbox,
-});
+}).transform((d) => ({ ...d, category: d.category ?? positionCategory(d.position) ?? "OTHER" }));
 
 export const applicationSchema = z.object({
   opportunityId: z.string().min(1).max(40),

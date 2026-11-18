@@ -6,6 +6,8 @@ import { collaborationLabels, enumKeys, experienceLabels, opportunityCategoryLab
 import { bool, enumList, list, page, str, type SP } from "@/lib/search-params";
 import { OpportunityCard } from "@/components/opportunity-card";
 import { FilterCheck, FilterGroup, FilterPanel, FilterRadio, FilterText } from "@/components/filters";
+import { PositionPicker } from "@/components/position-picker";
+import { isPositionId } from "@/lib/positions";
 import { EmptyState, PageHeader, Pagination } from "@/components/ui/misc";
 import { ButtonLink } from "@/components/ui/button";
 
@@ -16,6 +18,7 @@ export default async function OpportunitiesPage({ searchParams }: PageProps<"/op
   const viewer = await getViewer();
   const f = {
     q: str(sp, "q"),
+    position: list(sp, "position").filter(isPositionId),
     skills: list(sp, "skills"),
     category: enumList(sp, "category", opportunityCategoryLabels),
     collaborationType: enumList(sp, "type", collaborationLabels),
@@ -45,6 +48,12 @@ export default async function OpportunitiesPage({ searchParams }: PageProps<"/op
       <div className="grid items-start gap-6 lg:grid-cols-[240px_minmax(0,1fr)]">
         <aside>
           <FilterPanel action="/opportunities" hidden={{ q: f.q, sort: f.sort !== "recent" ? f.sort : undefined }}>
+            <div>
+              <p className="mb-1.5 text-[13px] font-medium text-ink-2" id="filter-position-label">
+                Position
+              </p>
+              <PositionPicker name="position" multiple defaultValue={f.position} label="Filter by position" placeholder="e.g. designer, SEO, AI…" />
+            </div>
             <FilterText name="skills" label="Skills" defaultValue={f.skills.join(", ")} placeholder="react, marketing" />
             <FilterGroup legend="Collaboration type">
               {enumKeys(collaborationLabels).map((v) => (

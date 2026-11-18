@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { account, addTags, expectToast, newUserPage, signUpAndVerify, uid, L, T } from "./helpers";
+import { account, addTags, expectToast, newUserPage, signUpAndVerify, uid, L, T, pickPosition } from "./helpers";
 
 test("Scenario C: an organization finds a partnership opportunity, applies and starts a conversation", async ({ page, browser }) => {
   const owner = account("acme", "Alice Acme");
@@ -14,7 +14,8 @@ test("Scenario C: an organization finds a partnership opportunity, applies and s
 
   await page.goto("/opportunities/new");
   await L(page, "Published by").selectOption({ label: "Organization · Acme Payments" });
-  await L(page, "Looking for…").fill("Retail partner for a payments pilot");
+  await pickPosition(page, "retail", "Retail partner");
+  await L(page, "Title").fill("Retail partner for a payments pilot");
   await L(page, "Type of collaboration").selectOption("BUSINESS_PARTNERSHIP");
   await L(page, "Category").selectOption("PARTNERSHIP");
   await L(page, "Description").fill("We are looking for a retail company to pilot our new checkout product together.");
