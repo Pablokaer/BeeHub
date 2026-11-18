@@ -4,7 +4,6 @@ import type { educationSchema, experienceSchema, privacySchema, profileSchema } 
 import { db } from "./db";
 import { NotFoundError, ValidationError } from "./errors";
 import { isArtId } from "@/lib/art-catalog";
-import { isPixelPortraitKey } from "@/lib/media";
 import { ART_CONFLICT_MESSAGE } from "@/lib/validation";
 import { isBlockedEitherWay } from "./authz";
 import { setUserTags } from "./tags";
@@ -157,11 +156,6 @@ export async function updateProfile(actor: Actor, input: z.infer<typeof profileS
   const current = await db.profile.findUnique({ where: { userId: actor.id }, select: { avatarKey: true, avatarArt: true, coverKey: true } });
   // Unchanged keys are kept as-is; newly referenced keys must be the actor's own uploads.
   await assertOwnedMedia(actor, [input.avatarKey, input.coverKey].filter((k) => k && k !== current?.avatarKey && k !== current?.coverKey));
-  // New profile photos must be pixel portraits made by the upload pipeline; a photo saved
-  // before the filter existed may stay until it is replaced.
-  if (input.avatarKey && input.avatarKey !== current?.avatarKey && !isPixelPortraitKey(input.avatarKey)) {
-    throw new ValidationError("Upload the profile photo again from the profile editor.", { avatarKey: "Upload the profile photo again from the profile editor." });
-  }
   // Availability "Unavailable" is exclusive.
   const availability = input.availability.includes("UNAVAILABLE") ? ["UNAVAILABLE" as const] : input.availability;
   await db.$transaction(async (tx) => {

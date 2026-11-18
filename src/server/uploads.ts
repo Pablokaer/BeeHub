@@ -8,8 +8,6 @@ import { ForbiddenError, ValidationError } from "./errors";
 import { randomToken } from "./security/crypto";
 import { rateLimit } from "./security/rate-limit";
 import type { Actor } from "./auth/types";
-import { pixelPortrait } from "./media/pixel-portrait";
-import { PIXEL_PORTRAIT_SUFFIX } from "@/lib/media";
 
 export type UploadPurpose = "avatar" | "cover" | "logo" | "gallery" | "post";
 
@@ -48,8 +46,6 @@ export async function storeImage(actor: Actor, file: File, purpose: UploadPurpos
   }
   if (!meta.format || !ALLOWED_FORMATS.has(meta.format)) throw new ValidationError("Use a JPEG, PNG, WebP or GIF image.");
 
-  if (purpose === "avatar") return storePixelPortrait(actor, input);
-
   const size = SIZES[purpose];
   const output = await sharp(input, { limitInputPixels: 40_000_000, animated: false })
     .rotate()
@@ -65,41 +61,14 @@ export async function storeImage(actor: Actor, file: File, purpose: UploadPurpos
   return { key, width: output.info.width, height: output.info.height };
 }
 
-function newKey(suffix = ".webp") {
-  return `${new Date().getUTCFullYear()}/${randomToken(18)}${suffix}`;
+function newKey() {
+  return `${new Date().getUTCFullYear()}/${randomToken(18)}.webp`;
 }
 
 async function writeMedia(key: string, data: Buffer) {
   const full = path.join(root(), key);
   await mkdir(path.dirname(full), { recursive: true });
   await writeFile(full, data);
-}
-
-/**
- * Profile photos are turned into a Colmeia pixel portrait (src/server/media/pixel-portrait.ts),
- * which is what profiles show. The re-encoded original (metadata stripped) is kept as a separate,
- * never-attached asset, so only its owner can read it; the portrait records it in `sourceKey`.
- */
-async function storePixelPortrait(actor: Actor, input: Buffer) {
-  const original = await sharp(input, { limitInputPixels: 40_000_000, animated: false })
-    .rotate()
-    .resize({ width: 1200, height: 1200, fit: "inside", withoutEnlargement: true })
-    .webp({ quality: 88 })
-    .toBuffer({ resolveWithObject: true });
-  const portrait = await pixelPortrait(original.data);
-  const originalKey = newKey();
-  const key = newKey(PIXEL_PORTRAIT_SUFFIX);
-  await writeMedia(originalKey, original.data);
-  await writeMedia(key, portrait.data);
-  await db.$transaction([
-    db.mediaAsset.create({
-      data: { ownerId: actor.id, key: originalKey, mimeType: "image/webp", sizeBytes: original.info.size, width: original.info.width, height: original.info.height },
-    }),
-    db.mediaAsset.create({
-      data: { ownerId: actor.id, key, mimeType: "image/webp", sizeBytes: portrait.data.length, width: portrait.width, height: portrait.height, sourceKey: originalKey },
-    }),
-  ]);
-  return { key, width: portrait.width, height: portrait.height };
 }
 
 /** Ensures media keys referenced by a form were uploaded by the same user. */
