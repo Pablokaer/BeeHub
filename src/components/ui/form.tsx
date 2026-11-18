@@ -154,7 +154,8 @@ export function Field({
 const control =
   "w-full rounded-md border border-line-strong bg-surface px-3 text-sm text-ink placeholder:text-muted/80 transition-colors hover:border-ink/30 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 aria-[invalid=true]:border-danger disabled:opacity-60";
 
-function useControlProps(name?: string) {
+/** id, aria-invalid and aria-describedby for a custom control rendered inside <Field>. */
+export function useControlProps(name?: string) {
   const ctx = useContext(FieldIdContext);
   const error = useFieldError(name ?? ctx?.name);
   return { id: ctx?.id, "aria-invalid": error ? true : undefined, "aria-describedby": ctx?.describedBy };

@@ -87,3 +87,10 @@ export async function addTags(page: Page, label: RegExp | string, tags: string[]
 export async function expectToast(page: Page, text: string | RegExp) {
   await expect(page.getByRole("status").filter({ hasText: text }).first()).toBeVisible();
 }
+
+/** Types into the position combobox and picks the option with that exact label. */
+export async function pickPosition(page: Page, typed: string, label: string, field: string | RegExp = /^Position you're looking for/) {
+  const box = page.getByRole("combobox", { name: field }).filter({ visible: true });
+  await box.fill(typed);
+  await page.getByRole("option", { name: new RegExp(`^${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`) }).first().click();
+}

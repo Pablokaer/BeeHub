@@ -27,6 +27,7 @@ const projectInput = (slug: string, extra: Record<string, unknown> = {}) => ({
 
 const oppInput = (owner: string, extra: Record<string, unknown> = {}) => ({
   owner,
+  position: "frontend-developer",
   title: "Frontend developer for our study assistant",
   description: "Help us build the web interface in React and TypeScript. Beginners welcome.",
   category: "ENGINEERING" as const,
@@ -222,5 +223,31 @@ describe("people discovery privacy", () => {
     expect((await searchPeople(viewerOf(viewer), { availability: ["OPEN_TO_PAID_WORK"], skills: ["react"] })).total).toBe(1);
     const op = await getOpportunity(null, "missing");
     expect(op).toBeNull();
+  });
+});
+
+describe("positions on opportunities", () => {
+  beforeEach(resetDb);
+  it("stores the position, defaults the title to it and filters by it", async () => {
+    const owner = await createUser({ name: "Pat Publisher" });
+    const viewer = await createUser();
+    const fe = await createOpportunity(owner, oppInput("user", { title: undefined }));
+    expect(fe.position).toBe("frontend-developer");
+    expect(fe.title).toBe("Frontend developer");
+    await createOpportunity(owner, oppInput("user", { position: "seo-specialist", title: "SEO for our launch", category: "MARKETING", skills: ["SEO"] }));
+    await createOpportunity(owner, oppInput("user", { position: "ai-engineer", title: "Build our RAG pipeline", skills: ["Python"] }));
+
+    const byPosition = await searchOpportunities(viewerOf(viewer), { position: ["seo-specialist", "ai-engineer"] });
+    expect(byPosition.items.map((o) => o.position).sort()).toEqual(["ai-engineer", "seo-specialist"]);
+    // Free text also finds positions through their aliases.
+    const byAlias = await searchOpportunities(viewerOf(viewer), { q: "genai" });
+    expect(byAlias.items.map((o) => o.position)).toEqual(["ai-engineer"]);
+    // Unknown ids in the URL are ignored rather than matching nothing.
+    expect((await searchOpportunities(viewerOf(viewer), { position: ["nope"] })).total).toBe(3);
+  });
+
+  it("rejects an unknown position in the service", async () => {
+    const owner = await createUser();
+    await expect(createOpportunity(owner, oppInput("user", { position: "chief-vibes-officer" }))).rejects.toMatchObject({ code: "VALIDATION" });
   });
 });

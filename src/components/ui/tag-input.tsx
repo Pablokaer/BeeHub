@@ -4,10 +4,32 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import { Plus, X } from "lucide-react";
 import { tagDisplayName, tagSlug } from "@/lib/tags";
 import { availablePresets } from "@/lib/profile-presets";
+import type { VocabularyGroup } from "@/lib/project-vocabulary";
 import { useFieldError } from "./form";
 import { cn } from "./cn";
 
 type Suggestion = { slug: string; name: string; usageCount: number };
+
+const fold = (v: string) => v.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+/** Vocabulary entries matching the query: name prefix first, then a word prefix, then contains. */
+function vocabularyMatches(groups: readonly VocabularyGroup[], query: string, exclude: Set<string>, limit: number): Suggestion[] {
+  const q = fold(query.trim());
+  if (!q) return [];
+  const seen = new Set<string>();
+  const scored: [number, Suggestion][] = [];
+  for (const g of groups) {
+    for (const name of g.items) {
+      const slug = tagSlug(name);
+      if (!slug || seen.has(slug) || exclude.has(slug)) continue;
+      seen.add(slug);
+      const f = fold(name);
+      const score = f.startsWith(q) ? 0 : f.split(/[^a-z0-9#+.]+/).some((w) => w.startsWith(q)) ? 1 : f.includes(q) || slug.includes(tagSlug(q)) ? 2 : -1;
+      if (score >= 0) scored.push([score, { slug, name, usageCount: 0 }]);
+    }
+  }
+  return scored.sort((a, b) => a[0] - b[0] || a[1].name.length - b[1].name.length).slice(0, limit).map(([, s]) => s);
+}
 
 /** Presets shown before "Show all". */
 const PRESETS_COLLAPSED = 12;
@@ -27,6 +49,7 @@ export function TagInput({
   suggest = true,
   presets = [],
   presetsLabel = "Suggestions",
+  vocabulary,
 }: {
   name: string;
   label: string;
@@ -39,6 +62,8 @@ export function TagInput({
   /** Quick picks shown as chips under the field (already chosen ones are hidden). */
   presets?: readonly string[];
   presetsLabel?: string;
+  /** Curated vocabulary: suggested while typing and browsable by group under "Show all". */
+  vocabulary?: readonly VocabularyGroup[];
 }) {
   const [tags, setTags] = useState<string[]>(defaultValue);
   const [query, setQuery] = useState("");
@@ -55,7 +80,13 @@ export function TagInput({
   const [showAllPresets, setShowAllPresets] = useState(false);
   const keyOf = suggest ? tagSlug : (v: string) => v.trim().toLowerCase();
   const remainingPresets = availablePresets(presets, tags, keyOf);
-  const visiblePresets = showAllPresets ? remainingPresets : remainingPresets.slice(0, PRESETS_COLLAPSED);
+  const chosenKeys = new Set(tags.map(keyOf));
+  // With a vocabulary, the quick picks stay short and "Show all" opens the grouped vocabulary.
+  const visiblePresets = vocabulary ? remainingPresets : showAllPresets ? remainingPresets : remainingPresets.slice(0, PRESETS_COLLAPSED);
+  const vocabularyGroups = (vocabulary ?? [])
+    .map((g) => ({ label: g.label, items: g.items.filter((i) => !chosenKeys.has(keyOf(i)) && !remainingPresets.includes(i)) }))
+    .filter((g) => g.items.length > 0);
+  const vocabularyCount = vocabularyGroups.reduce((n, g) => n + g.items.length, 0);
 
   // After a chip is clicked it disappears; keep keyboard focus on the chip that took its place.
   useEffect(() => {
@@ -78,7 +109,11 @@ export function TagInput({
         if (res.ok) {
           const data = (await res.json()) as { tags: Suggestion[] };
           const chosen = new Set(tags.map(tagSlug));
-          setSuggestions(data.tags.filter((s) => !chosen.has(s.slug)).slice(0, 8));
+          // Curated vocabulary first, then tags already used on the site that it doesn't cover.
+          const local = vocabulary ? vocabularyMatches(vocabulary, q, chosen, 8) : [];
+          const known = new Set(local.map((l) => l.slug));
+          const remote = data.tags.filter((s) => !chosen.has(s.slug) && !known.has(s.slug));
+          setSuggestions([...local, ...remote].slice(0, 10));
           setActive(-1);
         }
       } catch {
@@ -86,7 +121,7 @@ export function TagInput({
       }
     }, 150);
     return () => clearTimeout(t);
-  }, [query, open, tags, suggest]);
+  }, [query, open, tags, suggest, vocabulary]);
 
   function add(raw: string) {
     const slug = tagSlug(raw);
@@ -201,7 +236,7 @@ export function TagInput({
               {p}
             </button>
           ))}
-          {remainingPresets.length > PRESETS_COLLAPSED && (
+          {!vocabulary && remainingPresets.length > PRESETS_COLLAPSED && (
             <button
               type="button"
               aria-expanded={showAllPresets}
@@ -210,6 +245,41 @@ export function TagInput({
             >
               {showAllPresets ? "Show fewer" : `Show all (${remainingPresets.length})`}
             </button>
+          )}
+        </div>
+      )}
+      {vocabulary && vocabularyCount > 0 && tags.length < max && (
+        <div>
+          <button
+            type="button"
+            aria-expanded={showAllPresets}
+            onClick={() => setShowAllPresets((v) => !v)}
+            className="min-h-7 px-0.5 text-[13px] font-medium text-accent underline-offset-2 hover:underline"
+          >
+            {showAllPresets ? "Hide the full list" : `Browse all ${label.toLowerCase()} (${vocabularyCount})`}
+          </button>
+          {showAllPresets && (
+            <div className="mt-1.5 flex max-h-80 flex-col gap-2.5 overflow-y-auto border border-line bg-sunken p-2.5">
+              {vocabularyGroups.map((g) => (
+                <div key={g.label} role="group" aria-label={`${label}: ${g.label}`}>
+                  <p className="eyebrow mb-1">{g.label}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {g.items.map((item) => (
+                      <button
+                        key={item}
+                        type="button"
+                        aria-label={`Add ${item}`}
+                        onClick={() => add(item)}
+                        className="inline-flex min-h-7 items-center gap-1 rounded-full border border-line-strong bg-surface px-2.5 text-[13px] text-ink-2 hover:border-accent hover:bg-accent-soft hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        <Plus className="size-3" aria-hidden />
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       )}

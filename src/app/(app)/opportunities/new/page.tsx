@@ -25,7 +25,7 @@ export default async function NewOpportunityPage({ searchParams }: PageProps<"/o
       <OpportunityForm
         action={createOpportunityAction}
         owners={owners}
-        values={{ owner: preselected, title: "", description: "", category: "ENGINEERING", collaborationType: "VOLUNTEER", workMode: "REMOTE", location: null, experienceLevel: null, duration: null, commitment: null, compensationType: "NONE", compensation: null, deadline: "", skills: [], topics: [] }}
+        values={{ owner: preselected, position: null, title: "", description: "", category: "ENGINEERING", collaborationType: "VOLUNTEER", workMode: "REMOTE", location: null, experienceLevel: null, duration: null, commitment: null, compensationType: "NONE", compensation: null, deadline: "", skills: [], topics: [] }}
       />
     </div>
   );

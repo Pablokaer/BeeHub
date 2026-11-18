@@ -1,4 +1,5 @@
 import "server-only";
+import { isPositionId, positionIdsMatchingText } from "@/lib/positions";
 import type { Prisma } from "@/generated/prisma/client";
 import type {
   Availability,
@@ -201,6 +202,8 @@ export async function searchOrganizations(f: OrgFilters) {
 
 export type OpportunityFilters = {
   q?: string;
+  /** Position ids from the catalog (any of). Unknown ids are ignored. */
+  position?: string[];
   skills?: string[];
   tags?: string[];
   category?: OpportunityCategory[];
@@ -225,6 +228,7 @@ export async function searchOpportunities(viewer: Viewer | null, f: OpportunityF
         { title: { contains: t, mode: "insensitive" } },
         { description: { contains: t, mode: "insensitive" } },
         { tags: { some: tagMatch(t) } },
+        ...(positionIdsMatchingText(t).length ? [{ position: { in: positionIdsMatchingText(t) } }] : []),
         { project: { name: { contains: t, mode: "insensitive" } } },
         { organization: { name: { contains: t, mode: "insensitive" } } },
       ],
@@ -234,6 +238,8 @@ export async function searchOpportunities(viewer: Viewer | null, f: OpportunityF
   if (skillSlugs.length) and.push({ tags: { some: { kind: "SKILL", tag: { slug: { in: skillSlugs } } } } });
   for (const s of slugs(f.tags)) and.push({ tags: { some: { tag: { slug: s } } } });
   if (f.category?.length) and.push({ category: { in: f.category } });
+  const positions = (f.position ?? []).filter(isPositionId);
+  if (positions.length) and.push({ position: { in: positions } });
   if (f.collaborationType?.length) and.push({ collaborationType: { in: f.collaborationType } });
   if (f.workMode?.length) and.push({ workMode: { in: f.workMode } });
   if (f.experience?.length) and.push({ OR: [{ experienceLevel: { in: f.experience } }, { experienceLevel: null }] });

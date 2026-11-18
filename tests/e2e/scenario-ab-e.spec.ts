@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { account, addTags, expectToast, newUserPage, signUpAndVerify, uid, L, T } from "./helpers";
+import { account, addTags, expectToast, newUserPage, signUpAndVerify, uid, L, T, pickPosition } from "./helpers";
 
 test("Scenarios A, B & E: publish a project and opportunity, discover it, apply and get accepted", async ({ page, browser }) => {
   // Scenario B — a developer sets up a profile, a public project and an opportunity.
@@ -24,7 +24,8 @@ test("Scenarios A, B & E: publish a project and opportunity, discover it, apply 
   await expect(page.getByRole("heading", { name: "E2E Study Tool", level: 1 })).toBeVisible();
 
   await page.getByRole("link", { name: "Publish opportunity" }).click();
-  await L(page, "Looking for…").fill("Marketing specialist for launch");
+  await pickPosition(page, "growth", "Growth marketer");
+  await L(page, "Title").fill("Marketing specialist for launch");
   await L(page, "Type of collaboration").selectOption("FREELANCE");
   await L(page, "Category").selectOption("MARKETING");
   await L(page, "Description").fill("Plan our launch campaign and reach the first users with great copy.");

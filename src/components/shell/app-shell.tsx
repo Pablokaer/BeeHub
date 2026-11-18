@@ -8,7 +8,6 @@ import { siteConfig } from "@/lib/constants";
 import { ButtonLink } from "../ui/button";
 import { ActionButton } from "../ui/action-button";
 import { PixelIcon, type PixelIconName } from "../colmeia/pixel-icon";
-import { HiveYard } from "../colmeia/hive-yard";
 import { resendVerificationAction } from "@/app/actions/auth";
 import { NavLink } from "./nav-link";
 import { UserMenu } from "./user-menu";
@@ -172,19 +171,12 @@ export async function SideRail() {
             </p>
           )}
         </nav>
-        <div className="cm-apiary" aria-hidden="true">
-          <div className="cm-comb">
-            <i />
-            <i />
-            <i />
-            <i />
-            <i />
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/bia-logo-v2.png" alt="" className="cm-fly" width={36} height={36} />
-          <HiveYard className="cm-yard" />
-        </div>
         <MeetBia />
+        {/* Hive scene from the approved concept (docs/design/references/hive-rail-concept.png). */}
+        <div className="cm-apiary" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/hive-rail.webp" alt="" width={272} height={581} decoding="async" />
+        </div>
       </div>
     </aside>
   );

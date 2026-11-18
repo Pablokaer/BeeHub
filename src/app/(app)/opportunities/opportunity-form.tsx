@@ -5,10 +5,14 @@ import type { ActionState } from "@/lib/action-state";
 import { collaborationLabels, commitmentLabels, compensationLabels, durationLabels, enumKeys, experienceLabels, opportunityCategoryLabels, workModeLabels } from "@/lib/constants";
 import { ActionForm, Checkbox, Field, FormActions, Input, Select, SubmitButton, Textarea } from "@/components/ui/form";
 import { TagInput } from "@/components/ui/tag-input";
+import { TOPIC_GROUPS, TOPIC_QUICK_PICKS } from "@/lib/project-vocabulary";
+import { PositionPicker } from "@/components/position-picker";
+import { findPosition, positionCategory } from "@/lib/positions";
 
 export type OpportunityFormValues = {
   id?: string;
   owner: string;
+  position: string | null;
   title: string;
   description: string;
   category: string;
@@ -29,6 +33,9 @@ export type OpportunityFormValues = {
 export function OpportunityForm({ action, owners, values }: { action: (p: ActionState, f: FormData) => Promise<ActionState>; owners: { value: string; label: string }[]; values?: OpportunityFormValues }) {
   const [workMode, setWorkMode] = useState(values?.workMode ?? "REMOTE");
   const [comp, setComp] = useState(values?.compensationType ?? "NONE");
+  const [position, setPosition] = useState(values?.position ?? null);
+  const [category, setCategory] = useState(values?.category ?? "ENGINEERING");
+  const positionLabel = findPosition(position)?.label;
   const isDraft = !values?.status || values.status === "DRAFT";
   return (
     <ActionForm action={action} className="panel flex flex-col gap-5 p-5">
@@ -43,8 +50,29 @@ export function OpportunityForm({ action, owners, values }: { action: (p: Action
         </Select>
       </Field>
       {values?.id && <input type="hidden" name="owner" value={values.owner} />}
-      <Field label="Looking for…" name="title" hint="Be specific: “React developer for our study-assistant MVP”, “Retail partner for a payments pilot”.">
-        <Input name="title" defaultValue={values?.title} required maxLength={120} placeholder="Frontend developer" />
+      <Field
+        label="Position you're looking for"
+        name="position"
+        hint="Start typing and pick from the list: roles in engineering, AI & data, design, product, marketing, sales, operations, partners and more. People filter opportunities by position."
+      >
+        <PositionPicker
+          name="position"
+          defaultValue={values?.position}
+          placeholder="e.g. frontend, AI engineer, SEO, co-founder…"
+          onChange={([id]) => {
+            setPosition(id ?? null);
+            const c = id ? positionCategory(id) : null;
+            if (c) setCategory(c);
+          }}
+        />
+      </Field>
+      <Field label="Title" name="title" optional hint="A short headline. Leave empty to use the position name.">
+        <Input
+          name="title"
+          defaultValue={values?.title && values.title !== findPosition(values.position)?.label ? values.title : ""}
+          maxLength={120}
+          placeholder={positionLabel ? `${positionLabel} for our MVP` : "React developer for our study-assistant MVP"}
+        />
       </Field>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Type of collaboration" name="collaborationType">
@@ -56,8 +84,8 @@ export function OpportunityForm({ action, owners, values }: { action: (p: Action
             ))}
           </Select>
         </Field>
-        <Field label="Category" name="category">
-          <Select name="category" defaultValue={values?.category ?? "ENGINEERING"}>
+        <Field label="Category" name="category" hint="Filled in from the position; change it if needed.">
+          <Select name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
             {enumKeys(opportunityCategoryLabels).map((v) => (
               <option key={v} value={v}>
                 {opportunityCategoryLabels[v]}
@@ -71,7 +99,7 @@ export function OpportunityForm({ action, owners, values }: { action: (p: Action
       </Field>
       <div className="grid gap-4 sm:grid-cols-2">
         <TagInput name="skills" label="Skills wanted" defaultValue={values?.skills} max={15} hint="Used for matching. At least one." />
-        <TagInput name="topics" label="Topics" defaultValue={values?.topics} max={10} hint="Domain or theme: AI, Fintech, Education…" />
+        <TagInput name="topics" label="Topics" defaultValue={values?.topics} max={10} presets={TOPIC_QUICK_PICKS} vocabulary={TOPIC_GROUPS} hint="Domain or theme: AI, Fintech, Education…" />
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         <Field label="Work mode" name="workMode">

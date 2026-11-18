@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { findPosition } from "@/lib/positions";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { CalendarClock, Pencil, Users } from "lucide-react";
@@ -49,7 +50,17 @@ export default async function OpportunityPage({ params }: PageProps<"/opportunit
             {owner.logo}
             {owner.name}
           </Link>
-          <p className="eyebrow mt-4 !normal-case !tracking-normal text-signal">Looking for</p>
+          <p className="eyebrow mt-4 !normal-case !tracking-normal text-signal">
+            Looking for
+            {findPosition(o.position) && (
+              <>
+                {" · "}
+                <Link href={`/opportunities?position=${o.position}`} className="font-semibold underline underline-offset-2 hover:text-ink">
+                  {findPosition(o.position)!.label}
+                </Link>
+              </>
+            )}
+          </p>
           <h1 className="text-2xl font-semibold leading-tight">{o.title}</h1>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {o.status !== "OPEN" && <Badge tone="warn">{opportunityStatusLabels[o.status]}</Badge>}
