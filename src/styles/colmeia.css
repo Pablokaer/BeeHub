@@ -432,3 +432,13 @@
     .cm-nav a { flex-direction: column; gap: 2px; }
   }
 }
+
+/* Faceted tab buttons (same look as the profile tabs), used inside dialogs. */
+@layer components {
+  .cm-tab-button { position: relative; isolation: isolate; display: flex; align-items: center; min-height: 44px; padding: 4px 14px; font-weight: 700; color: var(--c-ink); }
+  .cm-tab-button::before { position: absolute; content: ""; inset: 0; z-index: -2; background: var(--c-line-strong); clip-path: var(--cm-facet); }
+  .cm-tab-button::after { position: absolute; content: ""; inset: 2px; z-index: -1; background: var(--c-surface); clip-path: var(--cm-facet-in); }
+  .cm-tab-button:hover::after { background: var(--c-sunken); }
+  .cm-tab-button[aria-pressed="true"] { color: var(--c-gold-ink); }
+  .cm-tab-button[aria-pressed="true"]::after { background: var(--c-gold); box-shadow: inset 0 3px var(--c-gold-glint); }
+}

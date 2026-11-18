@@ -1,5 +1,6 @@
 import manifest from "../../public/brand/colmeia/catalogo.json";
 import { isPixelPortraitKey, mediaUrl } from "./media";
+import { CUSTOM_PREFIX, customAvatarUrl, isCustomAvatarId } from "./avatar/code";
 
 /**
  * Colmeia illustration catalog: the cover and avatar artworks a member can pick for their
@@ -45,10 +46,21 @@ const byKind: Record<ArtKind, readonly ArtEntry[]> = { avatar: AVATAR_ART, cover
 export const AVATAR_ART_IDS = AVATAR_ART.map((a) => a.id) as [string, ...string[]];
 export const COVER_ART_IDS = COVER_ART.map((a) => a.id) as [string, ...string[]];
 
-/** The catalog entry for an id of the given kind, or null (unknown id or wrong kind). */
+/**
+ * The catalog entry for an id of the given kind, or null (unknown id or wrong kind). Avatars
+ * made in the avatar builder use "custom:<code>" ids and are drawn by /api/avatars/<code>.
+ */
 export function findArt(kind: ArtKind, id: string | null | undefined): ArtEntry | null {
   if (!id) return null;
+  if (kind === "avatar" && isCustomAvatarId(id)) {
+    const code = id.slice(CUSTOM_PREFIX.length);
+    return { id, label: "Custom avatar", src: customAvatarUrl(code), width: 320, height: 320, alt: "" };
+  }
   return byKind[kind].find((a) => a.id === id) ?? null;
+}
+
+export function isCustomArt(id: string | null | undefined): boolean {
+  return isCustomAvatarId(id);
 }
 
 export function isArtId(kind: ArtKind, id: string): boolean {
