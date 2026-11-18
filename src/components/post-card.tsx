@@ -152,6 +152,13 @@ export function PostCard({ post, signedIn, reason, standalone, className }: { po
           saved={target.saved}
           signedIn={signedIn}
           commentsHref={`/posts/${target.id}#comments`}
+          standalone={standalone}
+          quotePreview={
+            <>
+              <Byline post={main} size="sm" />
+              <Content post={main} />
+            </>
+          }
         />
       </div>
     </article>

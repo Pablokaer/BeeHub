@@ -146,17 +146,37 @@ function alt(t) {
   return `${bits.join(", ")}, sobre fundo ${pt("background", t.background)}`;
 }
 
-const STYLE =
-  "Use case stylized-concept. A new set of FOUR unique pixel art user avatar choices for a beehive community app. One square output divided precisely in a 2x2 grid with four equal square full-bleed tiles, no gutters and no grid line. Each tile one centered original bust, face centered in the quadrant with breathing room for cropping into a tight hex mask.";
-const CLOSE =
-  "Mature friendly faces and clearly different silhouettes. True chunky pixel-cluster portraits like a 48 by 48 grid, selective black brown contours, limited deliberately shaped palette, the size and framing of the attached approved portrait sheet. No text, no caps with writing, no words, no decor outside tiles, no logo or UI. Add no extra characters.";
+/** Prompt opening: the attached reference sheet is both the style master and the expected result. */
+const STYLE = `REFERENCE IMAGE — READ FIRST
+Attached is "avatares-aprovados.png", from our design folder /reference. It is the DIRECT REFERENCE for this task:
+1. It shows WHAT must be made: a 2x2 sheet of four pixel-art avatar busts for our platform.
+2. It shows the EXPECTED RESULT: your output must look like it belongs to that same sheet, drawn by the same artist in the same session. Put side by side, nobody should be able to tell which sheet came first.
+Before drawing, study the reference and copy exactly: pixel size and density, outline thickness and colour, shading steps, palette, face construction (eyes, eyebrows, nose, smile, cheeks), bust framing and scale, and the flat background tiles. Change ONLY the characters themselves.
+
+Create ONE new square image: a 2x2 grid of four equal square tiles, full-bleed, no gutters, no borders, no grid lines between tiles. Each tile holds one new, original character.
+
+STYLE LOCK (as in the reference):
+- True pixel art built on a ~48x48 grid per tile, upscaled with hard edges: chunky, clearly visible square pixels, no anti-aliasing, no blur, no painterly texture, no gradients.
+- Dark brown/black 1-pixel outline around every silhouette (head, hair, ears, shoulders, clothing, accessories); interior lines used selectively.
+- Cel shading with 2–3 tones per material; warm, cosy, earthy palette (honey, amber, terracotta, olive, cream, plum) with saturated accents.
+- Faces: friendly adult faces, large dark eyes with a single white highlight pixel, defined eyebrows, small closed smile, soft blush or freckle dots on cheeks, simple nose drawn with 2–3 pixels.
+- Framing: head-and-shoulders bust, facing the viewer, face centred slightly above the middle of the tile, shoulders running off the bottom edge, hair/hat kept inside the tile with breathing room so it can be cropped into a tight hexagon. Same head size and position as in the reference tiles.
+- Background: ONE flat solid colour per tile, no pattern, no scenery, no shadow.
+- Theme: a beehive / apiary community — cosy rustic clothing, small bee or honey details are welcome.
+
+THE FOUR CHARACTERS:`;
+const CLOSE = `Make the four silhouettes clearly different from each other and from the reference characters. Reuse the reference's STYLE, never its PEOPLE: no copies or close variations of the four reference characters.
+
+FINAL CHECK before answering: compare your image with the attached reference. If the pixels are smaller or softer, the outlines thinner, the shading smoother, or the framing different, redo it until it matches.
+
+DO NOT: add text, letters, numbers, logos, signatures, UI, frames, extra characters, scenery, gradients, smooth/realistic rendering, or anything outside the four tiles.`;
 
 function writePrompts(plan) {
   const batches = new Map();
   for (const p of plan) batches.set(p.batch, [...(batches.get(p.batch) ?? []), p]);
   let md = `# Prompts dos retratos do catálogo
 
-Gere cada lote no mesmo gerador usado nos avatares atuais, **anexando \`reference/avatares-aprovados.png\`** como referência de estilo. Salve cada imagem como \`lote-01.png\`, \`lote-02.png\`… numa pasta e rode:
+Gere cada lote no mesmo gerador usado nos avatares atuais, **sempre anexando \`reference/avatares-aprovados.png\`**: o prompt a trata como referência direta do que deve ser feito e do resultado esperado. Use a mesma conversa do gerador para todos os lotes e rejeite qualquer resultado com pixels mais finos, contornos mais leves ou sombreado suave. Salve cada imagem como \`lote-01.png\`, \`lote-02.png\`… numa pasta e rode:
 
 \`\`\`bash
 node scripts/design/avatar-library.mjs ingest <pasta>
@@ -166,8 +186,8 @@ O script recorta os quatro quadrantes na ordem do prompt (superior esquerdo, sup
 
 `;
   for (const [n, items] of batches) {
-    const body = items.map((p) => `${p.slot.toUpperCase()} ${describe(p.traits)}.`).join(" ");
-    md += `## Lote ${String(n).padStart(2, "0")}\n\n${items.map((p) => `- \`${p.id}\` (${p.slot}): ${label(p.traits)}`).join("\n")}\n\n> ${STYLE} ${body} ${CLOSE}\n\n`;
+    const body = items.map((p) => `${p.slot.toUpperCase()} — ${describe(p.traits)}.`).join("\n");
+    md += `## Lote ${String(n).padStart(2, "0")}\n\n${items.map((p) => `- \`${p.id}\` (${p.slot}): ${label(p.traits)}`).join("\n")}\n\n\`\`\`text\n${STYLE}\n${body}\n\n${CLOSE}\n\`\`\`\n\n`;
   }
   writeFileSync(PROMPTS, md);
   console.log(`${PROMPTS}: ${batches.size} prompts`);
