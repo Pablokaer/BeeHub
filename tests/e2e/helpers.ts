@@ -32,6 +32,10 @@ export function account(prefix: string, name: string): TestAccount {
 
 /** Signs up through the UI (name, email, password) and confirms the email using the link from the outbox. */
 export async function signUpAndVerify(page: Page, a: TestAccount) {
+  // The suite signs up many people from one IP against a production build, where the real
+  // limit (5 signups per hour per IP) applies. Reset only that counter, in the e2e database,
+  // so the app's limit itself stays untouched.
+  await query(`DELETE FROM "RateLimit" WHERE key LIKE 'signup:%'`);
   await page.goto("/signup");
   await L(page, "Name", { exact: true }).fill(a.name);
   await L(page, "Email").fill(a.email);
