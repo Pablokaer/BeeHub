@@ -6,6 +6,7 @@ import { slugify } from "@/lib/slug";
 import type { ActionState } from "@/lib/action-state";
 import { ActionForm, Checkbox, Field, FormActions, Input, Select, SubmitButton, Textarea } from "@/components/ui/form";
 import { TagInput } from "@/components/ui/tag-input";
+import { TECH_GROUPS, TECH_QUICK_PICKS, TOPIC_GROUPS, TOPIC_QUICK_PICKS } from "@/lib/project-vocabulary";
 import { ImageUpload } from "@/components/ui/image-upload";
 
 export type ProjectFormValues = {
@@ -115,8 +116,8 @@ export function ProjectForm({
         </Field>
       )}
       <div className="grid gap-4 sm:grid-cols-2">
-        <TagInput name="tech" label="Technologies" defaultValue={values?.tech} max={20} hint="React, Python, Figma…" />
-        <TagInput name="topics" label="Topics" defaultValue={values?.topics} max={15} hint="Education, AI, Climate…" />
+        <TagInput name="tech" label="Technologies" defaultValue={values?.tech} max={20} presets={TECH_QUICK_PICKS} vocabulary={TECH_GROUPS} hint="Type to search languages, frameworks, cloud, AI, data, design tools and more, or add your own." />
+        <TagInput name="topics" label="Topics" defaultValue={values?.topics} max={15} presets={TOPIC_QUICK_PICKS} vocabulary={TOPIC_GROUPS} hint="The domain or cause: AI, Fintech, Education, Climate… Type or browse the list." />
       </div>
       <Field label="Description" name="description" optional>
         <Textarea name="description" defaultValue={values?.description ?? ""} rows={6} maxLength={10000} />
